@@ -74,6 +74,9 @@
 /* DARK MODE */
 body.dark-mode{--white:#111827;--off:#1a2235;--black:#f3f4f6;--dark:#e5e7eb;--mid:#9ca3af;--light:#4b5563;--accent:#d4a96a;--adark:#bfa06a;--border:#374151;}
 body.dark-mode nav{background:rgba(17,24,39,.7);}
+body.dark-mode .price-card.feat{background:linear-gradient(160deg,#1a1810 70%,rgba(191,160,106,.06));border-color:var(--accent);}
+body.dark-mode .price-card.feat .btn-price{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600;}
+body.dark-mode .price-card.feat .btn-price:hover{background:var(--adark);border-color:var(--adark);}
 body.dark-mode .browser-mock,body.dark-mode .url-bar{filter:brightness(.85);}
 body.dark-mode .milan-controls{background:#1e2530;}
 body.dark-mode .pay-soon-banner{background:rgba(191,160,106,.1);border-color:rgba(191,160,106,.3);}
@@ -94,6 +97,14 @@ nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.07);padding:.75rem 5vw;}
 .nav-links a:hover{color:var(--black);}
 .nav-links a:hover::after{width:100%;}
 .lang-sel{font-family:'DM Sans',sans-serif;font-size:.78rem;border:1px solid var(--border);border-radius:4px;padding:.28rem .55rem;background:var(--white);color:var(--dark);cursor:pointer;outline:none;}
+.lang-icon-wrap{position:relative;display:flex;align-items:center;}
+.lang-icon-btn{background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--mid);padding:.28rem .4rem;display:flex;align-items:center;gap:.3rem;transition:color .2s,border-color .2s;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;}
+.lang-icon-btn:hover{color:var(--black);border-color:var(--black);}
+.lang-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--white);border:1px solid var(--border);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:999;min-width:110px;overflow:hidden;}
+.lang-dropdown.open{display:block;}
+.lang-dropdown button{display:block;width:100%;text-align:left;padding:.5rem .85rem;font-size:.78rem;font-family:'DM Sans',sans-serif;background:none;border:none;cursor:pointer;color:var(--mid);transition:background .15s,color .15s;}
+.lang-dropdown button:hover{background:var(--off);color:var(--black);}
+.lang-dropdown button.active{color:var(--accent);font-weight:500;}
 .nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--black);padding:.4rem;}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.55rem;border-radius:4px;font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .22s;border:none;font-family:'DM Sans',sans-serif;}
 .btn-dark{background:var(--black);color:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.15);}
@@ -354,6 +365,12 @@ section{padding:6rem 6vw;}
 #faq{background:var(--white);}
 .faq-list{margin-top:3rem;max-width:760px;}
 .faq-item{border-bottom:1px solid var(--border);transition:background .2s;}
+.faq-more{overflow:hidden;max-height:0;transition:max-height .5s ease;}
+.faq-more.open{max-height:2000px;}
+.faq-show-more{display:flex;align-items:center;gap:.5rem;margin-top:1.4rem;background:none;border:1px solid var(--border);border-radius:4px;padding:.6rem 1.2rem;font-size:.8rem;font-weight:500;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;}
+.faq-show-more:hover{color:var(--black);border-color:var(--black);}
+.faq-show-more svg{transition:transform .3s;}
+.faq-show-more.open svg{transform:rotate(180deg);}
 .faq-q{width:100%;background:none;border:none;padding:1.3rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:500;color:var(--dark);gap:1rem;}
 .faq-q:hover{color:var(--black);}
 .faq-icon{font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .3s ease;line-height:1;width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;}
@@ -429,8 +446,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 .foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;}
 .foot-copy{font-size:.73rem;color:rgba(255,255,255,.22);}
 /* WA FLOAT */
-.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;background:#25D366;color:#fff;border-radius:50px;padding:.68rem 1.15rem;font-size:.8rem;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:.42rem;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;}
-.wa-float:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(37,211,102,.5);}
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;background:#25D366;color:#fff;border-radius:50%;width:52px;height:52px;text-decoration:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;}
+.wa-float:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 8px 28px rgba(37,211,102,.55);}
+.wa-float::before{content:'';position:absolute;width:52px;height:52px;border-radius:50%;background:rgba(37,211,102,.4);animation:wa-pulse 2s ease-out infinite;}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.7;}70%{transform:scale(1.7);opacity:0;}100%{transform:scale(1.7);opacity:0;}}
 /* MODALS */
 .overlay{display:none;position:fixed;inset:0;background:rgba(14,14,14,.6);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
 .overlay.open{display:flex;}
@@ -599,7 +618,7 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 .nav-links li{width:100%;}
 .nav-links a{font-size:.92rem;padding:.2rem 0;}
 .nav-links .btn{width:100%;text-align:center;}
-.lang-sel{width:100%;}
+.lang-icon-btn{width:100%;}
 .port-grid{grid-template-columns:1fr;}
 .portfolio-grid{gap:1.4rem;}
 .portfolio-grid img{max-height:260px;object-fit:cover;object-position:top;}
@@ -685,11 +704,18 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
     <li><a href="#calc">Quote</a></li>
     <li><a href="#appt">Book</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><select class="lang-sel" onchange="switchLang(this.value)">
-      <option value="en">English</option>
-      <option value="sn">Shona</option>
-      <option value="nd">Ndebele</option>
-    </select></li>
+    <li><div class="lang-icon-wrap" id="lang-wrap">
+      <button class="lang-icon-btn" onclick="toggleLangMenu()" aria-label="Select language">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="lang-label">EN</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <button onclick="selectLang('en','EN')" class="active" id="lang-opt-en">English</button>
+        <button onclick="selectLang('sn','SN')" id="lang-opt-sn">Shona</button>
+        <button onclick="selectLang('nd','ND')" id="lang-opt-nd">Ndebele</button>
+      </div>
+    </div></li>
 
   </ul>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileNav()">
@@ -1141,6 +1167,10 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             LinkedIn
           </a>
+          <a href="https://theophilustinashe-collab.github.io/portfolio-dev/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--mid);text-decoration:none;border:1px solid var(--border);border-radius:4px;padding:.3rem .7rem;transition:color .2s,border-color .2s;" onmouseover="this.style.color='var(--black)';this.style.borderColor='var(--black)'" onmouseout="this.style.color='var(--mid)';this.style.borderColor='var(--border)'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            Portfolio
+          </a>
         </div>
 
         <!-- Tech stack -->
@@ -1334,11 +1364,17 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Who owns the website once it's built?<span class="faq-icon">+</span></button><div class="faq-ans">You do. 100%. Once the project is complete and final payment is made, the website, all files, and the domain belong entirely to you.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need to pay for hosting separately?<span class="faq-icon">+</span></button><div class="faq-ans">Hosting is not included in the package price but we guide you through the best affordable options for Zimbabwe. We also offer managed hosting at competitive rates.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I update my website myself after launch?<span class="faq-icon">+</span></button><div class="faq-ans">Yes. We build on a content management system (CMS) so you can update text, images, and pages yourself without any technical knowledge.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you build websites for schools?<span class="faq-icon">+</span></button><div class="faq-ans">Absolutely — schools are one of our primary clients. We build full school websites with admissions info, event calendars, news sections, staff pages, and parent portals.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I pay in Zimbabwe dollars (ZiG)?<span class="faq-icon">+</span></button><div class="faq-ans">Prices are listed in USD for clarity but we are flexible. Contact us via WhatsApp or email to discuss a payment arrangement that works best for you.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do I need to provide to get started?<span class="faq-icon">+</span></button><div class="faq-ans">Your business name, logo (if you have one), a description of your services, any photos you want to use, and your contact details. We'll guide you through everything step by step.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is a Progressive Web App and do I need one?<span class="faq-icon">+</span></button><div class="faq-ans">A Progressive Web App (PWA) lets visitors install your website on their phone like a native app — no App Store needed. It works offline, loads instantly on slow connections, and sends push notifications. If your customers visit your site regularly (restaurants, schools, shops), a PWA can dramatically increase engagement. We can add PWA features to any Business or E-commerce plan.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you add an AI chatbot to my website?<span class="faq-icon">+</span></button><div class="faq-ans">Yes. We can integrate an AI-powered chat widget that answers common customer questions automatically — 24/7, with no staff required. We can also set up a WhatsApp auto-responder so inquiries sent to your WhatsApp business number get an instant, intelligent reply. This is especially useful for restaurants, clinics, and schools that get repetitive questions about hours, pricing, or admissions.</div></div>
+    <div class="faq-more" id="faq-more">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you build websites for schools?<span class="faq-icon">+</span></button><div class="faq-ans">Absolutely — schools are one of our primary clients. We build full school websites with admissions info, event calendars, news sections, staff pages, and parent portals.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do I need to provide to get started?<span class="faq-icon">+</span></button><div class="faq-ans">Your business name, logo (if you have one), a description of your services, any photos you want to use, and your contact details. We'll guide you through everything step by step.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is a Progressive Web App and do I need one?<span class="faq-icon">+</span></button><div class="faq-ans">A Progressive Web App (PWA) lets visitors install your website on their phone like a native app — no App Store needed. It works offline, loads instantly on slow connections, and sends push notifications. If your customers visit your site regularly (restaurants, schools, shops), a PWA can dramatically increase engagement. We can add PWA features to any Business or E-commerce plan.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you add an AI chatbot to my website?<span class="faq-icon">+</span></button><div class="faq-ans">Yes. We can integrate an AI-powered chat widget that answers common customer questions automatically — 24/7, with no staff required. We can also set up a WhatsApp auto-responder so inquiries sent to your WhatsApp business number get an instant, intelligent reply. This is especially useful for restaurants, clinics, and schools that get repetitive questions about hours, pricing, or admissions.</div></div>
+    </div>
+    <button class="faq-show-more" id="faq-show-more-btn" onclick="toggleFaqMore()">
+      <span id="faq-show-more-label">Show 4 more questions</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
   </div>
 </section>
 
@@ -1558,6 +1594,7 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
       <li><a href="mailto:theophilus.webdev@gmail.com">theophilus.webdev@gmail.com</a></li>
       <li><a href="https://wa.me/263778230962">077 823 0962 (WhatsApp)</a></li>
       <li><a href="https://www.instagram.com/crownweb.agency/" target="_blank">Instagram: @crownweb.agency</a></li>
+      <li><a href="https://theophilustinashe-collab.github.io/portfolio-dev/" target="_blank" rel="noopener">Personal Portfolio</a></li>
       <li><a href="https://github.com/theophilustinashe-collab" target="_blank">GitHub: theophilustinashe-collab</a></li>
       <li><a href="https://www.linkedin.com/in/theophilus-dzingisai-436394412/" target="_blank">LinkedIn: Theophilus Dzingisai</a></li>
       <li><a onclick="openLegal('terms')">Terms of Service</a></li>
@@ -1572,7 +1609,9 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 </footer>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/263778230962" target="_blank" class="wa-float"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.5a8.4 8.4 0 0 1-.8-3.6A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/></svg>Chat on WhatsApp</a>
+<a href="https://wa.me/263778230962" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
 
 <!-- LEGAL MODAL -->
 <div class="overlay" id="legal-overlay" onclick="closeIfOverlay(event,'legal-overlay')">
@@ -1918,7 +1957,11 @@ function toggleDark(){
 })();
 
 function switchLang(l){const t=T[l]||T.en;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});}
+function toggleLangMenu(){const d=document.getElementById('lang-dropdown');d.classList.toggle('open');}
+function selectLang(code,label){switchLang(code);document.getElementById('lang-label').textContent=label;document.querySelectorAll('.lang-dropdown button').forEach(b=>b.classList.remove('active'));const el=document.getElementById('lang-opt-'+code);if(el)el.classList.add('active');document.getElementById('lang-dropdown').classList.remove('open');}
+document.addEventListener('click',function(e){const w=document.getElementById('lang-wrap');if(w&&!w.contains(e.target))document.getElementById('lang-dropdown').classList.remove('open');});
 function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+function toggleFaqMore(){const more=document.getElementById('faq-more');const btn=document.getElementById('faq-show-more-btn');const label=document.getElementById('faq-show-more-label');const isOpen=more.classList.contains('open');more.classList.toggle('open');btn.classList.toggle('open');label.textContent=isOpen?'Show 4 more questions':'Show fewer questions';}
 </script>
 <script>
 

@@ -595,38 +595,61 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 @media(max-width:900px){
 .hero{grid-template-columns:1fr;padding-top:6rem;}
 .hero-visual{height:320px;}
-.serve-grid,.svc-grid,.price-grid,.supp-grid,.approach-grid{grid-template-columns:1fr;}
+.serve-grid,.svc-grid,.price-grid,.supp-grid,.approach-grid{grid-template-columns:1fr 1fr;}
 .proc-steps{grid-template-columns:1fr 1fr;}
 .proc-steps::before{display:none;}
-.stats{grid-template-columns:1fr;gap:1rem;}
-.calc-wrap,.appt-types,.inq-wrap{grid-template-columns:1fr;}
+.stats{grid-template-columns:1fr 1fr;gap:1rem;}
+.stat:nth-child(2n)::after{display:none;}
+.calc-wrap,.inq-wrap{grid-template-columns:1fr;}
+.appt-types{grid-template-columns:1fr 1fr;}
+.af-row{grid-template-columns:1fr 1fr;}
 .foot-top{grid-template-columns:1fr 1fr;}
 .portfolio-grid{grid-template-columns:1fr;}
 .port-slots-row{grid-template-columns:1fr!important;}
-/* FIX: .founder-wrap had the exact same problem as .portfolio-grid above —
-   a fixed 2-column grid (.8fr photo / 1.2fr bio) with no breakpoint
-   collapsing it. On a phone that's a ~130px-wide photo column next to a
-   ~190px-wide text column, which is why the photo looked cramped and the
-   bio text wrapped badly. */
 .founder-wrap{grid-template-columns:1fr;}
 .founder-photo{margin:0 auto .7rem;}
 .founder-name,.founder-role{text-align:center;}
+.calc-res{position:static;}
+.custom-card{flex-direction:column;gap:1.2rem;}
+.custom-card .btn{width:100%;text-align:center;justify-content:center;}
 }
 @media(max-width:600px){
 .nav-toggle{display:flex;align-items:center;justify-content:center;}
-.nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:var(--white);flex-direction:column;align-items:stretch;padding:1rem 6vw 1.4rem;border-bottom:1px solid var(--border);box-shadow:0 16px 34px rgba(0,0,0,.1);gap:.9rem;max-height:calc(100vh - 58px);overflow-y:auto;}
+.nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:var(--white);flex-direction:column;align-items:stretch;padding:1rem 6vw 1.4rem;border-bottom:1px solid var(--border);box-shadow:0 16px 34px rgba(0,0,0,.1);gap:.9rem;max-height:calc(100vh - 58px);overflow-y:auto;z-index:200;}
 .nav-links.open{display:flex;}
 .nav-links li{width:100%;}
-.nav-links a{font-size:.92rem;padding:.2rem 0;}
-.nav-links .btn{width:100%;text-align:center;}
+.nav-links a{font-size:.92rem;padding:.35rem 0;display:block;}
+.nav-links .btn{width:100%;text-align:center;justify-content:center;}
 .lang-icon-btn{width:100%;}
+.lang-dropdown{width:100%;position:static;box-shadow:none;border-radius:4px;margin-top:.4rem;}
 .port-grid{grid-template-columns:1fr;}
 .portfolio-grid{gap:1.4rem;}
 .portfolio-grid img{max-height:260px;object-fit:cover;object-position:top;}
-.persuade-stats{gap:1.8rem;}
+.persuade-stats{flex-direction:column;border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;}
+.persuade-stats > div{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:1.3rem 1.5rem;}
+.persuade-stats > div:last-child{border-bottom:none;}
 .foot-top{grid-template-columns:1fr;}
 .cta-sec::before{font-size:26vw;}
 .proc-steps{grid-template-columns:1fr;}
+.serve-grid{grid-template-columns:1fr;}
+.price-grid{grid-template-columns:1fr;}
+.approach-grid{grid-template-columns:1fr;}
+.supp-grid{grid-template-columns:1fr;}
+.appt-types{grid-template-columns:1fr;}
+.af-row{grid-template-columns:1fr;}
+.first-review-box{grid-template-columns:1fr;padding:2rem 1.5rem;}
+.hero-ctas{flex-direction:column;gap:.6rem;}
+.hero-ctas .btn{width:100%;justify-content:center;}
+.inq-wrap{grid-template-columns:1fr;}
+.calc-wrap{grid-template-columns:1fr;}
+.calc-res{position:static;}
+.stats{grid-template-columns:1fr;}
+.stat:not(:last-child)::after{right:auto;top:auto;bottom:0;left:25%;width:50%;height:1px;}
+.founder-wrap{gap:1.5rem;}
+.custom-card{flex-direction:column;gap:1rem;}
+.custom-card .btn{width:100%;text-align:center;justify-content:center;}
+.frow,.prow{grid-template-columns:1fr;}
+.pay-methods{grid-template-columns:1fr 1fr;}
 }
 
 /* ── Milan portfolio slideshow (CHANGE 6) ── */
@@ -690,6 +713,254 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 .dils-lightbox-close{position:absolute;top:22px;right:26px;font-size:1.6rem;color:#c9a84c;cursor:pointer;background:none;border:none;line-height:1;}
 .dils-lightbox-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:.78rem;color:rgba(201,168,76,.6);font-family:'DM Sans',sans-serif;}
 @media (max-width:640px){.dils-nav-btn{width:30px;height:30px;font-size:.85rem;}.dils-title{font-size:.9rem;}.dils-desc{display:none;}}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVENESS IMPROVEMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Tablet: 768px and below ── */
+@media (max-width:768px) {
+  :root { --section-pad: 4rem 5vw; }
+
+  /* Nav */
+  nav { padding: .85rem 5vw; gap: .6rem; }
+
+  /* Hero */
+  .hero { padding: 6.5rem 5vw 4rem; gap: 2.5rem; }
+  .hero-title { font-size: clamp(2.2rem, 7vw, 3.2rem); }
+  .hero-sub { font-size: .88rem; }
+  .hero-ctas { gap: .7rem; }
+  .hero-visual { height: 280px; }
+
+  /* Persuade stats */
+  .persuade-stats > div { padding: 1.4rem 1.2rem; min-width: 130px; }
+  .ps-num { font-size: 2rem; }
+
+  /* Stats bar */
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2)::after { display: none; }
+
+  /* Trust strip */
+  .trust-strip { gap: 1rem 1.8rem; padding: 1rem 5vw; }
+
+  /* Sections */
+  section { padding: 4rem 5vw; }
+  .stitle { font-size: clamp(1.7rem, 5vw, 2.4rem); }
+
+  /* Serve grid */
+  .serve-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Services grid */
+  .svc-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Pricing */
+  .price-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .price-card.feat { order: -1; }
+
+  /* Process steps */
+  .proc-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .proc-step { padding: 0 .5rem; }
+
+  /* Appointment */
+  .appt-types { grid-template-columns: 1fr 1fr; }
+  .af-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .foot-top { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+  /* Calc */
+  .calc-wrap { grid-template-columns: 1fr; }
+  .calc-res { position: static; }
+
+  /* Inquiry */
+  .inq-wrap { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* Custom card */
+  .custom-card { flex-direction: column; gap: 1.2rem; }
+  .custom-card .btn { width: 100%; text-align: center; justify-content: center; }
+
+  /* Cases / approach */
+  .approach-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Support */
+  .supp-grid { grid-template-columns: 1fr 1fr; }
+
+  /* First review box handled at 700px already */
+
+  /* Founder */
+  .founder-wrap { gap: 2rem; }
+
+  /* CTA */
+  .cta-sec { padding: 5rem 5vw; }
+
+  /* Back to top */
+  .back-top { bottom: 4.5rem; }
+
+  /* WA float */
+  .wa-float { bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; }
+}
+
+/* ── Mobile: 480px and below ── */
+@media (max-width:480px) {
+  :root { --section-pad: 3.5rem 4.5vw; }
+
+  /* Body text */
+  body { font-size: 15px; }
+
+  /* Nav */
+  nav { padding: .75rem 4.5vw; }
+  .logo { font-size: 1.35rem; }
+  .logo-sub { display: none; }
+
+  /* Hero */
+  .hero { padding: 5.5rem 4.5vw 3rem; gap: 2rem; }
+  .hero-eyebrow { font-size: .65rem; }
+  .hero-title { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  .hero-sub { font-size: .85rem; max-width: 100%; }
+  .hero-ctas { flex-direction: column; gap: .65rem; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .hero-visual { height: 230px; }
+  .ftag.t1 { left: -10px; font-size: .63rem; padding: .35rem .7rem; }
+  .ftag.t2 { right: -5px; font-size: .63rem; padding: .35rem .7rem; }
+
+  /* Persuade */
+  .persuade { padding: 3.5rem 4.5vw; }
+  .persuade h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .persuade-stats { flex-direction: column; gap: 0; }
+  .persuade-stats > div { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .persuade-stats > div:last-child { border-bottom: none; }
+  .ps-num { font-size: 2.2rem; }
+
+  /* Stats */
+  .stats { grid-template-columns: 1fr; }
+  .stat:not(:last-child)::after { right: auto; top: auto; bottom: 0; left: 25%; width: 50%; height: 1px; }
+  .stat-num { font-size: 2.4rem; }
+
+  /* Trust strip */
+  .trust-strip { flex-direction: column; align-items: flex-start; gap: .8rem; padding: 1.2rem 4.5vw; }
+
+  /* Section */
+  section { padding: 3.5rem 4.5vw; }
+  .stitle { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .ssub { font-size: .85rem; }
+
+  /* Serve grid */
+  .serve-grid { grid-template-columns: 1fr; }
+  .serve-card { padding: 1.5rem 1.3rem; }
+
+  /* Services */
+  .svc-grid { grid-template-columns: 1fr; gap: 0; }
+  .svc-card { padding: 1.6rem 1.3rem; }
+
+  /* Portfolio */
+  .port-grid { grid-template-columns: 1fr; }
+
+  /* Process */
+  .proc-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+  .proc-step { padding: 0; }
+  .step-title { font-size: .88rem; }
+
+  /* Pricing */
+  .price-grid { grid-template-columns: 1fr; }
+  .price-amount { font-size: 2.5rem; }
+
+  /* Calculator */
+  .calc-opts { gap: .35rem; }
+  .copt { padding: .32rem .6rem; font-size: .75rem; }
+
+  /* Appointment */
+  .appt-types { grid-template-columns: 1fr; }
+  .appt-type { padding: 1.4rem 1.3rem; }
+  .appt-form { padding: 1.5rem 1.2rem; }
+
+  /* Support */
+  .supp-grid { grid-template-columns: 1fr; }
+
+  /* Approach */
+  .approach-grid { grid-template-columns: 1fr; }
+
+  /* Inquiry */
+  .inq-form-box { padding: 1.5rem 1.2rem; }
+
+  /* Modals */
+  .modal { max-width: calc(100vw - 1.5rem); margin: .75rem; border-radius: 10px; }
+  .mhead { padding: 1.2rem 1.4rem 0; }
+  .mbody { padding: 1.2rem 1.4rem 1.6rem; }
+  .mtabs { margin: .9rem 1.4rem 0; }
+  .frow { grid-template-columns: 1fr; }
+  .prow { grid-template-columns: 1fr; }
+
+  /* Payment methods */
+  .pay-methods { grid-template-columns: 1fr 1fr; }
+  .pay-body { padding: 0 1.4rem 1.6rem; }
+  .pay-sum { margin: .8rem 1.4rem; }
+  .pay-soon-banner { margin: .8rem 1.4rem 0; }
+
+  /* Footer */
+  .foot-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .foot-brand p { max-width: 100%; }
+  .foot-bottom { flex-direction: column; align-items: flex-start; gap: .4rem; }
+
+  /* CTA section */
+  .cta-sec { padding: 4rem 4.5vw; }
+  .cta-sec::before { font-size: 30vw; }
+
+  /* Back to top + WA float */
+  .wa-float { bottom: 1.2rem; right: 1.2rem; width: 46px; height: 46px; }
+  .back-top { bottom: 4.2rem; right: 1.2rem; }
+
+  /* Admin bar */
+  .admin-bar { flex-wrap: wrap; gap: .8rem; padding: .5rem 1.2rem; font-size: .72rem; }
+
+  /* Buttons */
+  .btn { padding: .6rem 1.2rem; font-size: .75rem; }
+  .btn-dark, .btn-accent { padding: .65rem 1.35rem; }
+}
+
+/* ── Small mobile: 360px and below ── */
+@media (max-width:360px) {
+  .hero { padding: 5rem 4vw 2.8rem; }
+  .hero-title { font-size: clamp(1.8rem, 9vw, 2.2rem); }
+  .hero-visual { height: 190px; }
+  .logo { font-size: 1.2rem; }
+  .stitle { font-size: clamp(1.5rem, 8vw, 2rem); }
+  .price-amount { font-size: 2.2rem; }
+  .ps-num { font-size: 1.8rem; }
+  nav { padding: .7rem 4vw; }
+  .wa-float { width: 42px; height: 42px; }
+}
+
+/* ── Landscape orientation on short phones ── */
+@media (max-height: 500px) and (max-width: 900px) {
+  .hero { min-height: auto; padding: 5.5rem 5vw 3rem; }
+  nav { padding: .6rem 5vw; }
+}
+
+/* ── Touch-friendly tap targets ── */
+@media (hover: none) and (pointer: coarse) {
+  .btn, .btn-price, .btn-calc, .af-submit, .fsub, .pay-sub { min-height: 44px; }
+  .nav-links a { padding: .35rem 0; }
+  .faq-q { padding: 1rem 0; }
+  .copt { padding: .45rem .85rem; }
+  .appt-type, .price-card, .serve-card { cursor: default; }
+  .appt-type:hover, .price-card:hover, .serve-card:hover { transform: none; }
+}
+
+/* ── Fix: prevent horizontal overflow on all screen sizes ── */
+.hero-visual, .browser-mock, .first-review-box,
+.price-grid, .serve-grid, .svc-grid, .approach-grid {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ── Fix: fluid images in portfolio ── */
+.portfolio-grid img, .milan-stage img, .dils-stage img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Fix: ensure modals don't overflow horizontally on small screens ── */
+.overlay { padding: .5rem; }
 
 </style>
 </head>

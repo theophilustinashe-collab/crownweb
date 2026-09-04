@@ -2755,6 +2755,10 @@ document.addEventListener('DOMContentLoaded', function(){
 }
 </style>
 
+
+<!-- ═══ GSAP (animation engine) ═══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 <div id="scroll-progress"></div>
@@ -2788,10 +2792,7 @@ document.addEventListener('DOMContentLoaded', function(){
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="nav-toggle-menu"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="nav-toggle-x" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
-  <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode" onclick="toggleDark()">
-    <svg id="dt-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    <svg id="dt-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-  </button>
+  <!-- Dark mode toggle removed: site is light-mode only -->
 </nav>
 <button class="back-top" id="backTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
@@ -2802,9 +2803,9 @@ document.addEventListener('DOMContentLoaded', function(){
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" data-i18n="eyebrow">Web Development Studio — Gweru, Zimbabwe</p>
-    <h1 class="hero-title" data-i18n="heroTitle">Professional Web Design &amp; Development<br/><em>in Zimbabwe</em></h1>
-    <p class="hero-sub" data-i18n="heroSub">CrownWeb builds websites that get Zimbabwe businesses found, trusted, and chosen — mobile-first, fast on local networks, and built to generate real enquiries from day one.</p>
+    <p class="hero-eyebrow" data-i18n="eyebrow">Web, App &amp; Media Studio — Gweru, Zimbabwe</p>
+    <h1 class="hero-title" data-i18n="heroTitle">Websites, Apps &amp; Media<br/><em>Built for Zimbabwe</em></h1>
+    <p class="hero-sub" data-i18n="heroSub">CrownWeb builds websites, apps, and media content that get Zimbabwe businesses found, trusted, and chosen — mobile-first, fast on local networks, and built to generate real enquiries from day one.</p>
 
     <div class="hero-ctas">
       <a href="#calc" class="btn btn-dark" data-i18n="ctaStart">Get Your Free Quote</a>
@@ -2891,182 +2892,6 @@ document.addEventListener('DOMContentLoaded', function(){
     <div class="svc-card rev"><div class="svc-num">10</div><div class="svc-title">Analytics &amp; Insights</div><div class="svc-desc">Set up Google Analytics 4, Search Console, and conversion tracking so you know exactly where your customers come from.</div></div>
     <div class="svc-card rev rd1"><div class="svc-num">11</div><div class="svc-title">Media &amp; Content</div><div class="svc-desc">Photography, videography, social media management, and graphic design &amp; branding — everything to keep your business looking sharp online and off.</div></div>
   </div>
-</section>
-
-<!-- PORTFOLIO SECTION REMOVED -->
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     Case Studies — Our Approach section
-     ═════════════════════════════════════════════════════════════════════════════ -->
-<section id="cases">
-  <p class="sey rev">How We Work</p>
-  <h2 class="stitle rev">Our <em>approach</em> to every project</h2>
-            <div class="milan-zoom-hint">Click to enlarge</div>
-            <div class="milan-caption-bar">
-              <div class="milan-caption-text">
-                <div class="milan-num" id="milan-num"></div>
-                <div class="milan-title" id="milan-title"></div>
-                <div class="milan-desc" id="milan-desc"></div>
-              </div>
-            </div>
-            <button class="milan-nav-btn milan-nav-prev" id="milan-prev" aria-label="Previous screenshot" type="button">&#8249;</button>
-            <button class="milan-nav-btn milan-nav-next" id="milan-next" aria-label="Next screenshot" type="button">&#8250;</button>
-          </div>
-          <div class="milan-controls">
-            <div class="milan-dots" id="milan-dots"></div>
-            <div class="milan-right-controls">
-              <span class="milan-counter" id="milan-counter"></span>
-              <button class="milan-play-toggle" id="milan-playToggle" type="button">Pause</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="port-card-meta">
-        <div class="port-card-header">
-          <span class="port-industry-tag">Hospitality · Restaurant</span>
-          <span class="port-location-tag">Gweru, Zimbabwe</span>
-        </div>
-        <div style="margin-bottom:.5rem;">
-          <span class="port-project-name">Milan Restaurant, Spa &amp; The Club</span><span class="port-status-badge">In Progress</span>
-        </div>
-        <p class="port-desc">A multi-section hospitality build — homepage, About, filterable food &amp; drinks menu, venue showcase, events calendar, and a WhatsApp-confirmed table reservation form. The spa section is underway.</p>
-        <div class="port-tags">
-          <span class="port-tag-pill">Responsive Design</span>
-          <span class="port-tag-pill">WhatsApp Bookings</span>
-          <span class="port-tag-pill">Filterable Menu</span>
-          <span class="port-tag-pill">Schema Markup</span>
-          <span class="port-tag-pill">PWA Ready</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ DILS Card ═══ -->
-    <div class="rev" style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-      <!-- Dark brand header — mirrors the DILS site's black + gold aesthetic -->
-      <div style="background:#040404;padding:1.4rem 1.6rem 0;">
-        <div style="background:#0d0d0d;border-radius:8px 8px 0 0;overflow:hidden;">
-          <div style="background:#111;border-bottom:1px solid rgba(255,255,255,0.07);padding:.5rem .8rem;display:flex;align-items:center;gap:.35rem;">
-            <div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div>
-            <div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div>
-            <div style="width:7px;height:7px;border-radius:50%;background:#28c840;"></div>
-            <span style="flex:1;margin-left:.4rem;background:rgba(255,255,255,.05);border-radius:3px;padding:.18rem .55rem;font-size:.68rem;color:rgba(255,255,255,.3);font-family:'DM Sans',sans-serif;">dils.inc</span>
-            <a href="dils_website.html" target="_blank" rel="noopener" style="margin-left:.5rem;font-size:.65rem;color:#9a9a9a;font-family:'DM Sans',sans-serif;text-decoration:none;">View Project ↗</a>
-          </div>
-          <!-- Static visual preview — 5-panel mosaic reproducing the site's key sections -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:2px;background:#000;">
-            <!-- Hero panel -->
-            <div style="background:#040404;padding:1.2rem 1.4rem 1rem;position:relative;overflow:hidden;">
-              <div style="font-size:.55rem;letter-spacing:5px;color:rgba(201,168,76,.7);font-family:monospace;text-transform:uppercase;margin-bottom:.5rem;">26/27 Season — New Collection</div>
-              <div style="font-size:1.9rem;line-height:.88;font-weight:900;letter-spacing:2px;font-family:'DM Sans',sans-serif;text-transform:uppercase;">
-                <span style="color:#fff;">ONE</span><br>
-                <span style="color:#1a4fff;">BRAND.</span><br>
-                <span style="color:#c9a84c;">THREE</span><br>
-                <span style="color:#fff;">FITS.</span>
-              </div>
-              <div style="position:absolute;top:.8rem;right:.8rem;font-size:.52rem;color:rgba(255,255,255,.3);letter-spacing:2px;font-family:monospace;">DILS</div>
-            </div>
-            <!-- Hustle panel -->
-            <div style="background:#0a0a0a;padding:1.2rem 1.2rem 1rem;border-left:2px solid rgba(255,40,40,.3);">
-              <div style="font-size:.48rem;letter-spacing:4px;color:#e23c3c;font-family:monospace;text-transform:uppercase;margin-bottom:.3rem;">Level 01</div>
-              <div style="font-size:1.5rem;font-weight:900;color:#e23c3c;letter-spacing:2px;font-family:'DM Sans',sans-serif;text-transform:uppercase;line-height:.9;">THE<br>HUSTLE</div>
-              <div style="font-size:.52rem;color:rgba(255,255,255,.35);letter-spacing:1px;margin-top:.4rem;font-family:monospace;font-style:italic;">Streetwear Collection</div>
-              <div style="display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.6rem;">
-                <span style="font-size:.44rem;border:1px solid rgba(255,255,255,.15);padding:.15rem .4rem;color:rgba(255,255,255,.4);letter-spacing:1px;font-family:monospace;">HOODIES</span>
-                <span style="font-size:.44rem;border:1px solid rgba(255,255,255,.15);padding:.15rem .4rem;color:rgba(255,255,255,.4);letter-spacing:1px;font-family:monospace;">TEES</span>
-              </div>
-            </div>
-            <!-- Kits panel -->
-            <div style="background:#080810;padding:1rem 1.2rem;border-top:1px solid rgba(255,255,255,.05);">
-              <div style="font-size:.48rem;letter-spacing:4px;color:#4d79ff;font-family:monospace;text-transform:uppercase;margin-bottom:.3rem;">Level 02 · The Grind</div>
-              <div style="font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:1px;font-family:'DM Sans',sans-serif;text-transform:uppercase;margin-bottom:.5rem;">SPORTSWEAR COLLECTION</div>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
-                <div style="background:#fff;border-radius:2px;aspect-ratio:3/4;"></div>
-                <div style="background:#1a4fff;border-radius:2px;aspect-ratio:3/4;"></div>
-                <div style="background:#111;border-radius:2px;aspect-ratio:3/4;"></div>
-                <div style="background:#e8b4c8;border-radius:2px;aspect-ratio:3/4;"></div>
-              </div>
-            </div>
-            <!-- Membership panel -->
-            <div style="background:#040404;padding:1rem 1.2rem;border-top:1px solid rgba(201,168,76,.1);">
-              <div style="font-size:.48rem;letter-spacing:4px;color:rgba(201,168,76,.7);font-family:monospace;text-transform:uppercase;margin-bottom:.4rem;">DILS Membership</div>
-              <div style="font-size:1rem;font-weight:900;color:#fff;letter-spacing:1px;font-family:'DM Sans',sans-serif;text-transform:uppercase;line-height:1;margin-bottom:.55rem;">JOIN THE<br>MOVEMENT</div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-                <div style="border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:.35rem .3rem;text-align:center;">
-                  <div style="font-size:.7rem;font-weight:900;color:#fff;font-family:'DM Sans',sans-serif;">$0</div>
-                  <div style="font-size:.4rem;color:rgba(255,255,255,.3);letter-spacing:1px;font-family:monospace;">FREE</div>
-                </div>
-                <div style="border:1px solid #1a4fff;border-radius:3px;padding:.35rem .3rem;text-align:center;">
-                  <div style="font-size:.7rem;font-weight:900;color:#4d79ff;font-family:'DM Sans',sans-serif;">$9</div>
-                  <div style="font-size:.4rem;color:rgba(77,121,255,.5);letter-spacing:1px;font-family:monospace;">MO</div>
-                </div>
-                <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.4);border-radius:3px;padding:.35rem .3rem;text-align:center;">
-                  <div style="font-size:.7rem;font-weight:900;color:#c9a84c;font-family:'DM Sans',sans-serif;">$79</div>
-                  <div style="font-size:.4rem;color:rgba(201,168,76,.5);letter-spacing:1px;font-family:monospace;">YR</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Card metadata -->
-      <div style="padding:1.4rem 1.6rem 1.6rem;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.5rem;">
-          <span style="font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;background:var(--off);border:1px solid var(--border);color:var(--adark);padding:.18rem .55rem;border-radius:20px;">Fashion &middot; Sportswear &middot; E-commerce</span>
-          <span style="font-size:.7rem;color:var(--light);">Zimbabwe</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.4rem;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--black);">DILS — Designs Inspired Luxury &amp; Sportswear</div>
-          <span style="font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:#fff4e8;border:1px solid #f0d9b5;color:#a36a1f;padding:.18rem .5rem;border-radius:20px;">In Progress</span>
-        </div>
-        <p style="font-size:.82rem;color:var(--mid);line-height:1.7;font-weight:300;margin-bottom:1rem;">A full e-commerce brand site for a Zimbabwe-based luxury and sportswear label. Three-tier collection architecture (Streetwear, Sportswear, Formalwear), a seasonal kit gallery showcasing the 26/27 football range, membership tiers, and a gallery section. Built with a high-contrast black and gold identity to match the brand's premium positioning.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
-          <span style="font-size:.68rem;background:var(--off);border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem;color:var(--mid);">E-commerce</span>
-          <span style="font-size:.68rem;background:var(--off);border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem;color:var(--mid);">Membership Tiers</span>
-          <span style="font-size:.68rem;background:var(--off);border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem;color:var(--mid);">Kit Gallery</span>
-          <span style="font-size:.68rem;background:var(--off);border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem;color:var(--mid);">Brand Identity</span>
-          <span style="font-size:.68rem;background:var(--off);border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem;color:var(--mid);">Responsive Design</span>
-        </div>
-      </div>
-    </div>
-    <!-- ════════════════ -->
-
-    <!-- Next slots — now Slot 3 -->
-    <div class="port-slots-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;">
-      <div class="rev rd1" style="border:1.5px dashed var(--border);border-radius:12px;padding:1.8rem 1.6rem;text-align:center;">
-        <div style="font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;">Slot 3 — Your Project</div>
-        <p style="font-size:.84rem;color:var(--mid);line-height:1.75;font-weight:300;margin-bottom:1.2rem;">We are taking on new clients now. Come in at a reduced rate — in exchange for an honest review and permission to feature the work. You get a full professional site; we get a portfolio entry we are proud of.</p>
-        <a href="#inquire" class="btn btn-dark" style="font-size:.76rem;padding:.6rem 1.4rem;">Claim Your Early-Client Rate →</a>
-      </div>
-      <div class="rev rd2" style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.6rem;">
-        <div style="font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;">What Early Clients Get</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;padding:0;margin:0;">
-          <li style="font-size:.82rem;color:var(--dark);display:flex;gap:.5rem;font-weight:300;"><span style="color:var(--accent);font-weight:600;flex-shrink:0;">&#10003;</span>Same quality as any paying client</li>
-          <li style="font-size:.82rem;color:var(--dark);display:flex;gap:.5rem;font-weight:300;"><span style="color:var(--accent);font-weight:600;flex-shrink:0;">&#10003;</span>3 months free support after launch</li>
-          <li style="font-size:.82rem;color:var(--dark);display:flex;gap:.5rem;font-weight:300;"><span style="color:var(--accent);font-weight:600;flex-shrink:0;">&#10003;</span>Reduced rate for early adopters</li>
-          <li style="font-size:.82rem;color:var(--dark);display:flex;gap:.5rem;font-weight:300;"><span style="color:var(--accent);font-weight:600;flex-shrink:0;">&#10003;</span>We ask only for an honest review</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:none;"><!-- old port-grid preserved -->
-  <div class="port-grid">
-    <div class="port-item rev">
-      <div class="port-bar"><div class="pdot" style="background:#ff5f57"></div><div class="pdot" style="background:#ffbd2e"></div><div class="pdot" style="background:#28c840"></div></div>
-      <div class="port-body"><div class="port-hero" style="background:#1a2a4a"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div><div class="port-lines"><div class="port-line" style="width:80%"></div><div class="port-line" style="width:55%"></div></div></div>
-      <div class="port-overlay"><div class="port-tag">School</div><h4>Academy Website</h4><p>Admissions, events &amp; news</p></div>
-    </div>
-    <div class="port-item rev rd1">
-      <div class="port-bar"><div class="pdot" style="background:#ff5f57"></div><div class="pdot" style="background:#ffbd2e"></div><div class="pdot" style="background:#28c840"></div></div>
-      <div class="port-body"><div class="port-hero" style="background:#2a1a1a"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></div><div class="port-lines"><div class="port-line" style="width:70%"></div><div class="port-line" style="width:50%"></div></div></div>
-      <div class="port-overlay"><div class="port-tag">E-commerce</div><h4>Online Retail Store</h4><p>Products, cart &amp; payments</p></div>
-    </div>
-    <div class="port-item rev rd2">
-      <div class="port-bar"><div class="pdot" style="background:#ff5f57"></div><div class="pdot" style="background:#ffbd2e"></div><div class="pdot" style="background:#28c840"></div></div>
-      <div class="port-body"><div class="port-hero" style="background:#1a3a1a"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><line x1="9" y1="18" x2="15" y2="18"/></svg></div><div class="port-lines"><div class="port-line" style="width:85%"></div><div class="port-line" style="width:60%"></div></div></div>
-      <div class="port-overlay"><div class="port-tag">Corporate</div><h4>Corporate Business Site</h4><p>Services, team &amp; contact</p></div>
-    </div>
-  </div></div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
@@ -3376,51 +3201,116 @@ document.addEventListener('DOMContentLoaded', function(){
   <div class="calc-wrap">
     <div>
       <div class="calc-group rev">
-        <label>Website Type</label>
+        <label>What do you need?</label>
         <div class="calc-opts">
-          <button class="copt sel" onclick="setC('type','Landing Page',80,this)">Landing Page</button>
-          <button class="copt" onclick="setC('type','Business Site',200,this)">Business Site</button>
-          <button class="copt" onclick="setC('type','School Website',350,this)">School Website</button>
-          <button class="copt" onclick="setC('type','E-commerce',600,this)">E-commerce Store</button>
+          <button class="copt sel" onclick="setCategory('website',this)">Website</button>
+          <button class="copt" onclick="setCategory('app',this)">App Development</button>
+          <button class="copt" onclick="setCategory('media',this)">Media &amp; Content</button>
         </div>
       </div>
-      <div class="calc-group rev rd1">
-        <label>Number of Pages</label>
-        <div class="calc-opts">
-          <button class="copt sel" onclick="setC('pages','1-3 pages',0,this)">1–3 pages</button>
-          <button class="copt" onclick="setC('pages','4-8 pages',100,this)">4–8 pages</button>
-          <button class="copt" onclick="setC('pages','9-15 pages',200,this)">9–15 pages</button>
-          <button class="copt" onclick="setC('pages','15+ pages',350,this)">15+ pages</button>
+
+      <!-- WEBSITE -->
+      <div id="calc-website">
+        <div class="calc-group rev rd1">
+          <label>Website Type</label>
+          <div class="calc-opts">
+            <button class="copt sel" onclick="setC('base','Landing Page',80,this)">Landing Page</button>
+            <button class="copt" onclick="setC('base','Business Site',200,this)">Business Site</button>
+            <button class="copt" onclick="setC('base','School Website',350,this)">School Website</button>
+            <button class="copt" onclick="setC('base','E-commerce',600,this)">E-commerce Store</button>
+          </div>
+        </div>
+        <div class="calc-group rev rd2">
+          <label>Number of Pages</label>
+          <div class="calc-opts">
+            <button class="copt sel" onclick="setC('tier2','1-3 pages',0,this)">1–3 pages</button>
+            <button class="copt" onclick="setC('tier2','4-8 pages',100,this)">4–8 pages</button>
+            <button class="copt" onclick="setC('tier2','9-15 pages',200,this)">9–15 pages</button>
+            <button class="copt" onclick="setC('tier2','15+ pages',350,this)">15+ pages</button>
+          </div>
+        </div>
+        <div class="calc-group rev rd3">
+          <label>Design Style</label>
+          <div class="calc-opts">
+            <button class="copt sel" onclick="setC('tier3','Template-based',0,this)">Template-based</button>
+            <button class="copt" onclick="setC('tier3','Custom Design',150,this)">Custom Design</button>
+            <button class="copt" onclick="setC('tier3','Premium Custom',300,this)">Premium Custom</button>
+          </div>
+        </div>
+        <div class="calc-group rev rd3">
+          <label>Add-ons (select multiple)</label>
+          <div class="calc-opts">
+            <button class="copt" onclick="toggleAddon('SEO Package',80,this)">SEO Package +$80</button>
+            <button class="copt" onclick="toggleAddon('Blog/News',60,this)">Blog / News +$60</button>
+            <button class="copt" onclick="toggleAddon('Booking System',120,this)">Booking System +$120</button>
+            <button class="copt" onclick="toggleAddon('Live Chat',50,this)">Live Chat +$50</button>
+            <button class="copt" onclick="toggleAddon('Multi-language',90,this)">Multi-language +$90</button>
+            <button class="copt" onclick="toggleAddon('Maintenance',40,this)">Maintenance +$40/mo</button>
+          </div>
         </div>
       </div>
-      <div class="calc-group rev rd2">
-        <label>Design Style</label>
-        <div class="calc-opts">
-          <button class="copt sel" onclick="setC('design','Template-based',0,this)">Template-based</button>
-          <button class="copt" onclick="setC('design','Custom Design',150,this)">Custom Design</button>
-          <button class="copt" onclick="setC('design','Premium Custom',300,this)">Premium Custom</button>
+
+      <!-- APP DEVELOPMENT -->
+      <div id="calc-app" style="display:none;">
+        <div class="calc-group rev">
+          <label>App Tier</label>
+          <div class="calc-opts">
+            <button class="copt sel" onclick="setC('base','Starter App',799,this)">Starter App</button>
+            <button class="copt" onclick="setC('base','Business App',2499,this)">Business App</button>
+            <button class="copt" onclick="setC('base','Enterprise App',6000,this)">Enterprise App</button>
+          </div>
+        </div>
+        <div class="calc-group rev">
+          <label>Platform</label>
+          <div class="calc-opts">
+            <button class="copt sel" onclick="setC('tier2','Web App (PWA)',0,this)">Web App (PWA)</button>
+            <button class="copt" onclick="setC('tier2','Mobile App',300,this)">Mobile App</button>
+            <button class="copt" onclick="setC('tier2','Web + Mobile',600,this)">Web + Mobile</button>
+          </div>
+        </div>
+        <div class="calc-group rev">
+          <label>Add-ons (select multiple)</label>
+          <div class="calc-opts">
+            <button class="copt" onclick="toggleAddon('Payment Integration',250,this)">Payment Integration +$250</button>
+            <button class="copt" onclick="toggleAddon('Admin Dashboard',200,this)">Admin Dashboard +$200</button>
+            <button class="copt" onclick="toggleAddon('Push Notifications',100,this)">Push Notifications +$100</button>
+            <button class="copt" onclick="toggleAddon('Multi-role Permissions',400,this)">Multi-role Permissions +$400</button>
+            <button class="copt" onclick="toggleAddon('3rd-Party Integrations',300,this)">3rd-Party Integrations +$300</button>
+            <button class="copt" onclick="toggleAddon('App Maintenance',80,this)">Maintenance +$80/mo</button>
+          </div>
         </div>
       </div>
-      <div class="calc-group rev rd3">
-        <label>Add-ons (select multiple)</label>
-        <div class="calc-opts">
-          <button class="copt" onclick="toggleAddon('SEO Package',80,this)">SEO Package +$80</button>
-          <button class="copt" onclick="toggleAddon('Blog/News',60,this)">Blog / News +$60</button>
-          <button class="copt" onclick="toggleAddon('Booking System',120,this)">Booking System +$120</button>
-          <button class="copt" onclick="toggleAddon('Live Chat',50,this)">Live Chat +$50</button>
-          <button class="copt" onclick="toggleAddon('Multi-language',90,this)">Multi-language +$90</button>
-          <button class="copt" onclick="toggleAddon('Maintenance',40,this)">Maintenance +$40/mo</button>
+
+      <!-- MEDIA & CONTENT -->
+      <div id="calc-media" style="display:none;">
+        <div class="calc-group rev">
+          <label>Monthly Package</label>
+          <div class="calc-opts">
+            <button class="copt sel" onclick="setC('base','Content Starter',149,this)">Content Starter</button>
+            <button class="copt" onclick="setC('base','Growth Package',399,this)">Growth Package</button>
+            <button class="copt" onclick="setC('base','Full Media Package',799,this)">Full Media Package</button>
+          </div>
+        </div>
+        <div class="calc-group rev">
+          <label>Add-ons (select multiple)</label>
+          <div class="calc-opts">
+            <button class="copt" onclick="toggleAddon('Extra Photography Session',80,this)">Extra Photo Session +$80</button>
+            <button class="copt" onclick="toggleAddon('Marketing Video',300,this)">Marketing Video +$300</button>
+            <button class="copt" onclick="toggleAddon('TV-Quality Advert',900,this)">TV-Quality Advert +$900</button>
+            <button class="copt" onclick="toggleAddon('Paid Ads Management',150,this)">Paid Ads Management +$150</button>
+            <button class="copt" onclick="toggleAddon('TikTok Management',50,this)">TikTok Management +$50</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="calc-res rev">
       <div class="cr-lbl">Your Estimated Price</div>
       <div class="cr-price"><sup>$</sup><span id="cnum">80</span></div>
-      <div class="cr-sub">USD · 50% deposit to start</div>
+      <div class="cr-sub" id="cr-suffix">USD · 50% deposit to start</div>
       <div class="cr-breakdown">
-        <div class="cr-row"><span>Website Type</span><span id="br-type">$80</span></div>
-        <div class="cr-row"><span>Pages</span><span id="br-pages">$0</span></div>
-        <div class="cr-row"><span>Design</span><span id="br-design">$0</span></div>
+        <div class="cr-row"><span id="br-type-lbl">Website Type</span><span id="br-type">$80</span></div>
+        <div class="cr-row" id="br-pages-row"><span id="br-pages-lbl">Pages</span><span id="br-pages">$0</span></div>
+        <div class="cr-row" id="br-design-row"><span id="br-design-lbl">Design</span><span id="br-design">$0</span></div>
         <div class="cr-row"><span>Add-ons</span><span id="br-addons">$0</span></div>
         <div class="cr-row tot"><span>Total Estimate</span><span id="br-total">$80</span></div>
       </div>
@@ -3973,9 +3863,114 @@ function setLoading(btnId, spinnerId, loading){
   if(sp) sp.style.display=loading?'block':'none';
 }
 
-// ── SCROLL REVEAL ──
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:.1});
-document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+// ── SCROLL REVEAL (GSAP-powered, falls back to CSS reveal if GSAP fails to load) ──
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // The .rev CSS rule already starts elements at opacity:0/translateY(22px);
+  // GSAP takes over from there and reveals each one as it scrolls into view.
+  document.querySelectorAll('.rev').forEach(el => {
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
+  // ── STAGGERED CARD GRIDS ──
+  // Service cards, pricing cards, and stat blocks pop in with a slight scale +
+  // stagger so each grid feels like it's assembling itself as you scroll to it.
+  const staggerGrids = [
+    { selector: '.svc-grid', items: '.svc-card' },
+    { selector: '.price-grid', items: '.price-card' },
+    { selector: '.stats, [class*="stats"]', items: '.stat' },
+  ];
+  staggerGrids.forEach(({ selector, items }) => {
+    document.querySelectorAll(selector).forEach(grid => {
+      const cards = grid.querySelectorAll(items);
+      if (!cards.length) return;
+      gsap.set(cards, { opacity: 0, y: 30, scale: 0.96 });
+      gsap.to(cards, {
+        opacity: 1, y: 0, scale: 1,
+        duration: 0.7,
+        ease: 'back.out(1.4)',
+        stagger: 0.1,
+        scrollTrigger: { trigger: grid, start: 'top 85%', toggleActions: 'play none none none' }
+      });
+    });
+  });
+
+  // Trust badges under the hero fly in one-by-one.
+  const trustRow = document.querySelectorAll('.trust-item');
+  if (trustRow.length) {
+    gsap.set(trustRow, { opacity: 0, y: 12 });
+    gsap.to(trustRow, {
+      opacity: 1, y: 0,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.08,
+      scrollTrigger: { trigger: trustRow[0], start: 'top 92%', toggleActions: 'play none none none' }
+    });
+  }
+
+  // ── HERO ENTRANCE ──
+  // A quick, confident intro timeline for the hero copy (runs once on load,
+  // independent of scroll position).
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  heroTl
+    .from('.hero-eyebrow', { opacity: 0, y: 16, duration: 0.6 })
+    .from('.hero-title', { opacity: 0, y: 24, duration: 0.8 }, '-=0.35')
+    .from('.hero-sub', { opacity: 0, y: 18, duration: 0.7 }, '-=0.45')
+    .from('.hero-ctas .btn, .hero-ctas > *', { opacity: 0, y: 14, duration: 0.6, stagger: 0.12 }, '-=0.35');
+
+  // Gentle parallax on the hero background video so scrolling past the hero
+  // has some depth to it.
+  const heroVideo = document.querySelector('.hero-bg-video');
+  if (heroVideo) {
+    gsap.to(heroVideo, {
+      yPercent: 18,
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    });
+  }
+
+  // ── SECTION TITLES ──
+  // ".stitle" headings get a slightly different, letter-tight reveal than the
+  // generic .rev treatment for a bit of rhythm between sections.
+  document.querySelectorAll('.stitle').forEach(title => {
+    gsap.set(title, { opacity: 0, y: 20 });
+    gsap.to(title, {
+      opacity: 1, y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: title, start: 'top 90%', toggleActions: 'play none none none' }
+    });
+  });
+
+  // ── MAGNETIC / LIFT BUTTONS ──
+  // Primary buttons get a soft lift + shadow on hover instead of relying only
+  // on CSS, so the motion matches the rest of the GSAP-driven feel.
+  document.querySelectorAll('.btn, .btn-price').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      gsap.to(btn, { y: -3, scale: 1.02, duration: 0.25, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { y: 0, scale: 1, duration: 0.3, ease: 'power2.out' });
+    });
+  });
+
+} else {
+  // Fallback: original lightweight CSS-class reveal if GSAP didn't load
+  // (e.g. offline preview, blocked CDN).
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:.1});
+  document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+}
 
 // ── COUNT-UP ANIMATION ──
 function animateCount(el){
@@ -4058,22 +4053,16 @@ const T={
   sn:{eyebrow:'Nzvimbo yeWebhusaiti — Gweru, Zimbabwe',heroTitle:'Husiku hwako paIndaneti,<br/><em>hwakagadzirwa nenjere</em>',heroSub:'CrownWeb Agency inobatsira mabhizimisi ese kuwana nzvimbo paIndaneti nemawebhusaiti akavakwa nehunyanzvi.',ceoNote:'"Tiri mutsva asi kuzvipira kwetau kupa zvakanakisisa hakuna muganho. Tiri kutarisira kushanda nemi."',ctaStart:'Tanga Chirongwa',ctaBook:'Bhuka Kubvunzana Kwemahara',persuadeTitle:'Bhizimisi rako rinofanirwa <em>kuwanwa paIndaneti</em>',persuadeDesc:'Muna 2026 vatengi vanokwira indaneti vasati vatenga chinhu. Kana bhizimisi rako risina webhusaiti haugonyeki navaridzi.',persuadeCta:'Wana Webhusaiti Yangu Nhasi',serveEy:'Vatinobereka',serveTitle:'Yakavakwa nemhando <em>yose yebhizimisi</em>',serveSub:'Kunyange mudzidzisi, mutengi mudiki, kana sangano guru — tine chirongwa chakakuviriranira.',trustZW:'Tiri muZimbabwe',trustSSL:'Mawebhusaiti Akachengetedzwa',trustMobile:'Anoshanda paFoni',trustSEO:'Akagadzirirwa Google',trustFast:'Anokurumidza Kuvhura',trustSupport:'Rutsigiro Rwenguva Refu',pricingEy:'Mitengo Yakajeka',pricingTitle:'Zvirongwa zvinokodzera <em>mari yako</em>',pricingSub:'Mitengo yose iri mu USD. Bhadhara 50% kutanga, zvasara pakupedza.',faqEy:'Mibvunzo',faqTitle:'Mibvunzo <em>inowanzobvunzwa</em>',faqSub:'Zvose zvaunoda kuziva usati watanga naCrownWeb Agency.',footTagline:'Tichivaka ramangwana reZimbabwe paIndaneti — webhusaiti imwe nguva imwe.'},
   nd:{eyebrow:'Inhlangano yeWebhusayithi — Gweru, Zimbabwe',heroTitle:'Ukubonakala kwakho ku-inthanethi,<br/><em>kwenziwe ngokunakekelwa</em>',heroSub:'I-CrownWeb Agency ilusizo lokusiza amabhizinisi athole indawo yabo ku-inthanethi nge-webhusayithi eyakhiwe ukumangalisa.',ceoNote:'"Siyinhlangano entsha kodwa ukuzimisela kwethu ukukhiqiza ubuhle akunangqondo. Sihlale silindele ukusebenza nani."',ctaStart:'Qala Iphrojekthi',ctaBook:'Bhuka Imihlangano Yamahhala',persuadeTitle:'Ibhizinisi lakho lifanele <em>litholwe ku-inthanethi</em>',persuadeDesc:'Ngo-2026 abathenga baphenyulelana ku-inthanethi ngaphambi kokuthenge noma yini. Uma ibhizinisi lakho lingenaye webhusayithi awubonakali.',persuadeCta:'Thola Iwebhusayithi Yami Namuhla',serveEy:'Esixhasa Bani',serveTitle:'Yakhiwe ngento <em>yonke yebhizinisi</em>',serveSub:'Noma usebenzisa isikole, isitolo esincane, noma inhlangano enkulu — sinephrojekthi efanele.',trustZW:'Sisuka eZimbabwe',trustSSL:'Amasayithi Avikelekile',trustMobile:'Iyasebenza Kwifoni',trustSEO:'Ilungiselelwe i-Google',trustFast:'Ivula Ngokushesha',trustSupport:'Usekelo Oluqhubekayo',pricingEy:'Amanani Asobala',pricingTitle:'Amasu afanele <em>isabelomali sakho</em>',pricingSub:'Amanani onke ku-USD. Khokha u-50% ukuze uqale, okusele ekulethweni.',faqEy:'Imibuzo',faqTitle:'Imibuzo <em>evamile</em>',faqSub:'Konke okudingayo ukwazi ngaphambi kokuqala no-CrownWeb Agency.',footTagline:'Sakha ikusasa ledijithali laseZimbabwe — iwebhusayithi eyodwa ngesikhathi.'}
 };
-// ── DARK MODE ──
+// ── DARK MODE DISABLED: site is light-mode only ──
 function toggleDark(){
-  const dark = document.body.classList.toggle('dark-mode');
-  localStorage.setItem('cwDark', dark ? '1' : '0');
-  document.getElementById('dt-moon').style.display = dark ? 'none' : '';
-  document.getElementById('dt-sun').style.display = dark ? '' : 'none';
+  // Dark mode has been disabled site-wide; this is now a no-op.
+  document.body.classList.remove('dark-mode');
 }
 (function(){
-  const saved = localStorage.getItem('cwDark');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if(saved === '1' || (saved === null && prefersDark)){
-    document.body.classList.add('dark-mode');
-    const m = document.getElementById('dt-moon'), s = document.getElementById('dt-sun');
-    if(m) m.style.display = 'none';
-    if(s) s.style.display = '';
-  }
+  // Force light mode regardless of saved preference or OS setting,
+  // and clean up any previously stored preference.
+  document.body.classList.remove('dark-mode');
+  try { localStorage.removeItem('cwDark'); } catch(e){}
 })();
 
 function switchLang(l){const t=T[l]||T.en;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});}
@@ -4500,18 +4489,95 @@ async function submitAudit(){
 }
 
 // ── QUOTE CALCULATOR ────────────────────────────────────────────────────────
+// Supports three categories (Website / App Development / Media & Content),
+// each with its own base tier, up to two secondary tiers, and its own
+// set of add-ons. `base`/`tier2`/`tier3` are generic slots reused across
+// categories so the same setC()/toggleAddon() helpers work for all three.
 
-const calcState = { type: 80, pages: 0, design: 0, addons: {}, labels: { type:'Landing Page', pages:'1–3 pages', design:'Template-based' } };
+const CALC_DEFAULTS = {
+  website: { base: 80,  tier2: 0, tier3: 0,
+             labels: { base:'Landing Page', tier2:'1–3 pages', tier3:'Template-based' },
+             rowLabels: { type:'Website Type', pages:'Pages' }, showPages:true, showDesign:true },
+  app:     { base: 799, tier2: 0, tier3: 0,
+             labels: { base:'Starter App', tier2:'Web App (PWA)', tier3:'' },
+             rowLabels: { type:'App Tier', pages:'Platform' }, showPages:true, showDesign:false },
+  media:   { base: 149, tier2: 0, tier3: 0,
+             labels: { base:'Content Starter', tier2:'', tier3:'' },
+             rowLabels: { type:'Monthly Package', pages:'' }, showPages:false, showDesign:false }
+};
+
+const calcState = {
+  category: 'website',
+  base: 80, tier2: 0, tier3: 0,
+  addons: {},
+  labels: { base:'Landing Page', tier2:'1–3 pages', tier3:'Template-based' }
+};
+
+function setCategory(cat, btn){
+  const d = CALC_DEFAULTS[cat];
+  if(!d) return;
+
+  calcState.category = cat;
+  calcState.base  = d.base;
+  calcState.tier2 = d.tier2;
+  calcState.tier3 = d.tier3;
+  calcState.labels = { ...d.labels };
+  calcState.addons = {};
+
+  // toggle the category buttons
+  if(btn){
+    btn.closest('.calc-opts').querySelectorAll('.copt').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+  }
+
+  // show/hide the relevant panel of option groups
+  ['website','app','media'].forEach(c => {
+    const panel = document.getElementById('calc-' + c);
+    if(panel) panel.style.display = (c === cat) ? '' : 'none';
+  });
+
+  // reset each visible group back to its first (default) option
+  const activePanel = document.getElementById('calc-' + cat);
+  if(activePanel){
+    activePanel.querySelectorAll('.calc-group').forEach(grp => {
+      const opts = grp.querySelectorAll('.copt');
+      opts.forEach(b => b.classList.remove('sel'));
+      const first = opts[0];
+      // only auto-select the first option for single-select groups (setC),
+      // not for add-on groups (toggleAddon), which should start unselected
+      if(first && (first.getAttribute('onclick') || '').includes('setC(')){
+        first.classList.add('sel');
+      }
+    });
+  }
+
+  // update breakdown row labels / visibility for this category
+  const typeLbl   = document.getElementById('br-type-lbl');
+  const pagesLbl  = document.getElementById('br-pages-lbl');
+  const pagesRow  = document.getElementById('br-pages-row');
+  const designRow = document.getElementById('br-design-row');
+  if(typeLbl)  typeLbl.textContent  = d.rowLabels.type;
+  if(pagesLbl) pagesLbl.textContent = d.rowLabels.pages;
+  if(pagesRow)  pagesRow.style.display  = d.showPages  ? '' : 'none';
+  if(designRow) designRow.style.display = d.showDesign ? '' : 'none';
+
+  const suffix = document.getElementById('cr-suffix');
+  if(suffix) suffix.textContent = (cat === 'media')
+    ? 'USD/month · 50% deposit to start'
+    : 'USD · 50% deposit to start';
+
+  _calcUpdate();
+}
 
 function _calcUpdate(){
   const addonsTotal = Object.values(calcState.addons).reduce((s,v)=>s+v,0);
-  const total = calcState.type + calcState.pages + calcState.design + addonsTotal;
+  const total = calcState.base + calcState.tier2 + calcState.tier3 + addonsTotal;
   const cnum = document.getElementById('cnum');
   if(cnum) cnum.textContent = total;
   const set = (id, val) => { const el=document.getElementById(id); if(el) el.textContent='$'+val; };
-  set('br-type',   calcState.type);
-  set('br-pages',  calcState.pages);
-  set('br-design', calcState.design);
+  set('br-type',   calcState.base);
+  set('br-pages',  calcState.tier2);
+  set('br-design', calcState.tier3);
   set('br-addons', addonsTotal);
   set('br-total',  total);
 }

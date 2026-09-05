@@ -766,8 +766,8 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 /* SERVE */
 #serve{background:var(--off);}
 /* WHY */
-#why{position:relative;overflow:hidden;background:var(--always-dark) !important;}
-.why-bg-video{position:absolute;inset:0;width:calc(100% + 20px);height:calc(100% + 20px);left:-10px;top:-10px;object-fit:cover;object-position:center;z-index:0;filter:blur(3px);}
+#why{position:relative;overflow:hidden;background:#1a1410 !important;}
+.why-bg-video{position:absolute;inset:0;width:calc(100% + 20px);height:calc(100% + 20px);left:-10px;top:-10px;object-fit:cover;object-position:center;z-index:0;filter:blur(1px);}
 .why-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,6,4,.5) 0%,rgba(8,6,4,.6) 55%,rgba(8,6,4,.72) 100%);z-index:1;}
 #why > .sey,#why > .stitle,#why > .ssub,#why > .serve-grid{position:relative;z-index:2;}
 #why .stitle{color:#fff;}
@@ -3128,7 +3128,7 @@ body.dark-mode .tb-mark{color:var(--black);}
 
 <!-- WHY CROWNWEB -->
 <section id="why">
-  <video class="why-bg-video" autoplay muted loop playsinline aria-hidden="true">
+  <video class="why-bg-video" autoplay muted loop playsinline aria-hidden="true" onerror="console.warn('why-bg-video failed to load:', this.currentSrc)">
     <source src="Entrepreneur_presenting_website.mp4" type="video/mp4">
   </video>
   <div class="why-bg-overlay"></div>

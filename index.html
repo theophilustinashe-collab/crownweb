@@ -635,12 +635,6 @@ body.dark-mode .nav-links a { color: #cbd5e1 !important; }
 body.dark-mode .nav-links a:hover, body.dark-mode .nav-links a.active { color: #f9fafb !important; }
 
 /* Dropdowns */
-body.dark-mode .lang-dropdown { background: #1a2235 !important; border-color: #374151 !important; }
-body.dark-mode .lang-dropdown button { color: #cbd5e1 !important; }
-body.dark-mode .lang-dropdown button:hover, body.dark-mode .lang-dropdown button.active {
-  background: #243249 !important;
-  color: #f9fafb !important;
-}
 
 /* Placeholders */
 body.dark-mode ::placeholder { color: #6b7280 !important; opacity: 1 !important; }
@@ -714,14 +708,6 @@ nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.07);padding:.6rem 5vw;}
   }
 }
 .lang-sel{font-family:'DM Sans',sans-serif;font-size:.78rem;border:1px solid var(--border);border-radius:4px;padding:.28rem .55rem;background:var(--white);color:var(--dark);cursor:pointer;outline:none;}
-.lang-icon-wrap{position:relative;display:flex;align-items:center;}
-.lang-icon-btn{background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--mid);padding:.28rem .4rem;display:flex;align-items:center;gap:.3rem;transition:color .2s,border-color .2s;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;}
-.lang-icon-btn:hover{color:var(--black);border-color:var(--black);}
-.lang-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--white);border:1px solid var(--border);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:999;min-width:110px;overflow:hidden;}
-.lang-dropdown.open{display:block;}
-.lang-dropdown button{display:block;width:100%;text-align:left;padding:.5rem .85rem;font-size:.78rem;font-family:'DM Sans',sans-serif;background:none;border:none;cursor:pointer;color:var(--mid);transition:background .15s,color .15s;}
-.lang-dropdown button:hover{background:var(--off);color:var(--black);}
-.lang-dropdown button.active{color:var(--accent);font-weight:500;}
 .nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--black);padding:.4rem;}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.55rem;border-radius:4px;font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .22s;border:none;font-family:'DM Sans',sans-serif;}
 .btn-dark{background:var(--black);color:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.15);}
@@ -1781,7 +1767,6 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 .nav-links li{width:100%;}
 .nav-links a{font-size:.92rem;padding:.2rem 0;}
 .nav-links .btn{width:100%;text-align:center;}
-.lang-icon-btn{width:100%;}
 .port-grid{grid-template-columns:1fr;}
 .portfolio-grid{gap:1.4rem;}
 .portfolio-grid img{max-height:260px;object-fit:cover;object-position:top;}
@@ -2829,19 +2814,7 @@ document.addEventListener('DOMContentLoaded', function(){
     <li><a href="#calc">Quote</a></li>
     <li><a href="#appt">Book</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><div class="lang-icon-wrap" id="lang-wrap">
-      <button class="lang-icon-btn" onclick="toggleLangMenu()" aria-label="Select language">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span id="lang-label">EN</span>
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="lang-dropdown" id="lang-dropdown">
-        <button onclick="selectLang('en','EN')" class="active" id="lang-opt-en">English</button>
-        <button onclick="selectLang('sn','SN')" id="lang-opt-sn">Shona</button>
-        <button onclick="selectLang('nd','ND')" id="lang-opt-nd">Ndebele</button>
-      </div>
-    </div></li>
-
+    
   </ul>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileNav()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="nav-toggle-menu"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -2858,28 +2831,91 @@ document.addEventListener('DOMContentLoaded', function(){
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" data-i18n="eyebrow">Web, App &amp; Media Studio — Gweru, Zimbabwe</p>
-    <h1 class="hero-title" data-i18n="heroTitle">Websites, Apps &amp; Media<br/><em>Built for Zimbabwe</em></h1>
-    <p class="hero-sub" data-i18n="heroSub">CrownWeb builds websites, apps, and media content that get Zimbabwe businesses found, trusted, and chosen — mobile-first, fast on local networks, and built to generate real enquiries from day one.</p>
+    <p class="hero-eyebrow">Web, App &amp; Media Studio — Gweru, Zimbabwe</p>
+    <h1 class="hero-title">Websites, Apps &amp; Media<br/><em>Built for Zimbabwe</em></h1>
+    <p class="hero-sub">CrownWeb builds websites, apps, and media content that get Zimbabwe businesses found, trusted, and chosen — mobile-first, fast on local networks, and built to generate real enquiries from day one.</p>
 
     <div class="hero-ctas">
-      <a href="#calc" class="btn btn-dark" data-i18n="ctaStart">Get Your Free Quote</a>
-      <a href="#appt" class="btn btn-outline" data-i18n="ctaBook">Book Free Consultation</a>
+      <a href="#calc" class="btn btn-dark">Get Your Free Quote</a>
+      <a href="#appt" class="btn btn-outline">Book Free Consultation</a>
     </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR: premium confidence strip, directly below hero ── -->
+<style>
+.trust-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.6rem 6vw;position:relative;}
+.trust-bar::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:64px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
+.tb-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:2.2rem;}
+.tb-label{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.85rem;display:flex;align-items:center;gap:.55rem;}
+.tb-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
+.tb-divider{width:1px;align-self:stretch;background:linear-gradient(180deg,transparent,var(--border) 20%,var(--border) 80%,transparent);}
+.tb-marks{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem 1rem;}
+.tb-mark{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:500;color:var(--black);text-decoration:none;letter-spacing:.01em;position:relative;transition:color .25s;}
+.tb-mark::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
+.tb-mark:hover{color:var(--adark);}
+.tb-mark:hover::after{transform:scaleX(1);}
+.tb-mark-sep{color:var(--light);font-size:1.1rem;}
+.tb-badge-row{display:flex;flex-wrap:wrap;gap:.55rem;}
+.tb-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;color:var(--dark);background:var(--off);border:1px solid var(--border);border-radius:20px;padding:.42rem .85rem;white-space:nowrap;transition:border-color .25s,transform .25s;}
+.tb-badge:hover{border-color:var(--accent);transform:translateY(-1px);}
+.tb-badge svg{width:12px;height:12px;flex-shrink:0;color:var(--accent);}
+.tb-quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;line-height:1.55;color:var(--dark);position:relative;padding-left:1.1rem;border-left:2px solid var(--accent);}
+body.dark-mode .trust-bar{background:var(--white);border-color:var(--border);}
+body.dark-mode .tb-badge{background:rgba(191,160,106,.06);border-color:var(--border);color:var(--dark);}
+body.dark-mode .tb-mark{color:var(--black);}
+@media(max-width:900px){
+  .tb-inner{grid-template-columns:1fr;gap:1.8rem;}
+  .tb-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);}
+}
+@media(max-width:480px){
+  .trust-bar{padding:2.1rem 1.35rem;}
+  .tb-mark{font-size:1.12rem;}
+}
+</style>
+<section class="trust-bar" id="trust-bar" aria-label="Why businesses trust CrownWeb">
+  <div class="tb-inner">
+
+    <div class="tb-col rev">
+      <p class="tb-label">Selected Work</p>
+      <div class="tb-marks">
+        <a href="#cases" class="tb-mark">DILS</a>
+        <span class="tb-mark-sep">&middot;</span>
+        <a href="#cases" class="tb-mark">Milan Restaurant, Spa &amp; The Club</a>
+      </div>
+    </div>
+
+    <div class="tb-divider" aria-hidden="true"></div>
+
+    <div class="tb-col rev rd1">
+      <p class="tb-label">Verified Credentials</p>
+      <div class="tb-badge-row">
+        <span class="tb-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cybersecurity Certified</span>
+        <span class="tb-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Web Development Certified</span>
+        <span class="tb-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Founder-Led Delivery</span>
+      </div>
+    </div>
+
+    <div class="tb-divider" aria-hidden="true"></div>
+
+    <div class="tb-col rev rd2">
+      <p class="tb-quote-text">Every project personally scoped, built, and shipped — direct access to the founder, no juniors, no middlemen.</p>
+    </div>
+
   </div>
 </section>
 
 <!-- PERSUADE -->
 <div class="persuade">
-  <h2 data-i18n="persuadeTitle">Website Design for Businesses in <em>Gweru and Across Zimbabwe</em></h2>
-  <p data-i18n="persuadeDesc">In 2026, the first thing a potential customer does is search online. If they cannot find you, they find someone else. A website does not sleep, does not take weekends off, and does not forget to follow up.</p>
+  <h2>Website Design for Businesses in <em>Gweru and Across Zimbabwe</em></h2>
+  <p>In 2026, the first thing a potential customer does is search online. If they cannot find you, they find someone else. A website does not sleep, does not take weekends off, and does not forget to follow up.</p>
   <div class="persuade-stats">
     <div><div class="ps-num">80<span style="font-size:1.2rem">%+</span></div><div class="ps-lbl">of Zimbabweans access the internet on a mobile phone</div></div>
     <div><div class="ps-num">75%</div><div class="ps-lbl">of people judge a business's credibility by its website</div></div>
     <div><div class="ps-num">3s</div><div class="ps-lbl">if your site doesn't load in 3 seconds, most visitors leave</div></div>
     <div><div class="ps-num">24/7</div><div class="ps-lbl">your website is working even when you're not</div></div>
   </div>
-  <a href="#calc" class="btn btn-accent" style="font-size:.88rem;padding:.8rem 1.9rem;" data-i18n="persuadeCta">See What Your Website Would Cost →</a>
+  <a href="#calc" class="btn btn-accent" style="font-size:.88rem;padding:.8rem 1.9rem;">See What Your Website Would Cost →</a>
 </div>
 
 <!-- STATS -->
@@ -2892,21 +2928,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <!-- TRUST STRIP -->
 <div class="trust-strip rev">
-  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span data-i18n="trustZW">Zimbabwe Based</span></div>
-  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5Z"/><path d="m9 12 2 2 4-4"/></svg></span><span data-i18n="trustSSL">SSL Secured Sites</span></div>
-  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="trustMobile">Mobile-First Design</span></div>
-  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span data-i18n="trustSEO">SEO Optimised</span></div>
-  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><span data-i18n="trustFast">Core Web Vitals Pass</span></div>
-  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.9" y1="4.9" x2="9.2" y2="9.2"/><line x1="14.8" y1="14.8" x2="19.1" y2="19.1"/><line x1="14.8" y1="9.2" x2="19.1" y2="4.9"/><line x1="4.9" y1="19.1" x2="9.2" y2="14.8"/></svg></span><span data-i18n="trustSupport">Ongoing Support</span></div>
+  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Zimbabwe Based</span></div>
+  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5Z"/><path d="m9 12 2 2 4-4"/></svg></span><span>SSL Secured Sites</span></div>
+  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span>Mobile-First Design</span></div>
+  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span>SEO Optimised</span></div>
+  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><span>Core Web Vitals Pass</span></div>
+  <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.9" y1="4.9" x2="9.2" y2="9.2"/><line x1="14.8" y1="14.8" x2="19.1" y2="19.1"/><line x1="14.8" y1="9.2" x2="19.1" y2="4.9"/><line x1="4.9" y1="19.1" x2="9.2" y2="14.8"/></svg></span><span>Ongoing Support</span></div>
   <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span>PWA Ready</span></div>
   <div class="trust-item"><span class="ti-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.5a8.4 8.4 0 0 1-.8-3.6A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/></svg></span><span>WhatsApp Integration</span></div>
 </div>
 
 <!-- WHO WE SERVE -->
 <section id="serve">
-  <p class="sey rev" data-i18n="serveEy">Who We Serve</p>
-  <h2 class="stitle rev" data-i18n="serveTitle">Built for every <em>type of business</em></h2>
-  <p class="ssub rev" data-i18n="serveSub">Whether you run a school, a small shop, or a large organisation — we have a plan for your needs and budget.</p>
+  <p class="sey rev">Who We Serve</p>
+  <h2 class="stitle rev">Built for every <em>type of business</em></h2>
+  <p class="ssub rev">Whether you run a school, a small shop, or a large organisation — we have a plan for your needs and budget.</p>
   <div class="serve-grid">
     <div class="serve-card rev">
       <div class="sc-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
@@ -2980,6 +3016,19 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
   </div>
   <p class="rev" style="margin-top:2rem;font-size:.82rem;color:var(--mid);">This is the exact process we follow for every project. <a href="#inquire" style="color:var(--adark);text-decoration:underline;">Start your project today</a> — no commitment, no pressure.</p>
+</section>
+
+<!-- WORK SHOWCASE -->
+<section id="showcase">
+  <p class="sey rev">Our Work</p>
+  <h2 class="stitle rev">See a <em>project</em> we built</h2>
+  <p class="ssub rev">A look at a media piece we produced for DILS Inc. — one example of the kind of work we deliver for our clients.</p>
+  <div class="rev" style="max-width:900px;margin:2rem auto 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 14px 36px rgba(0,0,0,.08);">
+    <video controls playsinline preload="metadata" style="display:block;width:100%;height:auto;background:#000;">
+      <source src="DILS_Inc.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </section>
 
 <!-- PROCESS -->
@@ -3092,9 +3141,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <!-- PRICING -->
 <section id="pricing">
-  <p class="sey rev" data-i18n="pricingEy">Transparent Pricing</p>
-  <h2 class="stitle rev" data-i18n="pricingTitle">Plans that fit your <em>budget</em></h2>
-  <p class="ssub rev" data-i18n="pricingSub">All prices in USD. Fixed rates, no hidden fees — you know the full cost before any work begins. Pay 50% to start, the rest on delivery.</p>
+  <p class="sey rev">Transparent Pricing</p>
+  <h2 class="stitle rev">Plans that fit your <em>budget</em></h2>
+  <p class="ssub rev">All prices in USD. Fixed rates, no hidden fees — you know the full cost before any work begins. Pay 50% to start, the rest on delivery.</p>
   <div class="price-grid">
     <div class="price-card rev">
       <div class="price-plan">Starter</div>
@@ -3416,9 +3465,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <!-- FAQ -->
 <section id="faq" style="background:var(--white);">
-  <p class="sey rev" data-i18n="faqEy">FAQ</p>
-  <h2 class="stitle rev" data-i18n="faqTitle">Common <em>questions</em></h2>
-  <p class="ssub rev" data-i18n="faqSub">Everything you need to know before getting started with CrownWeb Agency.</p>
+  <p class="sey rev">FAQ</p>
+  <h2 class="stitle rev">Common <em>questions</em></h2>
+  <p class="ssub rev">Everything you need to know before getting started with CrownWeb Agency.</p>
   <div class="faq-list rev">
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does it take to build my website?<span class="faq-icon">+</span></button><div class="faq-ans">Most websites are completed within 7–14 days depending on complexity and how quickly you provide content. We'll give you a clear timeline at the start.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Who owns the website once it's built?<span class="faq-icon">+</span></button><div class="faq-ans">You do. 100%. Once the project is complete and final payment is made, the website, all files, and the domain belong entirely to you.</div></div>
@@ -3638,7 +3687,7 @@ document.addEventListener('DOMContentLoaded', function(){
   <div class="foot-top">
     <div class="foot-brand">
       <a class="logo" href="#" style="color:var(--white);">Crown<span>Web</span> Agency</a>
-      <p data-i18n="footTagline">Building Zimbabwe's digital future — one website at a time. Based in Gweru, serving all of Zimbabwe.</p>
+      <p>Building Zimbabwe's digital future — one website at a time. Based in Gweru, serving all of Zimbabwe.</p>
     </div>
     <div class="foot-col"><h4>Company</h4><ul>
       <li><a href="#serve">Who We Serve</a></li><li><a href="#services">Services</a></li>
@@ -4097,28 +4146,6 @@ document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',closeMobileNav));
 });
 
-// ── LANGUAGE ──
-const T={
-  en:{eyebrow:'Web Development Studio — Gweru, Zimbabwe',heroTitle:'Your presence online,<br/><em>crafted with care</em>',heroSub:'CrownWeb builds fast, professional websites for businesses, schools, and organisations across Zimbabwe — designed to actually bring in customers, not just look good.',ceoNote:'Most businesses in Zimbabwe are either invisible online or overpaying for a website that does not actually work. CrownWeb fixes both problems: professional websites built to generate real enquiries, at prices that make sense here. You deal directly with me — the founder — from first call to launch.',ctaStart:'Start a Project',ctaBook:'Book Free Consultation',persuadeTitle:'Your business deserves to be <em>found online</em>',persuadeDesc:"In 2026, the first thing a potential customer does is search online. If they cannot find you, they find someone else. A website does not sleep, does not take weekends off, and does not forget to follow up.",persuadeCta:'Get My Website Today',serveEy:'Who We Serve',serveTitle:'Built for every <em>type of business</em>',serveSub:'Whether you run a school, a small shop, or a large organisation — we have a plan for your needs.',trustZW:'Zimbabwe Based',trustSSL:'SSL Secured Sites',trustMobile:'Mobile Responsive',trustSEO:'SEO Optimised',trustFast:'Fast Loading',trustSupport:'Ongoing Support',pricingEy:'Transparent Pricing',pricingTitle:'Plans that fit your <em>budget</em>',pricingSub:'All prices in USD. Fixed rates, no hidden fees — you know the full cost before any work begins. Pay 50% to start, the rest on delivery.',faqEy:'FAQ',faqTitle:'Common <em>questions</em>',faqSub:'Everything you need to know before getting started with CrownWeb Agency.',footTagline:"Building Zimbabwe's digital future — one website at a time. Based in Gweru, serving all of Zimbabwe."},
-  sn:{eyebrow:'Nzvimbo yeWebhusaiti — Gweru, Zimbabwe',heroTitle:'Husiku hwako paIndaneti,<br/><em>hwakagadzirwa nenjere</em>',heroSub:'CrownWeb Agency inobatsira mabhizimisi ese kuwana nzvimbo paIndaneti nemawebhusaiti akavakwa nehunyanzvi.',ceoNote:'"Tiri mutsva asi kuzvipira kwetau kupa zvakanakisisa hakuna muganho. Tiri kutarisira kushanda nemi."',ctaStart:'Tanga Chirongwa',ctaBook:'Bhuka Kubvunzana Kwemahara',persuadeTitle:'Bhizimisi rako rinofanirwa <em>kuwanwa paIndaneti</em>',persuadeDesc:'Muna 2026 vatengi vanokwira indaneti vasati vatenga chinhu. Kana bhizimisi rako risina webhusaiti haugonyeki navaridzi.',persuadeCta:'Wana Webhusaiti Yangu Nhasi',serveEy:'Vatinobereka',serveTitle:'Yakavakwa nemhando <em>yose yebhizimisi</em>',serveSub:'Kunyange mudzidzisi, mutengi mudiki, kana sangano guru — tine chirongwa chakakuviriranira.',trustZW:'Tiri muZimbabwe',trustSSL:'Mawebhusaiti Akachengetedzwa',trustMobile:'Anoshanda paFoni',trustSEO:'Akagadzirirwa Google',trustFast:'Anokurumidza Kuvhura',trustSupport:'Rutsigiro Rwenguva Refu',pricingEy:'Mitengo Yakajeka',pricingTitle:'Zvirongwa zvinokodzera <em>mari yako</em>',pricingSub:'Mitengo yose iri mu USD. Bhadhara 50% kutanga, zvasara pakupedza.',faqEy:'Mibvunzo',faqTitle:'Mibvunzo <em>inowanzobvunzwa</em>',faqSub:'Zvose zvaunoda kuziva usati watanga naCrownWeb Agency.',footTagline:'Tichivaka ramangwana reZimbabwe paIndaneti — webhusaiti imwe nguva imwe.'},
-  nd:{eyebrow:'Inhlangano yeWebhusayithi — Gweru, Zimbabwe',heroTitle:'Ukubonakala kwakho ku-inthanethi,<br/><em>kwenziwe ngokunakekelwa</em>',heroSub:'I-CrownWeb Agency ilusizo lokusiza amabhizinisi athole indawo yabo ku-inthanethi nge-webhusayithi eyakhiwe ukumangalisa.',ceoNote:'"Siyinhlangano entsha kodwa ukuzimisela kwethu ukukhiqiza ubuhle akunangqondo. Sihlale silindele ukusebenza nani."',ctaStart:'Qala Iphrojekthi',ctaBook:'Bhuka Imihlangano Yamahhala',persuadeTitle:'Ibhizinisi lakho lifanele <em>litholwe ku-inthanethi</em>',persuadeDesc:'Ngo-2026 abathenga baphenyulelana ku-inthanethi ngaphambi kokuthenge noma yini. Uma ibhizinisi lakho lingenaye webhusayithi awubonakali.',persuadeCta:'Thola Iwebhusayithi Yami Namuhla',serveEy:'Esixhasa Bani',serveTitle:'Yakhiwe ngento <em>yonke yebhizinisi</em>',serveSub:'Noma usebenzisa isikole, isitolo esincane, noma inhlangano enkulu — sinephrojekthi efanele.',trustZW:'Sisuka eZimbabwe',trustSSL:'Amasayithi Avikelekile',trustMobile:'Iyasebenza Kwifoni',trustSEO:'Ilungiselelwe i-Google',trustFast:'Ivula Ngokushesha',trustSupport:'Usekelo Oluqhubekayo',pricingEy:'Amanani Asobala',pricingTitle:'Amasu afanele <em>isabelomali sakho</em>',pricingSub:'Amanani onke ku-USD. Khokha u-50% ukuze uqale, okusele ekulethweni.',faqEy:'Imibuzo',faqTitle:'Imibuzo <em>evamile</em>',faqSub:'Konke okudingayo ukwazi ngaphambi kokuqala no-CrownWeb Agency.',footTagline:'Sakha ikusasa ledijithali laseZimbabwe — iwebhusayithi eyodwa ngesikhathi.'}
-};
-// ── DARK MODE DISABLED: site is light-mode only ──
-function toggleDark(){
-  // Dark mode has been disabled site-wide; this is now a no-op.
-  document.body.classList.remove('dark-mode');
-}
-(function(){
-  // Force light mode regardless of saved preference or OS setting,
-  // and clean up any previously stored preference.
-  document.body.classList.remove('dark-mode');
-  try { localStorage.removeItem('cwDark'); } catch(e){}
-})();
-
-function switchLang(l){const t=T[l]||T.en;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});}
-function toggleLangMenu(){const d=document.getElementById('lang-dropdown');d.classList.toggle('open');}
-function selectLang(code,label){switchLang(code);document.getElementById('lang-label').textContent=label;document.querySelectorAll('.lang-dropdown button').forEach(b=>b.classList.remove('active'));const el=document.getElementById('lang-opt-'+code);if(el)el.classList.add('active');document.getElementById('lang-dropdown').classList.remove('open');}
-document.addEventListener('click',function(e){const w=document.getElementById('lang-wrap');if(w&&!w.contains(e.target))document.getElementById('lang-dropdown').classList.remove('open');});
 function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 function toggleFaqMore(){const more=document.getElementById('faq-more');const btn=document.getElementById('faq-show-more-btn');const label=document.getElementById('faq-show-more-label');const isOpen=more.classList.contains('open');more.classList.toggle('open');btn.classList.toggle('open');label.textContent=isOpen?'Show 4 more questions':'Show fewer questions';}
 </script>

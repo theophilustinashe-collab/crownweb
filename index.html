@@ -405,49 +405,9 @@ body.dark-mode .step-num {
   background: rgba(212, 169, 106, 0.1) !important;
 }
 
-/* Founder section dark mode */
-body.dark-mode .founder-card {
-  background: #1a2235 !important;
-  border-color: #374151 !important;
-}
-
-body.dark-mode .founder-name {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .founder-role {
-  color: #d4a96a !important;
-}
-
-body.dark-mode .founder-bio p {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .founder-fact,
-body.dark-mode .founder-stack span {
-  background: #1e2530 !important;
-  border-color: #374151 !important;
-  color: #9ca3af !important;
-}
-
-body.dark-mode .founder-cred {
-  color: #e5e7eb !important;
-}
-
-body.dark-mode .founder-social a {
-  color: #9ca3af !important;
-  border-color: #374151 !important;
-}
-body.dark-mode .founder-social a:hover {
-  color: #f9fafb !important;
-  border-color: #d4a96a !important;
-}
-
-body.dark-mode .founder-quote {
-  color: #e5e7eb !important;
-  border-color: #d4a96a !important;
-  background: linear-gradient(150deg, rgba(212,169,106,.1), rgba(212,169,106,.02)) !important;
-}
+/* Founder section: glass panel sits on a video background in both
+   light and dark mode, so it keeps one fixed light-on-glass palette
+   instead of switching with the theme. No dark-mode overrides needed. */
 
 /* Portfolio dark mode */
 body.dark-mode .port-card {
@@ -858,33 +818,40 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 #founder > .sey{color:var(--accent);}
 #founder > .stitle{color:#fff;}
 #founder > .stitle em{color:var(--accent);}
-.founder-card{max-width:900px;margin-left:auto;margin-right:auto;}
-.founder-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:3.2rem;box-shadow:var(--shadow-md);margin-top:2.8rem;}
+.founder-card{max-width:980px;margin-left:auto;margin-right:auto;}
+.founder-card{
+  background:rgba(255,255,255,.06);
+  -webkit-backdrop-filter:blur(28px) saturate(160%);
+  backdrop-filter:blur(28px) saturate(160%);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--radius-lg);
+  padding:2.6rem 3rem;
+  box-shadow:0 30px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.14);
+  margin-top:2.8rem;
+}
 .founder-wrap{display:grid;grid-template-columns:1fr;gap:0;align-items:start;}
-.founder-photo-col{position:sticky;top:2rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
-.founder-photo{aspect-ratio:1;border-radius:20px;background:linear-gradient(150deg,#111,#2a1e10);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:100%;max-width:280px;box-shadow:0 24px 60px rgba(0,0,0,.18);border:1px solid rgba(191,160,106,.25);}
-.founder-photo::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(191,160,106,.12) 0%,transparent 60%);pointer-events:none;}
-.founder-photo .fp-init{font-family:'Cormorant Garamond',serif;font-size:5.2rem;color:var(--accent);font-weight:600;position:relative;z-index:1;}
-.founder-photo .fp-ring{position:absolute;inset:16px;border:1px solid rgba(191,160,106,.2);border-radius:12px;}
-.founder-badge{background:var(--black);color:var(--accent);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:.5rem 1.1rem;border-radius:30px;box-shadow:0 8px 20px rgba(0,0,0,.15);white-space:nowrap;}
-.founder-facts{display:flex;flex-direction:column;gap:.55rem;width:100%;max-width:280px;}
-.founder-fact{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--mid);background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.55rem .8rem;}
+.founder-header{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.founder-badge{background:rgba(191,160,106,.16);color:#f2ddb2;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:.5rem 1.1rem;border-radius:30px;border:1px solid rgba(191,160,106,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);white-space:nowrap;}
+.founder-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:#fff;margin-bottom:.15rem;line-height:1.12;}
+.founder-role{font-size:.76rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;font-weight:500;}
+.founder-facts{display:flex;flex-wrap:wrap;gap:.6rem;width:100%;margin-bottom:1.8rem;}
+.founder-fact{display:flex;align-items:center;gap:.55rem;font-size:.76rem;color:#e9e5da;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.5rem .8rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
 .founder-fact svg{flex-shrink:0;color:var(--accent);}
-.founder-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--black);margin-bottom:.25rem;line-height:1.15;}
-.founder-role{font-size:.78rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.4rem;font-weight:500;}
-.founder-bio p{font-size:.9rem;color:var(--mid);line-height:1.85;font-weight:300;margin-bottom:1rem;}
-.founder-section-label{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
-.founder-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.founder-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:1.8rem 2.4rem;align-items:start;}
+.founder-bio p{font-size:.86rem;color:#d9d5c9;line-height:1.7;font-weight:300;margin-bottom:.85rem;}
+.founder-side{display:flex;flex-direction:column;gap:1.3rem;}
+.founder-section-label{font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.founder-section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.16);}
 .founder-cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem .9rem;margin:0 0 1.6rem;}
-.founder-cred{display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--dark);font-weight:300;line-height:1.5;}
-.founder-cred-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(191,160,106,.14);color:var(--adark);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin-top:.05rem;}
-.founder-social{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.6rem;}
-.founder-social a{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--mid);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:.4rem .85rem;transition:color .2s,border-color .2s,background .2s;}
-.founder-social a:hover{color:var(--black);border-color:var(--black);background:var(--off);}
-.founder-stack{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem;}
-.founder-stack span{font-size:.68rem;background:var(--off);border:1px solid var(--border);border-radius:20px;padding:.3rem .75rem;color:var(--mid);}
-.founder-quote{position:relative;background:linear-gradient(150deg,rgba(191,160,106,.08),rgba(191,160,106,.02));border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:1.4rem 1.5rem 1.4rem 3rem;font-style:italic;color:var(--dark);font-size:.95rem;line-height:1.6;margin-top:.4rem;}
-.founder-quote::before{content:'\201C';position:absolute;left:.9rem;top:.55rem;font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--accent);line-height:1;opacity:.8;}
+.founder-cred{display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:#e5e1d5;font-weight:300;line-height:1.5;}
+.founder-cred-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(191,160,106,.18);color:#f2ddb2;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin-top:.05rem;}
+.founder-social{display:flex;gap:.6rem;flex-wrap:wrap;}
+.founder-social a{display:flex;align-items:center;gap:.4rem;font-size:.74rem;color:#d9d5c9;text-decoration:none;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:6px;padding:.4rem .8rem;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:color .2s,border-color .2s,background .2s;}
+.founder-social a:hover{color:#fff;border-color:var(--accent);background:rgba(191,160,106,.16);}
+.founder-stack{display:flex;flex-wrap:wrap;gap:.4rem;}
+.founder-stack span{font-size:.65rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:.3rem .7rem;color:#d3cebf;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.founder-quote{grid-column:1/-1;position:relative;background:rgba(191,160,106,.1);border:1px solid rgba(191,160,106,.28);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:1.2rem 1.4rem 1.2rem 2.8rem;font-style:italic;color:#f4efe2;font-size:.9rem;line-height:1.6;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);margin-top:.2rem;}
+.founder-quote::before{content:'\201C';position:absolute;left:.85rem;top:.45rem;font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--accent);line-height:1;opacity:.85;}
 /* PRICING */
 #pricing{background:var(--off);}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3.2rem;}
@@ -1632,6 +1599,7 @@ a:focus-visible {
   /* Founder section mobile */
   .founder-card { padding: 2rem 1.4rem; }
   .founder-wrap { grid-template-columns: 1fr; gap: 1.8rem; }
+  .founder-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .founder-photo-col { position: static; }
   .founder-photo { max-width: 220px; aspect-ratio: 1; }
   .founder-cred-grid { grid-template-columns: 1fr; }
@@ -3148,48 +3116,57 @@ body.dark-mode .tb-mark{color:var(--black);}
   <div class="founder-card">
   <div class="founder-wrap">
     <div class="rev rd1">
-      <div class="founder-badge">CEO &amp; Founder</div>
+      <div class="founder-header">
+        <div class="founder-badge">CEO &amp; Founder</div>
+      </div>
       <div class="founder-name">Theophilus Dzingisai</div>
       <div class="founder-role">CEO &amp; Founder, CrownWeb Agency</div>
-      <div class="founder-facts" style="flex-direction:row;flex-wrap:wrap;gap:.6rem;margin:.9rem 0 1.6rem;">
+      <div class="founder-facts">
         <div class="founder-fact"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Based in Gweru, Zimbabwe</div>
         <div class="founder-fact"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>theophilus.webdev@gmail.com</div>
         <div class="founder-fact"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Usually replies within 24 hours</div>
       </div>
-      <div class="founder-bio">
-        <p>I started CrownWeb because the gap was obvious: too many businesses in Zimbabwe had no web presence at all, and those that did were often paying over the odds for a site that looked fine but loaded slowly, broke on mobile, and generated zero enquiries. Both problems are fixable — and that is what we do.</p>
-        <p>Every project I take on is built fast, built secure, and built to serve a specific goal — more enquiries, more trust, more customers. You will always deal with me directly, not a junior or an assistant. That is not a selling point — it is just how I run things.</p>
 
-        <!-- Social links -->
-        <div class="founder-section-label">Connect</div>
-        <div class="founder-social">
-          <a href="https://github.com/theophilustinashe-collab" target="_blank" rel="noopener">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/theophilus-dzingisai-436394412/" target="_blank" rel="noopener">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://theophilustinashe-collab.github.io/portfolio-dev/" target="_blank" rel="noopener">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-            Portfolio
-          </a>
+      <div class="founder-grid">
+        <div class="founder-bio">
+          <p>I started CrownWeb because the gap was obvious: too many businesses in Zimbabwe had no web presence at all, and those that did were often paying over the odds for a site that looked fine but loaded slowly, broke on mobile, and generated zero enquiries. Both problems are fixable — and that is what we do.</p>
+          <p>Every project I take on is built fast, built secure, and built to serve a specific goal — more enquiries, more trust, more customers. You will always deal with me directly, not a junior or an assistant. That is not a selling point — it is just how I run things.</p>
         </div>
 
-        <!-- Tech stack -->
-        <div class="founder-section-label">Technologies We Build With</div>
-        <div class="founder-stack">
-          <span>HTML5 / CSS3</span>
-          <span>JavaScript (ES2024)</span>
-          <span>React / Next.js</span>
-          <span>WordPress CMS</span>
-          <span>Node.js</span>
-          <span>WooCommerce</span>
-          <span>PWA / Service Workers</span>
-          <span>GA4 / GSC</span>
-          <span>Cloudflare CDN</span>
-          <span>AI / OpenAI APIs</span>
+        <div class="founder-side">
+          <div>
+            <div class="founder-section-label">Connect</div>
+            <div class="founder-social">
+              <a href="https://github.com/theophilustinashe-collab" target="_blank" rel="noopener">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/theophilus-dzingisai-436394412/" target="_blank" rel="noopener">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+              <a href="https://theophilustinashe-collab.github.io/portfolio-dev/" target="_blank" rel="noopener">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                Portfolio
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div class="founder-section-label">Tech Stack</div>
+            <div class="founder-stack">
+              <span>HTML5 / CSS3</span>
+              <span>JavaScript (ES2024)</span>
+              <span>React / Next.js</span>
+              <span>WordPress CMS</span>
+              <span>Node.js</span>
+              <span>WooCommerce</span>
+              <span>PWA / Service Workers</span>
+              <span>GA4 / GSC</span>
+              <span>Cloudflare CDN</span>
+              <span>AI / OpenAI APIs</span>
+            </div>
+          </div>
         </div>
 
         <div class="founder-quote">My goal isn't just to build you a website. It's to give your business a real shot at being found, trusted, and chosen online.</div>

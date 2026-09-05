@@ -765,6 +765,17 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .ssub{font-size:.9rem;color:var(--mid);line-height:1.85;max-width:520px;font-weight:300;}
 /* SERVE */
 #serve{background:var(--off);}
+/* WHY */
+#why{position:relative;overflow:hidden;background:var(--always-dark) !important;}
+.why-bg-video{position:absolute;inset:0;width:calc(100% + 20px);height:calc(100% + 20px);left:-10px;top:-10px;object-fit:cover;object-position:center;z-index:0;filter:blur(3px);}
+.why-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,6,4,.5) 0%,rgba(8,6,4,.6) 55%,rgba(8,6,4,.72) 100%);z-index:1;}
+#why > .sey,#why > .stitle,#why > .ssub,#why > .serve-grid{position:relative;z-index:2;}
+#why .stitle{color:#fff;}
+#why .ssub{color:rgba(255,255,255,.55);}
+#why .serve-card{background:rgba(255,255,255,.1) !important;border:1.5px solid rgba(191,160,106,.6) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;}
+#why .sc-title{color:#fff !important;}
+#why .sc-desc{color:rgba(255,255,255,.75) !important;}
+#why .sc-icon{background:linear-gradient(135deg,rgba(191,160,106,.25),rgba(191,160,106,.1)) !important;}
 .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.8rem;}
 .serve-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2rem 1.7rem;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;}
 .serve-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--adark));transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
@@ -860,14 +871,17 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .founder-stack span{font-size:.7rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:.4rem .85rem;color:#d3cebf;}
 .founder-quote{grid-column:1/-1;position:relative;background:rgba(191,160,106,.1);border:1px solid rgba(191,160,106,.28);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:1.6rem 1.8rem 1.6rem 3.2rem;font-style:italic;color:#f4efe2;font-size:1rem;line-height:1.75;margin-top:.6rem;}
 .founder-quote::before{content:'\201C';position:absolute;left:1rem;top:.55rem;font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--accent);line-height:1;opacity:.85;}
+.typing-cursor{display:inline-block;color:var(--accent);font-weight:400;margin-left:1px;animation:typingBlink .8s step-end infinite;}
+.typing-cursor.done{animation:typingBlink 1s step-end 4;}
+@keyframes typingBlink{0%,100%{opacity:1;}50%{opacity:0;}}
 /* PRICING */
 #pricing{position:relative;overflow:hidden;background:var(--always-dark);}
-.pricing-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
-.pricing-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,6,4,.72) 0%,rgba(8,6,4,.8) 55%,rgba(8,6,4,.88) 100%);z-index:1;}
+.pricing-bg-video{position:absolute;inset:0;width:calc(100% + 20px);height:calc(100% + 20px);left:-10px;top:-10px;object-fit:cover;object-position:center;z-index:0;filter:blur(3px);}
+.pricing-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,6,4,.5) 0%,rgba(8,6,4,.6) 55%,rgba(8,6,4,.7) 100%);z-index:1;}
 #pricing > .sey,#pricing > .stitle,#pricing > .ssub,#pricing > .price-grid,#pricing > .custom-card{position:relative;z-index:2;}
 #pricing .stitle{color:#fff;}
 #pricing .ssub{color:rgba(255,255,255,.55);}
-#pricing .price-card{background:rgba(255,255,255,.1) !important;border-color:rgba(255,255,255,.2) !important;-webkit-backdrop-filter:blur(14px) saturate(150%) !important;backdrop-filter:blur(14px) saturate(150%) !important;}
+#pricing .price-card{background:rgba(255,255,255,.1) !important;border:1.5px solid rgba(191,160,106,.6) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;}
 #pricing .price-card.feat{background:linear-gradient(160deg,rgba(255,255,255,.16) 70%,rgba(191,160,106,.22)) !important;border-color:var(--accent) !important;}
 #pricing .price-plan{color:var(--accent) !important;}
 #pricing .price-amount{color:#fff !important;}
@@ -3113,7 +3127,11 @@ body.dark-mode .tb-mark{color:var(--black);}
 </section>
 
 <!-- WHY CROWNWEB -->
-<section id="why" style="background:var(--off);">
+<section id="why">
+  <video class="why-bg-video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="Entrepreneur_presenting_website.mp4" type="video/mp4">
+  </video>
+  <div class="why-bg-overlay"></div>
   <p class="sey rev">The Difference</p>
   <h2 class="stitle rev">Why businesses choose <em>CrownWeb</em></h2>
   <p class="ssub rev">Any agency can make a website. Here's what sets CrownWeb apart for businesses in Zimbabwe.</p>
@@ -3198,7 +3216,7 @@ body.dark-mode .tb-mark{color:var(--black);}
           </div>
         </div>
 
-        <div class="founder-quote">My goal isn't just to build you a website. It's to give your business a real shot at being found, trusted, and chosen online.</div>
+        <div class="founder-quote" id="founderQuote" data-full-text="My goal isn&#39;t just to build you a website. It&#39;s to give your business a real shot at being found, trusted, and chosen online."><span id="founderQuoteText"></span><span class="typing-cursor" id="founderQuoteCursor">|</span></div>
       </div>
     </div>
   </div>
@@ -4140,6 +4158,46 @@ if (window.gsap && window.ScrollTrigger) {
   const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:.1});
   document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
 }
+
+// ── FOUNDER QUOTE TYPING ANIMATION ──
+(function(){
+  const quoteEl = document.getElementById('founderQuote');
+  const textEl = document.getElementById('founderQuoteText');
+  const cursorEl = document.getElementById('founderQuoteCursor');
+  if(!quoteEl || !textEl) return;
+
+  const fullText = quoteEl.getAttribute('data-full-text') || '';
+  let typed = false;
+
+  function typeQuote(){
+    if(typed) return;
+    typed = true;
+    let i = 0;
+    // Slightly randomised delay per character so it feels natural and takes
+    // a little while to finish (roughly 4-6 seconds for the full quote).
+    function typeNext(){
+      if(i < fullText.length){
+        textEl.textContent += fullText.charAt(i);
+        i++;
+        const delay = 28 + Math.random() * 45;
+        setTimeout(typeNext, delay);
+      } else if(cursorEl){
+        cursorEl.classList.add('done');
+      }
+    }
+    typeNext();
+  }
+
+  const quoteObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        typeQuote();
+        quoteObs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  quoteObs.observe(quoteEl);
+})();
 
 // ── COUNT-UP ANIMATION ──
 function animateCount(el){

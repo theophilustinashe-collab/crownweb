@@ -2348,6 +2348,58 @@ body.dark-mode .ceo-note p{
 }
 </style>
 
+<!-- ===== Mobile hero legibility fix: dark backdrop panel behind hero text + visible secondary button (mobile only) ===== -->
+<style id="mobile-hero-legibility-fix">
+@media (max-width:760px){
+  .hero-content{
+    position:relative !important;
+    z-index:5 !important;
+  }
+  /* Solid dark panel directly behind the hero copy, independent of the background artwork,
+     so text stays legible no matter how busy the photo behind it is. */
+  .hero-content::before{
+    content:"" !important;
+    position:absolute !important;
+    inset:-1.25rem -1.5rem -1.5rem -1.5rem !important;
+    background:linear-gradient(180deg, rgba(10,10,10,.72) 0%, rgba(10,10,10,.6) 55%, rgba(10,10,10,.42) 100%) !important;
+    border-radius:16px !important;
+    z-index:-1 !important;
+    pointer-events:none !important;
+  }
+  .hero-eyebrow{
+    color:#f0c76a !important;
+  }
+  .hero-eyebrow::before{
+    background:#f0c76a !important;
+  }
+  .hero-title,
+  .hero-title *{
+    color:#ffffff !important;
+    text-shadow:0 1px 3px rgba(0,0,0,.65) !important;
+  }
+  .hero-title em{
+    color:#f0c76a !important;
+  }
+  .hero-sub{
+    color:#f3f4f6 !important;
+    font-weight:400 !important;
+    text-shadow:0 1px 2px rgba(0,0,0,.55) !important;
+  }
+  /* Secondary "Book Free Consultation" button: give it a visible outline + dark fill
+     so it reads clearly next to the solid black primary button. */
+  .hero-ctas .btn-outline{
+    background:rgba(0,0,0,.4) !important;
+    border:1.5px solid #f0c76a !important;
+    color:#ffffff !important;
+  }
+  .hero-ctas .btn-outline:hover,
+  .hero-ctas .btn-outline:active{
+    background:rgba(0,0,0,.6) !important;
+    border-color:#ffffff !important;
+  }
+}
+</style>
+
 
 <style id="visible-premium-animations">
 /* Visible animated background across sections */

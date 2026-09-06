@@ -5200,22 +5200,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
-     LIVE REVIEW WALL — powered by JSONBlob (jsonblob.com), a free, keyless
-     JSON storage service. No account, no API key, no config needed.
+     LIVE REVIEW WALL — powered by a free Google Sheet + Apps Script backend.
+     No paid service, no API key marketplace — just a Google account (which
+     you likely already have) and a small script you paste in once.
 
-     ⚠️ ONE-TIME SETUP: the very first time this page loads on your live site,
-     you'll see an "Activate Reviews" banner above the review form. Click it
-     once — it creates your storage and shows you a short ID. Copy that ID,
-     paste it below where it says PASTE_YOUR_BLOB_ID_HERE, save the file, and
-     re-upload. After that, the banner disappears for everyone and reviews
-     work normally, shared live across all visitors.
+     ⚠️ SETUP REQUIRED — see the setup steps provided separately. Once you've
+     deployed the Apps Script web app, paste its URL below where it says
+     PASTE_YOUR_SCRIPT_URL_HERE, save this file, and re-upload it.
      ═══════════════════════════════════════════════════════════════════════════ -->
 <script>
 (function(){
-  // ── PASTE YOUR BLOB ID HERE AFTER CLICKING "ACTIVATE REVIEWS" ──
-  var BLOB_ID = "PASTE_YOUR_BLOB_ID_HERE";
+  // ── PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE ──
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxafYUu4CnJ2fsBqAYWhIqQR61k4p1mKlW6HF-RFxiW-o11e0Br9PSoLYOTmLsUgOY/exec";
 
-  var JB_BASE = "https://jsonblob.com/api/jsonBlob";
   var wall = document.getElementById('review-wall');
   var formWrap = document.querySelector('.review-form-wrap');
   var selectedRating = 0;
@@ -5241,7 +5238,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   function timeAgo(ts){
     if(!ts) return 'Just now';
-    var secs = Math.floor((Date.now() - ts) / 1000);
+    var t = typeof ts === 'number' ? ts : new Date(ts).getTime();
+    var secs = Math.floor((Date.now() - t) / 1000);
     var units = [[31536000,'year'],[2592000,'month'],[86400,'day'],[3600,'hour'],[60,'minute']];
     for(var i=0;i<units.length;i++){
       var v = Math.floor(secs / units[i][0]);
@@ -5250,12 +5248,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     return 'just now';
   }
 
+  function isConfigured(){
+    return SCRIPT_URL && SCRIPT_URL.indexOf('PASTE_YOUR') !== 0;
+  }
+
   function renderReviews(reviews){
     if(!reviews || reviews.length === 0){
       wall.innerHTML = '<div class="review-empty">Be the first to leave a review — your words will appear right here for everyone to see.</div>';
       return;
     }
-    var sorted = reviews.slice().sort(function(a,b){ return (b.ts||0) - (a.ts||0); });
+    var sorted = reviews.slice().sort(function(a,b){
+      return (new Date(b.ts).getTime() || 0) - (new Date(a.ts).getTime() || 0);
+    });
     wall.innerHTML = sorted.map(function(r){
       var rating = Math.max(0, Math.min(5, parseInt(r.rating,10) || 0));
       var stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
@@ -5272,9 +5276,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   function loadReviews(){
-    if(!isConfigured()) return;
+    if(!isConfigured()){
+      wall.innerHTML = '<div class="review-empty">Reviews aren\'t set up yet on this site.</div>';
+      return;
+    }
     wall.innerHTML = '<div class="review-empty">Loading reviews…</div>';
-    fetch(JB_BASE + '/' + BLOB_ID, { headers: { 'Accept': 'application/json' } })
+    fetch(SCRIPT_URL, { method: 'GET' })
       .then(function(res){ if(!res.ok) throw new Error('load failed'); return res.json(); })
       .then(function(data){ renderReviews((data && data.reviews) || []); })
       .catch(function(err){
@@ -5283,41 +5290,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
   }
 
-  function isConfigured(){
-    return BLOB_ID && BLOB_ID.indexOf('PASTE_YOUR') !== 0;
-  }
-
-  function showActivateBanner(){
-    var banner = document.createElement('div');
-    banner.style.cssText = 'max-width:660px;margin:0 auto 1.6rem;background:rgba(191,160,106,.16);border:1px solid rgba(191,160,106,.4);border-radius:12px;padding:1.1rem 1.4rem;text-align:center;font-size:.84rem;color:var(--dark);';
-    banner.innerHTML = '⚠️ Reviews aren\'t activated yet. <button id="activate-reviews-btn" style="margin-left:.5rem;background:var(--black);color:#fff;border:none;padding:.5rem 1rem;border-radius:20px;font-size:.78rem;cursor:pointer;">Activate Reviews</button>';
-    formWrap.parentNode.insertBefore(banner, formWrap);
-    document.getElementById('activate-reviews-btn').addEventListener('click', function(){
-      this.disabled = true;
-      this.textContent = 'Creating…';
-      fetch(JB_BASE, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ reviews: [] })
-      }).then(function(res){
-        var loc = res.headers.get('Location');
-        var id = loc ? loc.split('/').pop() : null;
-        if(!id) throw new Error('no id returned');
-        banner.innerHTML = '✅ Reviews activated! Copy this ID and paste it into index.html where it says PASTE_YOUR_BLOB_ID_HERE:<br><br>' +
-          '<code style="background:#fff;padding:.4rem .8rem;border-radius:6px;font-size:.9rem;user-select:all;">' + id + '</code>';
-      }).catch(function(err){
-        console.error(err);
-        banner.innerHTML = '❌ Could not activate reviews. Please check your internet connection and try again.';
-      });
-    });
-    wall.innerHTML = '<div class="review-empty">Reviews will appear here once activated.</div>';
-  }
-
-  if(isConfigured()){
-    loadReviews();
-  } else {
-    showActivateBanner();
-  }
+  loadReviews();
 
   window.submitReview = function(){
     var nameEl = document.getElementById('rev-name');
@@ -5331,7 +5304,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     errEl.style.display = 'none';
 
     if(!isConfigured()){
-      errEl.textContent = 'Reviews are not activated yet on this site. Please contact the site owner.';
+      errEl.textContent = 'Reviews are not set up yet on this site. Please contact the site owner.';
       errEl.style.display = 'block';
       return;
     }
@@ -5357,32 +5330,30 @@ document.addEventListener('DOMContentLoaded',()=>{
     btn.disabled = true;
     spinner.style.display = 'block';
 
-    fetch(JB_BASE + '/' + BLOB_ID, { headers: { 'Accept': 'application/json' } })
-      .then(function(res){ if(!res.ok) throw new Error('read failed'); return res.json(); })
-      .then(function(data){
-        var reviews = (data && data.reviews) || [];
-        reviews.push({
-          name: name.slice(0, 60),
-          business: business.slice(0, 60),
-          text: text.slice(0, 500),
-          rating: selectedRating,
-          ts: Date.now()
-        });
-        return fetch(JB_BASE + '/' + BLOB_ID, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ reviews: reviews })
-        }).then(function(res){
-          if(!res.ok) throw new Error('write failed');
-          renderReviews(reviews);
-        });
-      })
+    var payload = {
+      name: name.slice(0, 60),
+      business: business.slice(0, 60),
+      text: text.slice(0, 500),
+      rating: selectedRating,
+      ts: Date.now()
+    };
+
+    // NOTE: Content-Type is text/plain on purpose — this avoids a CORS
+    // preflight request, which Google Apps Script web apps don't handle.
+    // The script on the other end still JSON.parses the body normally.
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    })
+      .then(function(res){ if(!res.ok) throw new Error('write failed'); return res.json(); })
       .then(function(){
         nameEl.value = '';
         bizEl.value = '';
         textEl.value = '';
         selectedRating = 0;
         updateStars();
+        loadReviews();
       })
       .catch(function(err){
         console.error(err);

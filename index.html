@@ -916,27 +916,45 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .custom-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;margin-bottom:.3rem;}
 .custom-card p{font-size:.81rem;color:rgba(255,255,255,.35);font-weight:300;}
 /* CALCULATOR */
-#calc{background:var(--always-dark);}
+#calc{background:radial-gradient(ellipse 900px 480px at 85% 0%,rgba(191,160,106,.09),transparent 60%),var(--always-dark);}
 #calc .stitle{color:#fff;}
 #calc .ssub{color:rgba(255,255,255,.38);}
 #calc .sey{color:var(--accent);}
-.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.8rem;align-items:start;}
-.calc-group{margin-bottom:1.3rem;}
-.calc-group label{display:block;font-size:.73rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.65rem;}
-.calc-opts{display:flex;flex-wrap:wrap;gap:.42rem;}
-.copt{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.52);border-radius:4px;padding:.38rem .78rem;font-size:.78rem;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
-.copt:hover{border-color:var(--accent);color:#fff;}
-.copt.sel{background:var(--accent);border-color:var(--accent);color:#fff;}
-.calc-res{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:2rem;position:sticky;top:5.5rem;backdrop-filter:blur(4px);}
-.cr-lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.3rem;}
-.cr-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:#fff;line-height:1;margin-bottom:.18rem;}
-.cr-price sup{font-size:1.2rem;vertical-align:super;font-weight:400;}
-.cr-sub{font-size:.76rem;color:rgba(255,255,255,.28);margin-bottom:1.2rem;}
-.cr-breakdown{border-top:1px solid rgba(255,255,255,.08);padding-top:1rem;margin-bottom:1.2rem;}
-.cr-row{display:flex;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,.38);padding:.26rem 0;}
-.cr-row.tot{color:#fff;font-weight:500;border-top:1px solid rgba(255,255,255,.08);margin-top:.4rem;padding-top:.65rem;}
-.btn-calc{width:100%;padding:.8rem;background:var(--accent);color:#fff;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
-.btn-calc:hover{background:var(--adark);}
+.calc-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:4.5rem;margin-top:3.2rem;align-items:start;}
+
+/* category switcher reads as a tab bar, distinct from the option chips below it */
+.calc-category{margin-bottom:2.6rem;border-bottom:none;padding-bottom:0;}
+.calc-category label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem;}
+.cat-tabs{gap:0;border-bottom:1px solid rgba(255,255,255,.12);flex-wrap:nowrap;}
+.cat-tabs .copt{flex:1;background:none;border:none;border-radius:0;padding:.9rem .4rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:rgba(255,255,255,.4);border-bottom:2px solid transparent;margin-bottom:-1px;text-align:center;}
+.cat-tabs .copt:hover{color:rgba(255,255,255,.8);background:none;}
+.cat-tabs .copt.sel{color:#fff;border-bottom-color:var(--accent);}
+
+.calc-group{margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(255,255,255,.07);}
+.calc-group:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.calc-group label{display:block;font-size:.73rem;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.42);margin-bottom:.8rem;}
+.calc-opts{display:flex;flex-wrap:wrap;gap:.5rem;}
+.copt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.58);border-radius:6px;padding:.55rem .95rem;font-size:.8rem;cursor:pointer;transition:all .18s ease;font-family:'DM Sans',sans-serif;}
+.copt:hover{border-color:var(--accent);color:#fff;background:rgba(191,160,106,.08);}
+.copt.sel{background:var(--accent);border-color:var(--accent);color:#191410;font-weight:600;}
+/* add-ons are optional/multi-select — a dashed border marks that difference from the required choices above */
+.copt.addon{border-style:dashed;}
+.copt.addon.sel{border-style:solid;}
+
+.calc-res{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-top:3px solid var(--accent);border-radius:6px;padding:2.4rem 2.2rem;position:sticky;top:5.5rem;box-shadow:0 30px 70px -25px rgba(0,0,0,.55),0 0 60px -32px rgba(191,160,106,.35);}
+.cr-lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.5rem;}
+.cr-price{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:600;color:#fff;line-height:1;margin-bottom:.3rem;}
+.cr-price sup{font-size:1.3rem;vertical-align:super;font-weight:400;color:var(--accent);}
+.cr-sub{font-size:.76rem;color:rgba(255,255,255,.3);margin-bottom:1.7rem;padding-bottom:1.7rem;border-bottom:1px dashed rgba(255,255,255,.15);}
+.cr-breakdown{margin-bottom:1.7rem;}
+.cr-row{display:flex;align-items:baseline;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.42);padding:.42rem 0;}
+.cr-row>span:first-child,.cr-row>span:last-child{white-space:nowrap;}
+.cr-row>span:last-child{font-variant-numeric:tabular-nums;}
+.cr-leader{flex:1;border-bottom:1px dotted rgba(255,255,255,.16);transform:translateY(-.3em);min-width:12px;}
+.cr-row.tot{color:#fff;font-weight:600;font-size:.92rem;border-top:1px solid rgba(255,255,255,.14);margin-top:.6rem;padding-top:.9rem;}
+.cr-row.tot .cr-leader{border-bottom-color:rgba(255,255,255,.14);}
+.btn-calc{width:100%;padding:1rem;background:var(--accent);color:#191410;border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-calc:hover{background:#fff;transform:translateY(-1px);}
 /* AUDIT */
 #audit{background:var(--always-dark);text-align:center;}
 #audit .sey{justify-content:center;}
@@ -953,7 +971,29 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 /* ═══════════════════════════════════════════════════════════════════════════
    CHANGE 2: Testimonials → "Be Our First Review" honest section
    ═══════════════════════════════════════════════════════════════════════════ */
-#testi{background:var(--white);}
+#testi{background:linear-gradient(135deg,#f8f4ea 0%,#efe8d8 55%,#f6f1e4 100%);position:relative;overflow:hidden;}
+.testi-content{position:relative;z-index:1;}
+.testi-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.testi-blob-1{width:360px;height:360px;background:rgba(191,160,106,.35);top:-100px;left:-80px;}
+.testi-blob-2{width:320px;height:320px;background:rgba(138,110,62,.22);bottom:-120px;right:-60px;}
+.testi-blob-3{width:260px;height:260px;background:rgba(212,169,106,.28);top:40%;left:60%;}
+.review-form-wrap{max-width:660px;margin:2.8rem auto 0;background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.65);border-radius:16px;padding:2.2rem 2.4rem;-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);box-shadow:0 20px 50px rgba(20,15,5,.1),inset 0 1px 0 rgba(255,255,255,.5);position:relative;}
+.review-form-wrap h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.3rem;color:var(--black);margin-bottom:1.2rem;}
+.star-input{display:flex;gap:.3rem;font-size:1.7rem;line-height:1;user-select:none;}
+.star-input span{color:rgba(0,0,0,.18);cursor:pointer;transition:color .15s,transform .15s;}
+.star-input span.on{color:var(--accent);}
+.star-input span:hover{transform:scale(1.15);}
+.review-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem;margin-top:3rem;}
+.review-card{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;padding:1.7rem 1.6rem 1.5rem;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 32px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);position:relative;transition:transform .3s,box-shadow .3s;overflow:hidden;}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(20,15,5,.13);}
+.review-quote{position:absolute;top:.5rem;right:1rem;font-family:'Cormorant Garamond',serif;font-size:3.4rem;color:var(--accent);opacity:.18;line-height:1;pointer-events:none;}
+.review-stars{color:var(--accent);font-size:.92rem;letter-spacing:.15em;margin-bottom:.7rem;}
+.review-text{font-size:.86rem;color:var(--dark);line-height:1.75;font-weight:300;margin-bottom:1.1rem;position:relative;z-index:1;}
+.review-name{font-size:.85rem;font-weight:600;color:var(--black);}
+.review-biz{font-size:.74rem;color:var(--mid);margin-top:.15rem;}
+.review-date{font-size:.66rem;color:var(--light);margin-top:.55rem;letter-spacing:.05em;text-transform:uppercase;}
+.review-empty{grid-column:1/-1;text-align:center;padding:2.6rem 1rem;color:var(--mid);font-size:.88rem;font-style:italic;background:rgba(255,255,255,.28);border:1px dashed rgba(0,0,0,.12);border-radius:12px;}
+@media(max-width:640px){.review-form-wrap{padding:1.6rem 1.4rem;}}
 .first-review-box{margin-top:3rem;background:linear-gradient(135deg,var(--off),rgba(191,160,106,.04));border:1px solid var(--border);border-radius:18px;padding:3rem 2.8rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
 .frb-left{}
 .frb-quote-mark{font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--accent);line-height:.8;opacity:.25;margin-bottom:.5rem;}
@@ -1025,7 +1065,32 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .faq-ans{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:.85rem;color:var(--mid);line-height:1.85;font-weight:300;}
 .faq-item.open .faq-ans{max-height:280px;padding-bottom:1.3rem;}
 /* APPOINTMENT */
-#appt{background:var(--off);}
+#appt{background:var(--black);position:relative;overflow:hidden;isolation:isolate;}
+.appt-bg-video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover;z-index:0;pointer-events:none;}
+.appt-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.72) 0%,rgba(10,10,10,.8) 55%,rgba(10,10,10,.88) 100%);z-index:1;}
+.appt-content{position:relative;z-index:2;}
+#appt .sey{color:var(--accent);}
+#appt .stitle{color:#fff;}
+#appt .stitle em{color:var(--accent);}
+#appt .ssub{color:rgba(255,255,255,.78);}
+/* true glass cards over the background video */
+#appt .appt-type,#appt .appt-form{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);box-shadow:0 8px 32px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.18);}
+#appt .appt-type:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.4);}
+#appt .appt-type.sel{border:2px solid rgba(191,160,106,.75);background:rgba(255,255,255,.13);box-shadow:0 8px 32px rgba(0,0,0,.35);}
+#appt .at-icon{background:rgba(255,255,255,.12);}
+#appt .at-title{color:#fff;}
+#appt .at-desc{color:rgba(255,255,255,.72);}
+#appt .at-badge{background:rgba(255,255,255,.15);color:#fff;}
+#appt .appt-form h4,#appt #appt-form-title{color:#fff;}
+#appt .af-field label{color:rgba(255,255,255,.65);}
+#appt .af-field input,#appt .af-field select,#appt .af-field textarea{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);color:#fff;}
+#appt .af-field input::placeholder,#appt .af-field textarea::placeholder{color:rgba(255,255,255,.5);}
+#appt .af-field select option{color:#000;}
+#appt .teams-note{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);color:#fff;}
+#appt .form-error{background:rgba(255,90,90,.18);border-color:rgba(255,130,130,.4);color:#ffe1e1;}
+#appt .form-spinner{color:rgba(255,255,255,.8);}
+#appt #appt-success p{color:rgba(255,255,255,.75)!important;}
+#appt #appt-success h3{color:#fff;}
 .appt-types{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-top:2.8rem;}
 .appt-type{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2rem;cursor:pointer;transition:all .3s;}
 .appt-type:hover{border-color:rgba(191,160,106,.4);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.08);}
@@ -1646,6 +1711,7 @@ a:focus-visible {
   /* Calc section mobile */
   .calc-wrap { grid-template-columns: 1fr; gap: 2rem; }
   .calc-res { position: static; top: auto; margin-top: 2rem; }
+  .cat-tabs .copt { font-size: .82rem; padding: .75rem .25rem; }
   
   /* Process steps mobile */
   .proc-steps::before { display: none; }
@@ -3387,9 +3453,9 @@ body.dark-mode .tb-mark{color:var(--black);}
   <p class="ssub rev">Select your requirements and get a real-time price estimate instantly.</p>
   <div class="calc-wrap">
     <div>
-      <div class="calc-group rev">
+      <div class="calc-group calc-category rev">
         <label>What do you need?</label>
-        <div class="calc-opts">
+        <div class="calc-opts cat-tabs">
           <button class="copt sel" onclick="setCategory('website',this)">Website</button>
           <button class="copt" onclick="setCategory('app',this)">App Development</button>
           <button class="copt" onclick="setCategory('media',this)">Media &amp; Content</button>
@@ -3427,12 +3493,12 @@ body.dark-mode .tb-mark{color:var(--black);}
         <div class="calc-group rev rd3">
           <label>Add-ons (select multiple)</label>
           <div class="calc-opts">
-            <button class="copt" onclick="toggleAddon('SEO Package',80,this)">SEO Package +$80</button>
-            <button class="copt" onclick="toggleAddon('Blog/News',60,this)">Blog / News +$60</button>
-            <button class="copt" onclick="toggleAddon('Booking System',120,this)">Booking System +$120</button>
-            <button class="copt" onclick="toggleAddon('Live Chat',50,this)">Live Chat +$50</button>
-            <button class="copt" onclick="toggleAddon('Multi-language',90,this)">Multi-language +$90</button>
-            <button class="copt" onclick="toggleAddon('Maintenance',40,this)">Maintenance +$40/mo</button>
+            <button class="copt addon" onclick="toggleAddon('SEO Package',80,this)">SEO Package +$80</button>
+            <button class="copt addon" onclick="toggleAddon('Blog/News',60,this)">Blog / News +$60</button>
+            <button class="copt addon" onclick="toggleAddon('Booking System',120,this)">Booking System +$120</button>
+            <button class="copt addon" onclick="toggleAddon('Live Chat',50,this)">Live Chat +$50</button>
+            <button class="copt addon" onclick="toggleAddon('Multi-language',90,this)">Multi-language +$90</button>
+            <button class="copt addon" onclick="toggleAddon('Maintenance',40,this)">Maintenance +$40/mo</button>
           </div>
         </div>
       </div>
@@ -3458,12 +3524,12 @@ body.dark-mode .tb-mark{color:var(--black);}
         <div class="calc-group rev">
           <label>Add-ons (select multiple)</label>
           <div class="calc-opts">
-            <button class="copt" onclick="toggleAddon('Payment Integration',250,this)">Payment Integration +$250</button>
-            <button class="copt" onclick="toggleAddon('Admin Dashboard',200,this)">Admin Dashboard +$200</button>
-            <button class="copt" onclick="toggleAddon('Push Notifications',100,this)">Push Notifications +$100</button>
-            <button class="copt" onclick="toggleAddon('Multi-role Permissions',400,this)">Multi-role Permissions +$400</button>
-            <button class="copt" onclick="toggleAddon('3rd-Party Integrations',300,this)">3rd-Party Integrations +$300</button>
-            <button class="copt" onclick="toggleAddon('App Maintenance',80,this)">Maintenance +$80/mo</button>
+            <button class="copt addon" onclick="toggleAddon('Payment Integration',250,this)">Payment Integration +$250</button>
+            <button class="copt addon" onclick="toggleAddon('Admin Dashboard',200,this)">Admin Dashboard +$200</button>
+            <button class="copt addon" onclick="toggleAddon('Push Notifications',100,this)">Push Notifications +$100</button>
+            <button class="copt addon" onclick="toggleAddon('Multi-role Permissions',400,this)">Multi-role Permissions +$400</button>
+            <button class="copt addon" onclick="toggleAddon('3rd-Party Integrations',300,this)">3rd-Party Integrations +$300</button>
+            <button class="copt addon" onclick="toggleAddon('App Maintenance',80,this)">Maintenance +$80/mo</button>
           </div>
         </div>
       </div>
@@ -3481,11 +3547,11 @@ body.dark-mode .tb-mark{color:var(--black);}
         <div class="calc-group rev">
           <label>Add-ons (select multiple)</label>
           <div class="calc-opts">
-            <button class="copt" onclick="toggleAddon('Extra Photography Session',80,this)">Extra Photo Session +$80</button>
-            <button class="copt" onclick="toggleAddon('Marketing Video',300,this)">Marketing Video +$300</button>
-            <button class="copt" onclick="toggleAddon('TV-Quality Advert',900,this)">TV-Quality Advert +$900</button>
-            <button class="copt" onclick="toggleAddon('Paid Ads Management',150,this)">Paid Ads Management +$150</button>
-            <button class="copt" onclick="toggleAddon('TikTok Management',50,this)">TikTok Management +$50</button>
+            <button class="copt addon" onclick="toggleAddon('Extra Photography Session',80,this)">Extra Photo Session +$80</button>
+            <button class="copt addon" onclick="toggleAddon('Marketing Video',300,this)">Marketing Video +$300</button>
+            <button class="copt addon" onclick="toggleAddon('TV-Quality Advert',900,this)">TV-Quality Advert +$900</button>
+            <button class="copt addon" onclick="toggleAddon('Paid Ads Management',150,this)">Paid Ads Management +$150</button>
+            <button class="copt addon" onclick="toggleAddon('TikTok Management',50,this)">TikTok Management +$50</button>
           </div>
         </div>
       </div>
@@ -3495,11 +3561,11 @@ body.dark-mode .tb-mark{color:var(--black);}
       <div class="cr-price"><sup>$</sup><span id="cnum">80</span></div>
       <div class="cr-sub" id="cr-suffix">USD · 50% deposit to start</div>
       <div class="cr-breakdown">
-        <div class="cr-row"><span id="br-type-lbl">Website Type</span><span id="br-type">$80</span></div>
-        <div class="cr-row" id="br-pages-row"><span id="br-pages-lbl">Pages</span><span id="br-pages">$0</span></div>
-        <div class="cr-row" id="br-design-row"><span id="br-design-lbl">Design</span><span id="br-design">$0</span></div>
-        <div class="cr-row"><span>Add-ons</span><span id="br-addons">$0</span></div>
-        <div class="cr-row tot"><span>Total Estimate</span><span id="br-total">$80</span></div>
+        <div class="cr-row"><span id="br-type-lbl">Website Type</span><span class="cr-leader"></span><span id="br-type">$80</span></div>
+        <div class="cr-row" id="br-pages-row"><span id="br-pages-lbl">Pages</span><span class="cr-leader"></span><span id="br-pages">$0</span></div>
+        <div class="cr-row" id="br-design-row"><span id="br-design-lbl">Design</span><span class="cr-leader"></span><span id="br-design">$0</span></div>
+        <div class="cr-row"><span>Add-ons</span><span class="cr-leader"></span><span id="br-addons">$0</span></div>
+        <div class="cr-row tot"><span>Total Estimate</span><span class="cr-leader"></span><span id="br-total">$80</span></div>
       </div>
       <button class="btn-calc" onclick="openCalcPay()">Start My Project — Get This Quote →</button>
     </div>
@@ -3522,32 +3588,42 @@ body.dark-mode .tb-mark{color:var(--black);}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
-     CHANGE 2: Testimonials → "Be Our First Review" honest placeholder
+     CHANGE 2: Testimonials → Live public review wall (Firebase-backed)
      ═══════════════════════════════════════════════════════════════════════════ -->
 <section id="testi">
+  <div class="testi-blob testi-blob-1"></div>
+  <div class="testi-blob testi-blob-2"></div>
+  <div class="testi-blob testi-blob-3"></div>
+  <div class="testi-content">
   <p class="sey rev">What Clients Say</p>
-  <h2 class="stitle rev">Be our <em>first review</em></h2>
-  <p class="ssub rev">We're a new agency and we're not going to put words in people's mouths. Work with us and we'll earn your honest review — publicly, on your terms.</p>
-  <div class="first-review-box rev">
-    <div class="frb-left">
-      <div class="frb-quote-mark">"</div>
-      <div class="frb-heading">Your review<br/>goes <em>right here</em></div>
-      <p class="frb-text">We believe in earning trust through results, not manufacturing it through made-up quotes. When you work with CrownWeb and we deliver on our promise, we'd love to share your story here — with your permission, in your words, linked to your business.<br/><br/>That's the kind of social proof worth having.</p>
+  <h2 class="stitle rev">Client <em>reviews</em></h2>
+  <p class="ssub rev">Real feedback, posted directly by the people we've worked with — visible to everyone, no editing, no cherry-picking.</p>
+
+  <div class="review-form-wrap rev">
+    <h4>Leave a review</h4>
+    <div class="form-error" id="rev-error"></div>
+    <div class="af-row">
+      <div class="af-field"><label>Your Name</label><input type="text" id="rev-name" placeholder="Full name" maxlength="60"/></div>
+      <div class="af-field"><label>Business (optional)</label><input type="text" id="rev-business" placeholder="Your business name" maxlength="60"/></div>
     </div>
-    <div class="frb-right">
-      <div class="frb-card">
-        <div class="frb-card-label">Our commitment to you</div>
-        <div class="frb-card-text">Every project is treated as if your review depends on it — because it does. We don't move to the next client until you're happy with the result.</div>
-      </div>
-      <div class="frb-card">
-        <div class="frb-card-label">Early client offer</div>
-        <div class="frb-card-text">As one of our first clients, you get direct access to the founder, faster turnaround, and our full attention on your project. <a href="#inquire" style="color:var(--adark);text-decoration:underline;">Start a conversation.</a></div>
-      </div>
-      <div class="frb-placeholder">
-        <div class="frb-av-empty"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="frb-placeholder-text">Your name &amp; business — after we've delivered your project</div>
+    <div class="af-field">
+      <label>Rating</label>
+      <div class="star-input" id="rev-stars">
+        <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
       </div>
     </div>
+    <div class="af-field">
+      <label>Your Review</label>
+      <textarea id="rev-text" placeholder="Tell us about your experience working with CrownWeb..." maxlength="500" style="min-height:90px;width:100%;padding:.72rem 1rem;border:1px solid var(--glass-border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--dark);background:var(--glass-bg);outline:none;resize:vertical;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--glass-border)'"></textarea>
+    </div>
+    <input type="text" id="rev-hp" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
+    <button class="af-submit" id="rev-submit-btn" onclick="submitReview()">Post My Review →</button>
+    <div class="form-spinner" id="rev-spinner">Posting your review…</div>
+  </div>
+
+  <div class="review-wall" id="review-wall">
+    <div class="review-empty" id="review-empty">Loading reviews…</div>
+  </div>
   </div>
 </section>
 
@@ -3577,6 +3653,11 @@ body.dark-mode .tb-mark{color:var(--black);}
 
 <!-- APPOINTMENT -->
 <section id="appt">
+  <video class="appt-bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="appointment-video.mp4" type="video/mp4">
+  </video>
+  <div class="appt-bg-overlay"></div>
+  <div class="appt-content">
   <p class="sey rev">Free Consultation</p>
   <h2 class="stitle rev">Book an <em>appointment</em></h2>
   <p class="ssub rev">Meet with Theophilus and the CrownWeb team — in person in Gweru or virtually via Microsoft Teams. Completely free, no commitment.</p>
@@ -3638,6 +3719,7 @@ body.dark-mode .tb-mark{color:var(--black);}
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;margin-bottom:.4rem;">Appointment Booked!</h3>
       <p style="font-size:.84rem;color:var(--mid);">Your booking has been sent directly to Theophilus. We'll follow up with meeting details within 1 hour. Kind regards — Theophilus Dzingisai &amp; the CrownWeb team.</p>
     </div>
+  </div>
   </div>
 </section>
 
@@ -5115,6 +5197,155 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   }
 });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     LIVE REVIEW WALL — powered by Firebase Firestore (free tier)
+     ⚠️ SETUP REQUIRED: replace firebaseConfig below with your own project's
+     config from the Firebase Console, and set the Firestore security rules
+     described in the message from your developer / the setup notes.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, onSnapshot,
+    query, orderBy, limit, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // ── REPLACE THESE WITH YOUR FIREBASE PROJECT CONFIG ──
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const reviewsRef = collection(db, "reviews");
+
+  let selectedRating = 0;
+  const starEls = document.querySelectorAll('#rev-stars span');
+
+  function updateStars(){
+    starEls.forEach(s => s.classList.toggle('on', parseInt(s.dataset.val, 10) <= selectedRating));
+  }
+  starEls.forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.dataset.val, 10);
+      updateStars();
+    });
+  });
+
+  function escapeHTML(str){
+    return String(str).replace(/[&<>"']/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    }[c]));
+  }
+
+  function timeAgo(date){
+    if(!date) return '';
+    const secs = Math.floor((Date.now() - date.getTime()) / 1000);
+    const units = [[31536000,'year'],[2592000,'month'],[86400,'day'],[3600,'hour'],[60,'minute']];
+    for(const [s,label] of units){
+      const v = Math.floor(secs / s);
+      if(v >= 1) return `${v} ${label}${v > 1 ? 's' : ''} ago`;
+    }
+    return 'just now';
+  }
+
+  function renderReviews(snapshot){
+    const wall = document.getElementById('review-wall');
+    if(snapshot.empty){
+      wall.innerHTML = '<div class="review-empty" id="review-empty">Be the first to leave a review — your words will appear right here for everyone to see.</div>';
+      return;
+    }
+    wall.innerHTML = '';
+    snapshot.forEach(doc => {
+      const r = doc.data();
+      const rating = Math.max(0, Math.min(5, parseInt(r.rating, 10) || 0));
+      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const date = (r.createdAt && r.createdAt.toDate) ? timeAgo(r.createdAt.toDate()) : 'Just now';
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <div class="review-quote">&quot;</div>
+        <div class="review-stars">${stars}</div>
+        <div class="review-text">${escapeHTML(r.text || '')}</div>
+        <div class="review-name">${escapeHTML(r.name || 'Anonymous')}</div>
+        ${r.business ? `<div class="review-biz">${escapeHTML(r.business)}</div>` : ''}
+        <div class="review-date">${date}</div>
+      `;
+      wall.appendChild(card);
+    });
+  }
+
+  try {
+    const q = query(reviewsRef, orderBy('createdAt', 'desc'), limit(60));
+    onSnapshot(q, renderReviews, (err) => {
+      console.error('Reviews load error:', err);
+      document.getElementById('review-wall').innerHTML = '<div class="review-empty">Reviews are temporarily unavailable.</div>';
+    });
+  } catch(e){
+    console.error(e);
+  }
+
+  window.submitReview = async function(){
+    const nameEl = document.getElementById('rev-name');
+    const bizEl = document.getElementById('rev-business');
+    const textEl = document.getElementById('rev-text');
+    const hpEl = document.getElementById('rev-hp');
+    const errEl = document.getElementById('rev-error');
+    const btn = document.getElementById('rev-submit-btn');
+    const spinner = document.getElementById('rev-spinner');
+
+    errEl.style.display = 'none';
+
+    // Honeypot: bots fill hidden fields, humans never see this input
+    if(hpEl.value){ return; }
+
+    const name = nameEl.value.trim();
+    const business = bizEl.value.trim();
+    const text = textEl.value.trim();
+
+    if(!name || !text || selectedRating < 1){
+      errEl.textContent = 'Please add your name, a star rating, and a short review.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if(text.length > 500){
+      errEl.textContent = 'Please keep your review under 500 characters.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    spinner.style.display = 'block';
+
+    try {
+      await addDoc(reviewsRef, {
+        name: name.slice(0, 60),
+        business: business.slice(0, 60),
+        text: text.slice(0, 500),
+        rating: selectedRating,
+        createdAt: serverTimestamp()
+      });
+      nameEl.value = '';
+      bizEl.value = '';
+      textEl.value = '';
+      selectedRating = 0;
+      updateStars();
+    } catch(e){
+      console.error(e);
+      errEl.textContent = 'Something went wrong posting your review. Please try again.';
+      errEl.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      spinner.style.display = 'none';
+    }
+  };
 </script>
 
 </body>

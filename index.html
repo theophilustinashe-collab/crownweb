@@ -5200,115 +5200,148 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
-     LIVE REVIEW WALL — powered by Firebase Firestore (free tier)
-     ⚠️ SETUP REQUIRED: replace firebaseConfig below with your own project's
-     config from the Firebase Console, and set the Firestore security rules
-     described in the message from your developer / the setup notes.
+     LIVE REVIEW WALL — powered by JSONBlob (jsonblob.com), a free, keyless
+     JSON storage service. No account, no API key, no config needed.
+
+     ⚠️ ONE-TIME SETUP: the very first time this page loads on your live site,
+     you'll see an "Activate Reviews" banner above the review form. Click it
+     once — it creates your storage and shows you a short ID. Copy that ID,
+     paste it below where it says PASTE_YOUR_BLOB_ID_HERE, save the file, and
+     re-upload. After that, the banner disappears for everyone and reviews
+     work normally, shared live across all visitors.
      ═══════════════════════════════════════════════════════════════════════════ -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import {
-    getFirestore, collection, addDoc, onSnapshot,
-    query, orderBy, limit, serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<script>
+(function(){
+  // ── PASTE YOUR BLOB ID HERE AFTER CLICKING "ACTIVATE REVIEWS" ──
+  var BLOB_ID = "PASTE_YOUR_BLOB_ID_HERE";
 
-  // ── REPLACE THESE WITH YOUR FIREBASE PROJECT CONFIG ──
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const reviewsRef = collection(db, "reviews");
-
-  let selectedRating = 0;
-  const starEls = document.querySelectorAll('#rev-stars span');
+  var JB_BASE = "https://jsonblob.com/api/jsonBlob";
+  var wall = document.getElementById('review-wall');
+  var formWrap = document.querySelector('.review-form-wrap');
+  var selectedRating = 0;
+  var starEls = document.querySelectorAll('#rev-stars span');
 
   function updateStars(){
-    starEls.forEach(s => s.classList.toggle('on', parseInt(s.dataset.val, 10) <= selectedRating));
+    starEls.forEach(function(s){
+      s.classList.toggle('on', parseInt(s.dataset.val, 10) <= selectedRating);
+    });
   }
-  starEls.forEach(star => {
-    star.addEventListener('click', () => {
+  starEls.forEach(function(star){
+    star.addEventListener('click', function(){
       selectedRating = parseInt(star.dataset.val, 10);
       updateStars();
     });
   });
 
   function escapeHTML(str){
-    return String(str).replace(/[&<>"']/g, c => ({
-      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
-    }[c]));
+    return String(str).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
   }
 
-  function timeAgo(date){
-    if(!date) return '';
-    const secs = Math.floor((Date.now() - date.getTime()) / 1000);
-    const units = [[31536000,'year'],[2592000,'month'],[86400,'day'],[3600,'hour'],[60,'minute']];
-    for(const [s,label] of units){
-      const v = Math.floor(secs / s);
-      if(v >= 1) return `${v} ${label}${v > 1 ? 's' : ''} ago`;
+  function timeAgo(ts){
+    if(!ts) return 'Just now';
+    var secs = Math.floor((Date.now() - ts) / 1000);
+    var units = [[31536000,'year'],[2592000,'month'],[86400,'day'],[3600,'hour'],[60,'minute']];
+    for(var i=0;i<units.length;i++){
+      var v = Math.floor(secs / units[i][0]);
+      if(v >= 1) return v + ' ' + units[i][1] + (v > 1 ? 's' : '') + ' ago';
     }
     return 'just now';
   }
 
-  function renderReviews(snapshot){
-    const wall = document.getElementById('review-wall');
-    if(snapshot.empty){
-      wall.innerHTML = '<div class="review-empty" id="review-empty">Be the first to leave a review — your words will appear right here for everyone to see.</div>';
+  function renderReviews(reviews){
+    if(!reviews || reviews.length === 0){
+      wall.innerHTML = '<div class="review-empty">Be the first to leave a review — your words will appear right here for everyone to see.</div>';
       return;
     }
-    wall.innerHTML = '';
-    snapshot.forEach(doc => {
-      const r = doc.data();
-      const rating = Math.max(0, Math.min(5, parseInt(r.rating, 10) || 0));
-      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-      const date = (r.createdAt && r.createdAt.toDate) ? timeAgo(r.createdAt.toDate()) : 'Just now';
-      const card = document.createElement('div');
-      card.className = 'review-card';
-      card.innerHTML = `
-        <div class="review-quote">&quot;</div>
-        <div class="review-stars">${stars}</div>
-        <div class="review-text">${escapeHTML(r.text || '')}</div>
-        <div class="review-name">${escapeHTML(r.name || 'Anonymous')}</div>
-        ${r.business ? `<div class="review-biz">${escapeHTML(r.business)}</div>` : ''}
-        <div class="review-date">${date}</div>
-      `;
-      wall.appendChild(card);
-    });
+    var sorted = reviews.slice().sort(function(a,b){ return (b.ts||0) - (a.ts||0); });
+    wall.innerHTML = sorted.map(function(r){
+      var rating = Math.max(0, Math.min(5, parseInt(r.rating,10) || 0));
+      var stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      return '' +
+        '<div class="review-card">' +
+          '<div class="review-quote">&quot;</div>' +
+          '<div class="review-stars">' + stars + '</div>' +
+          '<div class="review-text">' + escapeHTML(r.text || '') + '</div>' +
+          '<div class="review-name">' + escapeHTML(r.name || 'Anonymous') + '</div>' +
+          (r.business ? '<div class="review-biz">' + escapeHTML(r.business) + '</div>' : '') +
+          '<div class="review-date">' + timeAgo(r.ts) + '</div>' +
+        '</div>';
+    }).join('');
   }
 
-  try {
-    const q = query(reviewsRef, orderBy('createdAt', 'desc'), limit(60));
-    onSnapshot(q, renderReviews, (err) => {
-      console.error('Reviews load error:', err);
-      document.getElementById('review-wall').innerHTML = '<div class="review-empty">Reviews are temporarily unavailable.</div>';
-    });
-  } catch(e){
-    console.error(e);
+  function loadReviews(){
+    if(!isConfigured()) return;
+    wall.innerHTML = '<div class="review-empty">Loading reviews…</div>';
+    fetch(JB_BASE + '/' + BLOB_ID, { headers: { 'Accept': 'application/json' } })
+      .then(function(res){ if(!res.ok) throw new Error('load failed'); return res.json(); })
+      .then(function(data){ renderReviews((data && data.reviews) || []); })
+      .catch(function(err){
+        console.error(err);
+        wall.innerHTML = '<div class="review-empty">Reviews are temporarily unavailable.</div>';
+      });
   }
 
-  window.submitReview = async function(){
-    const nameEl = document.getElementById('rev-name');
-    const bizEl = document.getElementById('rev-business');
-    const textEl = document.getElementById('rev-text');
-    const hpEl = document.getElementById('rev-hp');
-    const errEl = document.getElementById('rev-error');
-    const btn = document.getElementById('rev-submit-btn');
-    const spinner = document.getElementById('rev-spinner');
+  function isConfigured(){
+    return BLOB_ID && BLOB_ID.indexOf('PASTE_YOUR') !== 0;
+  }
+
+  function showActivateBanner(){
+    var banner = document.createElement('div');
+    banner.style.cssText = 'max-width:660px;margin:0 auto 1.6rem;background:rgba(191,160,106,.16);border:1px solid rgba(191,160,106,.4);border-radius:12px;padding:1.1rem 1.4rem;text-align:center;font-size:.84rem;color:var(--dark);';
+    banner.innerHTML = '⚠️ Reviews aren\'t activated yet. <button id="activate-reviews-btn" style="margin-left:.5rem;background:var(--black);color:#fff;border:none;padding:.5rem 1rem;border-radius:20px;font-size:.78rem;cursor:pointer;">Activate Reviews</button>';
+    formWrap.parentNode.insertBefore(banner, formWrap);
+    document.getElementById('activate-reviews-btn').addEventListener('click', function(){
+      this.disabled = true;
+      this.textContent = 'Creating…';
+      fetch(JB_BASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ reviews: [] })
+      }).then(function(res){
+        var loc = res.headers.get('Location');
+        var id = loc ? loc.split('/').pop() : null;
+        if(!id) throw new Error('no id returned');
+        banner.innerHTML = '✅ Reviews activated! Copy this ID and paste it into index.html where it says PASTE_YOUR_BLOB_ID_HERE:<br><br>' +
+          '<code style="background:#fff;padding:.4rem .8rem;border-radius:6px;font-size:.9rem;user-select:all;">' + id + '</code>';
+      }).catch(function(err){
+        console.error(err);
+        banner.innerHTML = '❌ Could not activate reviews. Please check your internet connection and try again.';
+      });
+    });
+    wall.innerHTML = '<div class="review-empty">Reviews will appear here once activated.</div>';
+  }
+
+  if(isConfigured()){
+    loadReviews();
+  } else {
+    showActivateBanner();
+  }
+
+  window.submitReview = function(){
+    var nameEl = document.getElementById('rev-name');
+    var bizEl = document.getElementById('rev-business');
+    var textEl = document.getElementById('rev-text');
+    var hpEl = document.getElementById('rev-hp');
+    var errEl = document.getElementById('rev-error');
+    var btn = document.getElementById('rev-submit-btn');
+    var spinner = document.getElementById('rev-spinner');
 
     errEl.style.display = 'none';
+
+    if(!isConfigured()){
+      errEl.textContent = 'Reviews are not activated yet on this site. Please contact the site owner.';
+      errEl.style.display = 'block';
+      return;
+    }
 
     // Honeypot: bots fill hidden fields, humans never see this input
     if(hpEl.value){ return; }
 
-    const name = nameEl.value.trim();
-    const business = bizEl.value.trim();
-    const text = textEl.value.trim();
+    var name = nameEl.value.trim();
+    var business = bizEl.value.trim();
+    var text = textEl.value.trim();
 
     if(!name || !text || selectedRating < 1){
       errEl.textContent = 'Please add your name, a star rating, and a short review.';
@@ -5324,28 +5357,44 @@ document.addEventListener('DOMContentLoaded',()=>{
     btn.disabled = true;
     spinner.style.display = 'block';
 
-    try {
-      await addDoc(reviewsRef, {
-        name: name.slice(0, 60),
-        business: business.slice(0, 60),
-        text: text.slice(0, 500),
-        rating: selectedRating,
-        createdAt: serverTimestamp()
+    fetch(JB_BASE + '/' + BLOB_ID, { headers: { 'Accept': 'application/json' } })
+      .then(function(res){ if(!res.ok) throw new Error('read failed'); return res.json(); })
+      .then(function(data){
+        var reviews = (data && data.reviews) || [];
+        reviews.push({
+          name: name.slice(0, 60),
+          business: business.slice(0, 60),
+          text: text.slice(0, 500),
+          rating: selectedRating,
+          ts: Date.now()
+        });
+        return fetch(JB_BASE + '/' + BLOB_ID, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ reviews: reviews })
+        }).then(function(res){
+          if(!res.ok) throw new Error('write failed');
+          renderReviews(reviews);
+        });
+      })
+      .then(function(){
+        nameEl.value = '';
+        bizEl.value = '';
+        textEl.value = '';
+        selectedRating = 0;
+        updateStars();
+      })
+      .catch(function(err){
+        console.error(err);
+        errEl.textContent = 'Something went wrong posting your review. Please try again.';
+        errEl.style.display = 'block';
+      })
+      .finally(function(){
+        btn.disabled = false;
+        spinner.style.display = 'none';
       });
-      nameEl.value = '';
-      bizEl.value = '';
-      textEl.value = '';
-      selectedRating = 0;
-      updateStars();
-    } catch(e){
-      console.error(e);
-      errEl.textContent = 'Something went wrong posting your review. Please try again.';
-      errEl.style.display = 'block';
-    } finally {
-      btn.disabled = false;
-      spinner.style.display = 'none';
-    }
   };
+})();
 </script>
 
 </body>

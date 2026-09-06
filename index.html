@@ -82,533 +82,6 @@
   --glass-shadow:0 20px 50px rgba(20,15,5,.09);
   --glass-blur:blur(22px) saturate(180%);
 }
-/* DARK MODE */
-body.dark-mode{--white:#111827;--off:#1a2235;--black:#f3f4f6;--dark:#e5e7eb;--mid:#9ca3af;--light:#4b5563;--accent:#d4a96a;--adark:#bfa06a;--border:#374151;--glass-bg:rgba(255,255,255,.055);--glass-bg-strong:rgba(255,255,255,.08);--glass-border:rgba(255,255,255,.14);--glass-shadow:0 20px 50px rgba(0,0,0,.4);}
-body.dark-mode nav{background:rgba(17,24,39,.7);}
-body.dark-mode .price-card.feat{background:linear-gradient(160deg,var(--glass-bg-strong) 70%,rgba(191,160,106,.1));border-color:var(--accent);}
-body.dark-mode .price-card.feat .btn-price{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600;}
-body.dark-mode .price-card.feat .btn-price:hover{background:var(--adark);border-color:var(--adark);}
-body.dark-mode .browser-mock,body.dark-mode .url-bar{filter:brightness(.85);}
-body.dark-mode .milan-controls{background:#1e2530;}
-body.dark-mode .pay-soon-banner{background:rgba(191,160,106,.1);border-color:rgba(191,160,106,.3);}
-
-/* ═════════════════════════════════════════════════════════════════════
-   COMPREHENSIVE DARK MODE TEXT & VISIBILITY FIXES
-   ═════════════════════════════════════════════════════════════════════ */
-
-/* HERO DARK MODE VISIBILITY FIX */
-body.dark-mode .hero-title,
-body.dark-mode .hero-title em{
-  color:#f9fafb !important;
-}
-body.dark-mode .hero-sub,
-body.dark-mode .hero p,
-body.dark-mode .hero .ceo-note p{
-  color:#d1d5db !important;
-}
-body.dark-mode .hero{
-  position:relative;
-}
-body.dark-mode .hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.25);
-  pointer-events:none;
-}
-body.dark-mode .hero > *{
-  position:relative;
-  z-index:1;
-}
-
-/* Dark mode text colors for all sections */
-body.dark-mode {
-  color: #e5e7eb;
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6,
-body.dark-mode .stitle,
-body.dark-mode .sey,
-body.dark-mode .hero-title {
-  color: #f9fafb !important;
-}
-
-body.dark-mode p,
-body.dark-mode li,
-body.dark-mode td,
-body.dark-mode .ssub,
-body.dark-mode .stat-lbl,
-body.dark-mode .ps-lbl {
-  color: #d1d5db !important;
-}
-
-/* Persuade section dark mode */
-body.dark-mode .persuade {
-  background: linear-gradient(150deg, #0f172a 0%, #1a1f2e 100%) !important;
-}
-
-body.dark-mode .persuade h2 {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .persuade p {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .persuade-stats > div {
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-body.dark-mode .ps-num {
-  color: #d4a96a !important;
-}
-
-body.dark-mode .ps-lbl {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-
-/* Stats section dark mode */
-body.dark-mode .stats {
-  background: #1a2235 !important;
-  border-color: #374151 !important;
-}
-
-body.dark-mode .stat {
-  color: #e5e7eb !important;
-}
-
-body.dark-mode .stat-num {
-  color: #d4a96a !important;
-}
-
-body.dark-mode .stat-lbl {
-  color: #cbd5e1 !important;
-}
-
-/* Trust strip dark mode */
-body.dark-mode .trust-strip {
-  background: #0f172a !important;
-  border-color: #374151 !important;
-}
-
-body.dark-mode .trust-item {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .ti-ico {
-  color: #d4a96a !important;
-}
-
-/* Cards dark mode */
-body.dark-mode .serve-card,
-body.dark-mode .svc-card,
-body.dark-mode .supp-card,
-body.dark-mode .approach-card,
-body.dark-mode .port-card {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-}
-
-body.dark-mode .serve-card:hover,
-body.dark-mode .svc-card:hover,
-body.dark-mode .supp-card:hover,
-body.dark-mode .approach-card:hover {
-  background: var(--glass-bg-strong) !important;
-  border-color: rgba(212, 169, 106, 0.4) !important;
-}
-
-body.dark-mode .sc-title,
-body.dark-mode .svc-title,
-body.dark-mode .supp-title,
-body.dark-mode .approach-title {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .sc-desc,
-body.dark-mode .svc-desc,
-body.dark-mode .supp-desc,
-body.dark-mode .approach-row {
-  color: #cbd5e1 !important;
-}
-
-/* Section headings dark mode */
-body.dark-mode section .stitle {
-  color: #f9fafb !important;
-}
-
-body.dark-mode section .ssub {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .sey {
-  color: #d4a96a !important;
-}
-
-body.dark-mode .sey::before {
-  background: #d4a96a !important;
-}
-
-/* Form elements dark mode */
-body.dark-mode input,
-body.dark-mode select,
-body.dark-mode textarea {
-  background: #1a2235 !important;
-  color: #e5e7eb !important;
-  border-color: #374151 !important;
-}
-
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder {
-  color: #6b7280 !important;
-}
-
-body.dark-mode input:focus,
-body.dark-mode select:focus,
-body.dark-mode textarea:focus {
-  border-color: #d4a96a !important;
-  box-shadow: 0 0 0 3px rgba(212, 169, 106, 0.1) !important;
-}
-
-body.dark-mode label {
-  color: #cbd5e1 !important;
-}
-
-/* Modal dark mode */
-body.dark-mode .modal {
-  background: var(--glass-bg-strong) !important;
-  border-color: var(--glass-border) !important;
-  color: #e5e7eb !important;
-}
-
-body.dark-mode .mlogo {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .mclose {
-  color: #6b7280 !important;
-}
-
-body.dark-mode .mclose:hover {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .mtab {
-  color: #9ca3af !important;
-  border-bottom-color: transparent !important;
-}
-
-body.dark-mode .mtab.act {
-  color: #f9fafb !important;
-  border-bottom-color: #d4a96a !important;
-}
-
-/* Pricing dark mode */
-body.dark-mode .price-card {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-}
-
-body.dark-mode .price-plan {
-  color: #d4a96a !important;
-}
-
-body.dark-mode .price-amount {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .price-amount sup {
-  color: #9ca3af !important;
-}
-
-body.dark-mode .price-desc,
-body.dark-mode .price-feats li {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .price-feats li.no {
-  color: #6b7280 !important;
-}
-
-body.dark-mode .price-feats li::before {
-  color: #d4a96a !important;
-}
-
-body.dark-mode .btn-price {
-  background: transparent !important;
-  color: #e5e7eb !important;
-  border-color: #374151 !important;
-}
-
-body.dark-mode .btn-price:hover {
-  background: #374151 !important;
-  color: #f9fafb !important;
-}
-
-/* FAQ dark mode */
-body.dark-mode .faq-q {
-  color: #e5e7eb !important;
-}
-
-body.dark-mode .faq-q:hover {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .faq-ans {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .faq-icon {
-  color: #d4a96a !important;
-  border-color: #374151 !important;
-}
-
-body.dark-mode .faq-item.open .faq-icon {
-  background: #d4a96a !important;
-  color: #111827 !important;
-}
-
-/* Calculator dark mode */
-body.dark-mode .calc-res {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-}
-
-body.dark-mode .cr-lbl {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-body.dark-mode .cr-price {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .cr-sub,
-body.dark-mode .cr-row {
-  color: rgba(255, 255, 255, 0.35) !important;
-}
-
-body.dark-mode .cr-row.tot {
-  color: #f9fafb !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Process steps dark mode */
-body.dark-mode .step-title {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .step-desc {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-body.dark-mode .step-num {
-  color: #d4a96a !important;
-  border-color: rgba(212, 169, 106, 0.3) !important;
-  background: rgba(212, 169, 106, 0.1) !important;
-}
-
-/* Founder section: glass panel sits on a video background in both
-   light and dark mode, so it keeps one fixed light-on-glass palette
-   instead of switching with the theme. No dark-mode overrides needed. */
-
-/* Portfolio dark mode */
-body.dark-mode .port-card {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-}
-
-body.dark-mode .port-industry-tag {
-  background: rgba(212, 169, 106, 0.1) !important;
-  border-color: rgba(212, 169, 106, 0.2) !important;
-  color: #d4a96a !important;
-}
-
-body.dark-mode .port-project-name {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .port-desc {
-  color: #cbd5e1 !important;
-}
-
-/* Comments dark mode */
-body.dark-mode .cm-item,
-body.dark-mode .cm-form {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-}
-
-body.dark-mode .cm-name {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .cm-text,
-body.dark-mode .cm-date {
-  color: #cbd5e1 !important;
-}
-
-/* Referral dark mode */
-body.dark-mode .ref-card {
-  background: linear-gradient(135deg, #0f172a, #1a2235) !important;
-}
-
-body.dark-mode .ref-card h4,
-body.dark-mode .ref-card p {
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-
-body.dark-mode .ref-code {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: #d4a96a !important;
-}
-
-/* Appointment dark mode */
-body.dark-mode .appt-type {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-  color: #e5e7eb !important;
-}
-
-body.dark-mode .appt-type:hover {
-  border-color: rgba(212, 169, 106, 0.4) !important;
-}
-
-body.dark-mode .at-title {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .at-desc {
-  color: #cbd5e1 !important;
-}
-
-body.dark-mode .appt-form {
-  background: var(--glass-bg) !important;
-  border-color: var(--glass-border) !important;
-}
-
-body.dark-mode .appt-form h4 {
-  color: #f9fafb !important;
-}
-
-/* Footer dark mode */
-body.dark-mode footer {
-  background: #0f172a !important;
-}
-
-body.dark-mode .foot-brand p {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-body.dark-mode .foot-col h4 {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-body.dark-mode .foot-col ul li a {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-
-body.dark-mode .foot-col ul li a:hover {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .foot-copy {
-  color: rgba(255, 255, 255, 0.25) !important;
-}
-
-body.dark-mode footer::before {
-  background: linear-gradient(90deg, transparent, rgba(212, 169, 106, 0.3), transparent) !important;
-}
-
-/* CTA section dark mode */
-body.dark-mode .cta-sec {
-  background: linear-gradient(160deg, #1a2235 0%, #0f172a 100%) !important;
-}
-
-body.dark-mode .cta-sec::before {
-  color: rgba(255, 255, 255, 0.05) !important;
-}
-
-body.dark-mode .cta-sec h2 {
-  color: #f9fafb !important;
-}
-
-body.dark-mode .cta-sec p {
-  color: #cbd5e1 !important;
-}
-
-/* ═════════════════════════════════════════════════════════════════════
-   DARK MODE FALLBACK: Ensure ALL text is visible
-   ═════════════════════════════════════════════════════════════════════ */
-
-/* Catch-all for any remaining text elements */
-body.dark-mode strong, body.dark-mode b { color: #f9fafb !important; }
-body.dark-mode em, body.dark-mode i { color: #cbd5e1 !important; }
-body.dark-mode a { color: #d4a96a !important; }
-body.dark-mode a:hover, body.dark-mode a:focus { color: #e5c580 !important; }
-
-body.dark-mode .ceo-note {
-  background: linear-gradient(135deg, rgba(26, 34, 53, 0.9), rgba(212, 169, 106, 0.08)) !important;
-  border-color: rgba(212, 169, 106, 0.3) !important;
-}
-body.dark-mode .ceo-note p { color: #cbd5e1 !important; }
-body.dark-mode .ceo-note strong { color: #d4a96a !important; }
-
-body.dark-mode .custom-card {
-  background: linear-gradient(135deg, #0f172a, #1a2235) !important;
-  border-color: rgba(212, 169, 106, 0.15) !important;
-}
-body.dark-mode .custom-card h3 { color: #f9fafb !important; }
-body.dark-mode .custom-card p { color: rgba(255, 255, 255, 0.4) !important; }
-
-/* Table visibility */
-body.dark-mode table { background: #1a2235 !important; }
-body.dark-mode table thead { background: #243249 !important; }
-body.dark-mode table thead th { color: #f9fafb !important; border-color: #374151 !important; }
-body.dark-mode table tbody tr { border-color: #374151 !important; }
-body.dark-mode table tbody td { color: #cbd5e1 !important; border-color: #374151 !important; }
-
-/* Buttons */
-body.dark-mode .btn-dark { background: #374151 !important; color: #f9fafb !important; }
-body.dark-mode .btn-dark:hover { background: #4b5563 !important; }
-body.dark-mode .btn-outline { border-color: #374151 !important; color: #e5e7eb !important; }
-body.dark-mode .btn-outline:hover { background: #374151 !important; color: #f9fafb !important; }
-body.dark-mode .btn-ghost { background: rgba(255, 255, 255, 0.05) !important; border-color: #374151 !important; color: #9ca3af !important; }
-body.dark-mode .btn-ghost:hover { background: rgba(255, 255, 255, 0.1) !important; color: #f9fafb !important; }
-
-/* All buttons */
-body.dark-mode button, body.dark-mode [role="button"] { color: #e5e7eb !important; }
-body.dark-mode button:hover, body.dark-mode [role="button"]:hover { color: #f9fafb !important; }
-
-/* Badges and tags */
-body.dark-mode .feat-badge { background: linear-gradient(90deg, #1a1810, #8a6e3e) !important; color: #f9fafb !important; }
-body.dark-mode .sc-rec, body.dark-mode .approach-tag, body.dark-mode .port-industry-tag {
-  background: rgba(212, 169, 106, 0.1) !important;
-  border-color: rgba(212, 169, 106, 0.2) !important;
-  color: #d4a96a !important;
-}
-body.dark-mode .at-badge { background: rgba(37, 211, 102, 0.1) !important; border-color: rgba(37, 211, 102, 0.2) !important; color: #28c840 !important; }
-
-/* Lists */
-body.dark-mode ol, body.dark-mode ul { color: #cbd5e1 !important; }
-
-/* Navigation */
-body.dark-mode .nav-links a { color: #cbd5e1 !important; }
-body.dark-mode .nav-links a:hover, body.dark-mode .nav-links a.active { color: #f9fafb !important; }
-
-/* Dropdowns */
-
-/* Placeholders */
-body.dark-mode ::placeholder { color: #6b7280 !important; opacity: 1 !important; }
-body.dark-mode :-ms-input-placeholder { color: #6b7280 !important; }
-body.dark-mode ::-ms-input-placeholder { color: #6b7280 !important; }
-
-.dark-toggle{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--border);border-radius:50%;background:transparent;cursor:pointer;color:var(--mid);transition:all .2s;flex-shrink:0;}
-.dark-toggle:hover{border-color:var(--accent);color:var(--accent);}
 html{scroll-behavior:smooth;width:100%;margin:0;padding:0;scroll-snap-type:y mandatory;}
 body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-bottom:60px;width:100%;margin:0;padding-left:0;padding-right:0;box-sizing:border-box;}
 
@@ -688,6 +161,19 @@ nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.07);padding:.6rem 5vw;}
 .btn-green:hover{background:#1da851;}
 /* HERO */
 body > section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;scroll-snap-align:start;scroll-snap-stop:always;}
+/* FIX: mobile Safari (and some Android WebViews) has a long-standing bug
+   where a "position:fixed" element -- our nav header here -- becomes
+   invisible or gets clipped when an ancestor uses CSS scroll-snap with
+   scroll-snap-type:mandatory + scroll-snap-stop:always (both set above,
+   for desktop). Disabling scroll-snap only on narrow viewports keeps the
+   desktop snap-scroll effect intact while making the fixed nav render
+   reliably on phones, which matters far more than the snap effect on a
+   small screen. Placed right after the base rule (same selectors, same
+   specificity) so it wins the cascade instead of being overridden by it. */
+@media (max-width: 768px) {
+  html { scroll-snap-type: none; }
+  body > section { scroll-snap-align: none; scroll-snap-stop: normal; }
+}
 .hero{min-height:100vh!important;min-height:100dvh!important;height:100vh!important;height:100dvh!important;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 6vw 5rem;gap:4rem;width:100%;box-sizing:border-box;margin:0;}
 .hero-eyebrow{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:1.3rem;opacity:0;animation:fadeUp .8s .1s ease forwards;display:flex;align-items:center;gap:.7rem;}
 .hero-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent);}
@@ -702,11 +188,8 @@ body > section{min-height:100vh;display:flex;flex-direction:column;justify-conte
 .hero-visual{position:relative;height:500px;opacity:0;animation:fadeIn 1.2s .6s ease forwards;}
 .hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
 .hero-overlay{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 42% 58% at 21% 44%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.88) 35%,rgba(255,255,255,.5) 60%,rgba(255,255,255,0) 82%);}
-body.dark-mode .hero-overlay{background:radial-gradient(ellipse 34% 42% at 20% 46%,rgba(10,10,10,.9) 0%,rgba(10,10,10,.68) 30%,rgba(10,10,10,.3) 55%,rgba(10,10,10,0) 78%);}
 .hero-content{background:transparent;text-shadow:0 2px 24px rgba(255,255,255,.4);}
-body.dark-mode .hero-content{text-shadow:0 2px 24px rgba(0,0,0,.5);}
 @media(max-width:760px){.hero-overlay{background:linear-gradient(180deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.55) 30%,rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 65%);}
-body.dark-mode .hero-overlay{background:linear-gradient(180deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.5) 30%,rgba(10,10,10,.1) 50%,rgba(10,10,10,0) 65%);}
 .hero-content{padding:0;}}
 .browser-mock{position:absolute;inset:0;background:var(--off);border-radius:14px;border:1px solid var(--border);overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.06);}
 .browser-bar{background:var(--white);border-bottom:1px solid var(--border);padding:.65rem .9rem;display:flex;align-items:center;gap:.38rem;}
@@ -1498,7 +981,7 @@ a:focus-visible {
 }
 
 /* Nav toggle improved touch area (mobile only) */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 .nav-toggle {
   min-width: 44px;
   min-height: 44px;
@@ -1506,12 +989,6 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
 }
-}
-
-/* Dark mode toggle improved touch area */
-.dark-toggle {
-  min-width: 44px;
-  min-height: 44px;
 }
 
 /* Tablet breakpoint (768px-1024px) */
@@ -1870,13 +1347,15 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 .founder-name,.founder-role{text-align:center;}
 .founder-cred-grid{grid-template-columns:1fr;}
 }
-@media(max-width:600px){
+@media(max-width:768px){
 .nav-toggle{display:flex;align-items:center;justify-content:center;}
 .nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:var(--glass-bg-strong);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);flex-direction:column;align-items:stretch;padding:1rem 6vw 1.4rem;border-bottom:1px solid var(--glass-border);box-shadow:0 16px 34px rgba(0,0,0,.1);gap:.9rem;max-height:calc(100vh - 58px);overflow-y:auto;}
 .nav-links.open{display:flex;}
 .nav-links li{width:100%;}
 .nav-links a{font-size:.92rem;padding:.2rem 0;}
 .nav-links .btn{width:100%;text-align:center;}
+}
+@media(max-width:600px){
 .port-grid{grid-template-columns:1fr;}
 .portfolio-grid{gap:1.4rem;}
 .portfolio-grid img{max-height:260px;object-fit:cover;object-position:top;}
@@ -2352,111 +1831,11 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
   .hero > :not(.mobile-hero-art):not(.hero-bg-video):not(.hero-overlay){z-index:2!important;}
 }
 
-/* ===== FINAL DARK MODE HERO FIX ===== */
-body.dark-mode .hero,
-body.dark-mode .hero *{
-  color:#f3f4f6 !important;
-}
-body.dark-mode .hero-title{
-  color:#ffffff !important;
-}
-body.dark-mode .hero-title em{
-  color:#d4a96a !important;
-}
-body.dark-mode .hero-sub,
-body.dark-mode .ceo-note p{
-  color:#d1d5db !important;
-}
-@media (max-width:760px){
-  body.dark-mode .hero{
-    background:#111827 !important;
-  }
-  body.dark-mode .hero::before{
-    content:"" !important;
-    position:absolute !important;
-    inset:0 !important;
-    background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.25) 100%) !important;
-    z-index:0 !important;
-  }
-  body.dark-mode .hero > *{
-    position:relative;
-    z-index:2;
-  }
-}
 
 </style>
 
-<style id="ultimate-dark-hero-fix">
-@media (max-width:760px){
-  body.dark-mode .hero{
-    background:#0f172a !important;
-    background-image:none !important;
-    min-height:100svh !important;
-  }
-  body.dark-mode .hero::before{
-    display:none !important;
-  }
-  body.dark-mode .hero-title,
-  body.dark-mode .hero-title *,
-  body.dark-mode .hero h1{
-    color:#ffffff !important;
-    opacity:1 !important;
-    visibility:visible !important;
-    text-shadow:0 1px 2px rgba(0,0,0,.6) !important;
-  }
-  body.dark-mode .hero-sub,
-  body.dark-mode .hero p,
-  body.dark-mode .hero li{
-    color:#e5e7eb !important;
-    opacity:1 !important;
-    visibility:visible !important;
-  }
-  body.dark-mode .hero > div:first-child,.hero .hero-content{
-    position:relative !important;
-    z-index:999 !important;
-  }
-}
-</style>
 
 
-<style id="dark-mode-hero-overlay-killer">
-@media (max-width:760px){
-  body.dark-mode .hero{
-    background-color:#0f172a !important;
-  }
-
-  /* Remove all white gradient panels */
-  body.dark-mode .hero::before,
-  body.dark-mode .hero::after{
-    content:none !important;
-    display:none !important;
-    background:none !important;
-    opacity:0 !important;
-  }
-
-  /* Force readable text */
-  body.dark-mode .hero-title,
-  body.dark-mode .hero-title *,
-  body.dark-mode .hero h1{
-    color:#ffffff !important;
-    text-shadow:none !important;
-    opacity:1 !important;
-  }
-
-  body.dark-mode .hero-sub,
-  body.dark-mode .hero p,
-  body.dark-mode .hero li{
-    color:#e5e7eb !important;
-    opacity:1 !important;
-  }
-
-  body.dark-mode .hero > div:first-child,.hero .hero-content,
-  body.dark-mode .hero .hero-content{
-    position:relative !important;
-    z-index:9999 !important;
-  }
-}
-</style>
 
 <!-- ===== Mobile hero legibility fix: dark backdrop panel behind hero text + visible secondary button (mobile only) ===== -->
 <style id="mobile-hero-legibility-fix">
@@ -3023,9 +2402,6 @@ document.addEventListener('DOMContentLoaded', function(){
 .tb-badge:hover{border-color:var(--accent);transform:translateY(-1px);}
 .tb-badge svg{width:12px;height:12px;flex-shrink:0;color:var(--accent);}
 .tb-quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;line-height:1.55;color:var(--dark);position:relative;padding-left:1.1rem;border-left:2px solid var(--accent);}
-body.dark-mode .trust-bar{background:var(--white);border-color:var(--border);}
-body.dark-mode .tb-badge{background:rgba(191,160,106,.06);border-color:var(--border);color:var(--dark);}
-body.dark-mode .tb-mark{color:var(--black);}
 @media(max-width:900px){
   .tb-inner{grid-template-columns:1fr;gap:1.8rem;}
   .tb-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);}
@@ -3987,7 +3363,7 @@ body.dark-mode .tb-mark{color:var(--black);}
 <!-- LEGAL MODAL -->
 <div class="overlay" id="legal-overlay" onclick="closeIfOverlay(event,'legal-overlay')">
   <div class="modal">
-    <div class="mhead"><div class="mlogo">Crown<span>Web</span> Agency</div><button class="mclose" onclick="closeLegal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="mhead"><div class="mlogo">Crown<span>Web</span> Agency</div><button class="mclose" aria-label="Close" onclick="closeLegal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="mtabs">
       <button class="mtab act" id="tab-terms" onclick="switchLegal('terms')">Terms of Service</button>
       <button class="mtab" id="tab-privacy" onclick="switchLegal('privacy')">Privacy Policy</button>
@@ -4015,7 +3391,7 @@ body.dark-mode .tb-mark{color:var(--black);}
     <div id="pay-main">
       <div class="mhead">
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:400;">Reserve Your Project</h3>
-        <button class="mclose" onclick="closePay()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <button class="mclose" aria-label="Close" onclick="closePay()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
 
       <!-- ── CHANGE 4: Coming-soon banner ── -->
@@ -4447,6 +3823,7 @@ function closeMobileNav(){
 document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',closeMobileNav));
 });
+
 
 function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 function toggleFaqMore(){const more=document.getElementById('faq-more');const btn=document.getElementById('faq-show-more-btn');const label=document.getElementById('faq-show-more-label');const isOpen=more.classList.contains('open');more.classList.toggle('open');btn.classList.toggle('open');label.textContent=isOpen?'Show 4 more questions':'Show fewer questions';}
@@ -5062,7 +4439,6 @@ async function unlockAdmin(){
 @keyframes dividerFlow{from{background-position:200% 0}to{background-position:-200% 0}}
 .premium-content{position:relative;z-index:10;max-width:800px;margin:auto;text-align:center}
 .premium-content h2{color:#fff}.premium-content p{color:#cbd5e1}
-body.dark-mode .premium-bg-section{background:linear-gradient(135deg,#020617,#0f172a,#111827)}
 </style>
 
 

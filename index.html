@@ -1144,18 +1144,24 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .supp-form{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:11px;padding:1.9rem;margin-top:2.2rem;max-width:660px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);}
 .supp-form h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;margin-bottom:1.2rem;}
 /* INQUIRY */
-#inquire{background:var(--off);}
-.inq-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:3.5rem;margin-top:2.8rem;align-items:start;}
+#inquire{background:linear-gradient(135deg,#f8f4ea 0%,#efe8d8 55%,#f6f1e4 100%);position:relative;overflow:hidden;}
+.inquire-content{position:relative;z-index:1;}
+.inquire-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.inquire-blob-1{width:340px;height:340px;background:rgba(191,160,106,.32);top:-90px;left:-70px;}
+.inquire-blob-2{width:300px;height:300px;background:rgba(138,110,62,.2);bottom:-110px;right:-60px;}
+.inquire-blob-3{width:240px;height:240px;background:rgba(212,169,106,.26);top:60%;left:70%;}
+.inq-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:2rem;margin-top:2.8rem;align-items:start;}
+.inq-info-box{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 30px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);padding:2.2rem;height:100%;box-sizing:border-box;}
 .inq-info h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;color:var(--black);margin-bottom:.75rem;line-height:1.3;}
 .inq-info p{font-size:.84rem;color:var(--mid);line-height:1.8;font-weight:300;margin-bottom:1.2rem;}
 .inq-contact{display:flex;align-items:center;gap:.65rem;font-size:.82rem;color:var(--mid);margin-bottom:.55rem;}
 .inq-contact a{color:var(--mid);text-decoration:none;}
 .inq-contact a:hover{color:var(--dark);}
-.inq-ico{width:28px;height:28px;border-radius:50%;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--adark);flex-shrink:0;}
-.inq-form-box{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2.2rem;}
+.inq-ico{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.65);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:var(--adark);flex-shrink:0;}
+.inq-form-box{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 30px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);padding:2.2rem;}
 .inq-field{margin-bottom:.9rem;}
 .inq-field label{display:block;font-size:.71rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);margin-bottom:.35rem;}
-.inq-field input,.inq-field select,.inq-field textarea{width:100%;padding:.68rem .9rem;border:1px solid var(--glass-border);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--dark);background:var(--glass-bg);outline:none;transition:border-color .2s;resize:vertical;}
+.inq-field input,.inq-field select,.inq-field textarea{width:100%;padding:.68rem .9rem;border:1px solid rgba(255,255,255,.5);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--dark);background:rgba(255,255,255,.35);outline:none;transition:border-color .2s;resize:vertical;}
 .inq-field input:focus,.inq-field select:focus,.inq-field textarea:focus{border-color:var(--accent);}
 /* ADMIN BAR */
 .admin-bar{position:fixed;bottom:0;left:0;right:0;background:#0e0e0e;color:#fff;padding:.55rem 2rem;display:none;align-items:center;gap:1.5rem;z-index:999;font-size:.78rem;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap;}
@@ -3858,10 +3864,14 @@ body.dark-mode .tb-mark{color:var(--black);}
 
 <!-- INQUIRY -->
 <section id="inquire">
+  <div class="inquire-blob inquire-blob-1"></div>
+  <div class="inquire-blob inquire-blob-2"></div>
+  <div class="inquire-blob inquire-blob-3"></div>
+  <div class="inquire-content">
   <p class="sey rev">Start a Project</p>
   <h2 class="stitle rev">Tell us about your <em>project</em></h2>
   <div class="inq-wrap">
-    <div class="rev">
+    <div class="inq-info-box rev">
       <div class="inq-info">
         <h3>We'd love to hear from you</h3>
         <p>Fill in the form and we'll get back to you within 24 hours with a tailored proposal — no obligation, no pressure. Kind regards, Theophilus Dzingisai.</p>
@@ -3900,7 +3910,7 @@ body.dark-mode .tb-mark{color:var(--black);}
           </select>
         </div>
         <div class="inq-field"><label>Tell us about your project</label>
-          <textarea id="inq-msg" placeholder="What does your business do? What do you need on your website?" style="min-height:85px;width:100%;padding:.68rem .9rem;border:1px solid var(--border);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.88rem;resize:vertical;outline:none;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+          <textarea id="inq-msg" placeholder="What does your business do? What do you need on your website?" style="min-height:85px;width:100%;padding:.68rem .9rem;border:1px solid rgba(255,255,255,.5);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--dark);background:rgba(255,255,255,.35);resize:vertical;outline:none;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,.5)'"></textarea>
         </div>
         <button class="af-submit" id="inq-btn" onclick="submitInquiry()">Send My Project Request →</button>
         <div class="form-spinner" id="inq-spinner">Sending your inquiry…</div>
@@ -3911,6 +3921,7 @@ body.dark-mode .tb-mark{color:var(--black);}
         <p style="font-size:.84rem;color:var(--mid);line-height:1.7;">Your message has been sent directly to Theophilus. We'll review and respond within 24 hours.<br/>Kind regards — <em>Theophilus Dzingisai, CEO, CrownWeb Agency</em></p>
       </div>
     </div>
+  </div>
   </div>
 </section>
 

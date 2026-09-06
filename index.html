@@ -764,7 +764,12 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .stitle em{font-style:italic;color:var(--adark);}
 .ssub{font-size:.9rem;color:var(--mid);line-height:1.85;max-width:520px;font-weight:300;}
 /* SERVE */
-#serve{background:var(--off);}
+#serve{background:linear-gradient(135deg,#f8f4ea 0%,#efe8d8 55%,#f6f1e4 100%);position:relative;overflow:hidden;}
+.serve-content{position:relative;z-index:1;}
+.serve-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.serve-blob-1{width:340px;height:340px;background:rgba(191,160,106,.32);top:-90px;left:-70px;}
+.serve-blob-2{width:300px;height:300px;background:rgba(138,110,62,.2);bottom:-110px;right:-60px;}
+.serve-blob-3{width:240px;height:240px;background:rgba(212,169,106,.26);top:50%;left:75%;}
 /* WHY */
 #why{position:relative;overflow:hidden;background:#1a1410 !important;}
 .why-bg-video{position:absolute;inset:0;width:calc(100% + 20px);height:calc(100% + 20px);left:-10px;top:-10px;object-fit:cover;object-position:center;z-index:0;filter:blur(1px);}
@@ -777,7 +782,7 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 #why .sc-desc{color:rgba(255,255,255,.75) !important;}
 #why .sc-icon{background:linear-gradient(135deg,rgba(191,160,106,.25),rgba(191,160,106,.1)) !important;}
 .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.8rem;}
-.serve-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2rem 1.7rem;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;}
+.serve-card{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 30px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);padding:2rem 1.7rem;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;}
 .serve-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--adark));transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
 .serve-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.09);border-color:rgba(191,160,106,.3);}
 .serve-card:hover::before{transform:scaleX(1);}
@@ -786,10 +791,16 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .sc-desc{font-size:.83rem;color:var(--mid);line-height:1.75;font-weight:300;margin-bottom:1.1rem;}
 .sc-rec{font-size:.7rem;background:rgba(191,160,106,.08);border:1px solid rgba(191,160,106,.2);border-radius:20px;padding:.3rem .8rem;color:var(--adark);font-weight:600;display:inline-block;letter-spacing:.02em;}
 /* SERVICES */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3rem;border-radius:14px;overflow:hidden;}
-.svc-card{background:var(--glass-bg);border:1px solid var(--glass-border);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);padding:2.2rem 1.8rem;transition:background .25s;position:relative;overflow:hidden;}
+#services{background:linear-gradient(135deg,#f8f4ea 0%,#efe8d8 55%,#f6f1e4 100%);position:relative;overflow:hidden;}
+.svc-content{position:relative;z-index:1;}
+.svc-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.svc-blob-1{width:340px;height:340px;background:rgba(191,160,106,.32);top:-90px;right:-70px;}
+.svc-blob-2{width:300px;height:300px;background:rgba(138,110,62,.2);bottom:-110px;left:-60px;}
+.svc-blob-3{width:240px;height:240px;background:rgba(212,169,106,.26);top:45%;left:50%;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.8rem;}
+.svc-card{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 30px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);padding:2.2rem 1.8rem;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
 .svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--adark));transition:width .4s ease;}
-.svc-card:hover{background:var(--off);}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,15,5,.13);}
 .svc-card:hover::after{width:100%;}
 .svc-num{font-family:'Cormorant Garamond',serif;font-size:.78rem;color:var(--accent);font-weight:600;margin-bottom:1.3rem;letter-spacing:.12em;opacity:.6;}
 .svc-title{font-size:1rem;font-weight:500;color:var(--black);margin-bottom:.6rem;}
@@ -1012,15 +1023,20 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 /* ═══════════════════════════════════════════════════════════════════════════
    CHANGE 3: Case Studies → honest "Our approach" section (no fake clients)
    ═══════════════════════════════════════════════════════════════════════════ */
-#cases{background:var(--off);}
+#cases{background:linear-gradient(135deg,#f8f4ea 0%,#efe8d8 55%,#f6f1e4 100%);position:relative;overflow:hidden;}
+.cases-content{position:relative;z-index:1;}
+.cases-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.cases-blob-1{width:340px;height:340px;background:rgba(191,160,106,.32);top:-90px;left:-70px;}
+.cases-blob-2{width:300px;height:300px;background:rgba(138,110,62,.2);bottom:-110px;right:-60px;}
+.cases-blob-3{width:240px;height:240px;background:rgba(212,169,106,.26);top:50%;left:60%;}
 .approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.8rem;}
-.approach-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2rem 1.7rem;transition:transform .3s,box-shadow .3s,border-color .3s;}
-.approach-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,0,0,.08);border-color:rgba(191,160,106,.3);}
-.approach-tag{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(191,160,106,.1);border:1px solid rgba(191,160,106,.2);color:var(--adark);padding:.22rem .7rem;border-radius:20px;display:inline-block;margin-bottom:1rem;font-weight:600;}
+.approach-card{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 30px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);padding:2rem 1.7rem;transition:transform .3s,box-shadow .3s;}
+.approach-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,15,5,.13);}
+.approach-tag{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(191,160,106,.14);border:1px solid rgba(191,160,106,.3);color:var(--adark);padding:.22rem .7rem;border-radius:20px;display:inline-block;margin-bottom:1rem;font-weight:600;}
 .approach-title{font-size:1rem;font-weight:500;color:var(--black);margin-bottom:.75rem;}
 .approach-row{font-size:.8rem;color:var(--mid);margin-bottom:.55rem;line-height:1.7;font-weight:300;}
 .approach-row strong{color:var(--dark);font-weight:500;}
-.approach-promise{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--adark);font-weight:500;display:flex;align-items:center;gap:.45rem;}
+.approach-promise{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,.08);font-size:.78rem;color:var(--adark);font-weight:500;display:flex;align-items:center;gap:.45rem;}
 
 /* COMMENTS */
 #comments{background:var(--off);}
@@ -1050,17 +1066,25 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .ref-copy-msg{font-size:.74rem;color:#5ed479;display:none;}
 /* FAQ */
 #faq{background:var(--white);}
+#faq{background:linear-gradient(135deg,#f8f4ea 0%,#efe8d8 55%,#f6f1e4 100%);position:relative;overflow:hidden;}
+.faq-content{position:relative;z-index:1;}
+.faq-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.faq-blob-1{width:340px;height:340px;background:rgba(191,160,106,.32);top:-90px;right:-70px;}
+.faq-blob-2{width:300px;height:300px;background:rgba(138,110,62,.2);bottom:-110px;left:-60px;}
+.faq-blob-3{width:240px;height:240px;background:rgba(212,169,106,.26);top:55%;left:45%;}
 .faq-list{margin-top:3rem;max-width:760px;}
-.faq-item{border-bottom:1px solid var(--border);transition:background .2s;}
+.faq-item{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:14px;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 12px 30px rgba(20,15,5,.08),inset 0 1px 0 rgba(255,255,255,.45);margin-bottom:1rem;padding:0 1.4rem;transition:box-shadow .3s,transform .3s;}
+.faq-item:hover{box-shadow:0 16px 38px rgba(20,15,5,.12);transform:translateY(-2px);}
+.faq-item.open{background:rgba(255,255,255,.44);}
 .faq-more{overflow:hidden;max-height:0;transition:max-height .5s ease;}
 .faq-more.open{max-height:2000px;}
-.faq-show-more{display:flex;align-items:center;gap:.5rem;margin-top:1.4rem;background:none;border:1px solid var(--border);border-radius:4px;padding:.6rem 1.2rem;font-size:.8rem;font-weight:500;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;}
-.faq-show-more:hover{color:var(--black);border-color:var(--black);}
+.faq-show-more{display:flex;align-items:center;gap:.5rem;margin-top:.4rem;background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.55);border-radius:24px;padding:.65rem 1.3rem;font-size:.8rem;font-weight:500;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;-webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);}
+.faq-show-more:hover{color:var(--black);border-color:rgba(191,160,106,.5);background:rgba(255,255,255,.44);}
 .faq-show-more svg{transition:transform .3s;}
 .faq-show-more.open svg{transform:rotate(180deg);}
 .faq-q{width:100%;background:none;border:none;padding:1.3rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:500;color:var(--dark);gap:1rem;}
 .faq-q:hover{color:var(--black);}
-.faq-icon{font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .3s ease;line-height:1;width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.faq-icon{font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .3s ease;line-height:1;width:24px;height:24px;border-radius:50%;border:1px solid rgba(191,160,106,.4);display:flex;align-items:center;justify-content:center;font-size:.95rem;background:rgba(255,255,255,.4);}
 .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--accent);color:#fff;border-color:var(--accent);}
 .faq-ans{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:.85rem;color:var(--mid);line-height:1.85;font-weight:300;}
 .faq-item.open .faq-ans{max-height:280px;padding-bottom:1.3rem;}
@@ -3072,6 +3096,10 @@ body.dark-mode .tb-mark{color:var(--black);}
 
 <!-- WHO WE SERVE -->
 <section id="serve">
+  <div class="serve-blob serve-blob-1"></div>
+  <div class="serve-blob serve-blob-2"></div>
+  <div class="serve-blob serve-blob-3"></div>
+  <div class="serve-content">
   <p class="sey rev">Who We Serve</p>
   <h2 class="stitle rev">Built for every <em>type of business</em></h2>
   <p class="ssub rev">Whether you run a school, a small shop, or a large organisation — we have a plan for your needs and budget.</p>
@@ -3095,10 +3123,15 @@ body.dark-mode .tb-mark{color:var(--black);}
       <span class="sc-rec">Recommended: E-commerce or Custom Plan</span>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" style="background:var(--white);">
+<section id="services">
+  <div class="svc-blob svc-blob-1"></div>
+  <div class="svc-blob svc-blob-2"></div>
+  <div class="svc-blob svc-blob-3"></div>
+  <div class="svc-content">
   <p class="sey rev">What We Do</p>
   <h2 class="stitle rev">Everything you need to <em>get online</em></h2>
   <p class="ssub rev">From a simple landing page to a fully featured business site — we handle the tech so you don't have to.</p>
@@ -3115,12 +3148,17 @@ body.dark-mode .tb-mark{color:var(--black);}
     <div class="svc-card rev"><div class="svc-num">10</div><div class="svc-title">Analytics &amp; Insights</div><div class="svc-desc">Set up Google Analytics 4, Search Console, and conversion tracking so you know exactly where your customers come from.</div></div>
     <div class="svc-card rev rd1"><div class="svc-num">11</div><div class="svc-title">Media &amp; Content</div><div class="svc-desc">Photography, videography, social media management, and graphic design &amp; branding — everything to keep your business looking sharp online and off.</div></div>
   </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      CHANGE 3: Case Studies — replaced fake clients with honest "Our Approach"
      ═══════════════════════════════════════════════════════════════════════════ -->
 <section id="cases">
+  <div class="cases-blob cases-blob-1"></div>
+  <div class="cases-blob cases-blob-2"></div>
+  <div class="cases-blob cases-blob-3"></div>
+  <div class="cases-content">
   <p class="sey rev">How We Work</p>
   <h2 class="stitle rev">Our <em>approach</em> to every project</h2>
   <p class="ssub rev">We're building our first client projects now. Here's exactly how we approach the work — the same process we follow for every website we deliver.</p>
@@ -3148,6 +3186,7 @@ body.dark-mode .tb-mark{color:var(--black);}
     </div>
   </div>
   <p class="rev" style="margin-top:2rem;font-size:.82rem;color:var(--mid);">This is the exact process we follow for every project. <a href="#inquire" style="color:var(--adark);text-decoration:underline;">Start your project today</a> — no commitment, no pressure.</p>
+  </div>
 </section>
 
 <!-- WORK SHOWCASE -->
@@ -3155,11 +3194,13 @@ body.dark-mode .tb-mark{color:var(--black);}
   <p class="sey rev">Our Work</p>
   <h2 class="stitle rev">See a <em>project</em> we built</h2>
   <p class="ssub rev">A look at a media piece we produced for DILS Inc. — one example of the kind of work we deliver for our clients.</p>
-  <div class="rev" style="max-width:900px;margin:2rem auto 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 14px 36px rgba(0,0,0,.08);">
-    <video controls playsinline preload="metadata" style="display:block;width:100%;height:auto;background:#000;">
-      <source src="DILS_Inc.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <div class="glow-video-wrap rev" style="max-width:900px;margin:2rem auto 0;">
+    <div class="glow-video-inner">
+      <video controls playsinline preload="metadata" style="display:block;width:100%;height:auto;background:#000;">
+        <source src="DILS_Inc.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
   <div class="rev" style="text-align:center;margin-top:2rem;">
     <a href="https://theophilustinashe-collab.github.io/Dils/" target="_blank" rel="noopener" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:.7rem;font-size:1rem;padding:.9rem 2.2rem;box-shadow:0 8px 30px rgba(191,160,106,.5);animation:pulseGlow 2s ease-in-out infinite;">
@@ -3172,6 +3213,41 @@ body.dark-mode .tb-mark{color:var(--black);}
 @keyframes pulseGlow{
   0%,100%{box-shadow:0 8px 30px rgba(191,160,106,.5);}
   50%{box-shadow:0 8px 44px rgba(191,160,106,.85);}
+}
+/* ── Reusable glowing gold halo for any video in "Our Work" ──
+   To add another video with the same glow, wrap it like this:
+   <div class="glow-video-wrap">
+     <div class="glow-video-inner">
+       <video ...>...</video>
+     </div>
+   </div>
+*/
+.glow-video-wrap{position:relative;}
+.glow-video-wrap::before{
+  content:'';
+  position:absolute;
+  inset:-20%;
+  background:radial-gradient(ellipse at center,
+    rgba(230,185,110,.95) 0%,
+    rgba(212,169,106,.7) 30%,
+    rgba(191,160,106,.28) 55%,
+    rgba(191,160,106,0) 75%);
+  filter:blur(32px);
+  z-index:0;
+  pointer-events:none;
+  animation:videoGlowPulse 4.5s ease-in-out infinite;
+}
+.glow-video-inner{
+  position:relative;
+  z-index:1;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid rgba(230,190,120,.6);
+  box-shadow:0 0 40px 6px rgba(212,169,106,.55), 0 14px 40px rgba(20,15,5,.22);
+}
+@keyframes videoGlowPulse{
+  0%,100%{opacity:.8;transform:scale(1);}
+  50%{opacity:1;transform:scale(1.045);}
 }
 </style>
 
@@ -3628,7 +3704,11 @@ body.dark-mode .tb-mark{color:var(--black);}
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="background:var(--white);">
+<section id="faq">
+  <div class="faq-blob faq-blob-1"></div>
+  <div class="faq-blob faq-blob-2"></div>
+  <div class="faq-blob faq-blob-3"></div>
+  <div class="faq-content">
   <p class="sey rev">FAQ</p>
   <h2 class="stitle rev">Common <em>questions</em></h2>
   <p class="ssub rev">Everything you need to know before getting started with CrownWeb Agency.</p>
@@ -3648,6 +3728,7 @@ body.dark-mode .tb-mark{color:var(--black);}
       <span id="faq-show-more-label">Show 4 more questions</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
+  </div>
   </div>
 </section>
 

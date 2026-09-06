@@ -82,7 +82,7 @@
   --glass-shadow:0 20px 50px rgba(20,15,5,.09);
   --glass-blur:blur(22px) saturate(180%);
 }
-html{scroll-behavior:smooth;width:100%;margin:0;padding:0;scroll-snap-type:y mandatory;}
+html{scroll-behavior:smooth;width:100%;max-width:100%;margin:0;padding:0;scroll-snap-type:y mandatory;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-bottom:60px;width:100%;margin:0;padding-left:0;padding-right:0;box-sizing:border-box;}
 
 /* Safe area support for notched/rounded corner devices */
@@ -870,6 +870,13 @@ img {
   display: block;
 }
 
+/* Prevent long unbroken strings (emails, URLs, prices) from forcing
+   horizontal scroll on narrow phones */
+h1, h2, h3, h4, p, span, a, li, label, .stitle, .hero-title {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 /* Responsive video containers */
 iframe, video {
   max-width: 100%;
@@ -1115,7 +1122,7 @@ a:focus-visible {
     border-radius: 6px;
   }
   
-  .af-row, .prow, .frow { grid-template-columns: 1fr; gap: 0.8rem; }
+  .af-row, .prow, .frow, .inq-name-row { grid-template-columns: 1fr; gap: 0.8rem; }
   
   /* Mobile button sizing */
   .btn, .btn-dark, .btn-outline, .btn-accent, .btn-ghost, .btn-green {
@@ -1248,6 +1255,10 @@ a:focus-visible {
   html { font-size: 13px; }
   
   section { padding: 2.4rem 0.95rem; }
+  
+  /* 5 payment options in 3 columns get cramped on very narrow phones */
+  .pay-methods { grid-template-columns: 1fr 1fr; }
+  .pay-body { padding: 0 1.2rem 1.4rem; }
   
   .hero { padding: 5rem 0.95rem 1.5rem; }
   .hero-title { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
@@ -3260,7 +3271,7 @@ document.addEventListener('DOMContentLoaded', function(){
     <div class="inq-form-box rev rd1">
       <div id="inq-inner">
         <div class="form-error" id="inq-error"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;">
+        <div class="inq-name-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;">
           <div class="inq-field"><label>First Name</label><input type="text" id="inq-fn" placeholder="Jane"/></div>
           <div class="inq-field"><label>Last Name</label><input type="text" id="inq-ln" placeholder="Doe"/></div>
         </div>
@@ -4439,6 +4450,11 @@ async function unlockAdmin(){
 @keyframes dividerFlow{from{background-position:200% 0}to{background-position:-200% 0}}
 .premium-content{position:relative;z-index:10;max-width:800px;margin:auto;text-align:center}
 .premium-content h2{color:#fff}.premium-content p{color:#cbd5e1}
+@media (max-width:768px){
+  .premium-bg-section{padding:70px 6vw;}
+  .premium-content h2{font-size:clamp(1.5rem,6vw,2rem);}
+  .premium-content p{font-size:.92rem;}
+}
 </style>
 
 

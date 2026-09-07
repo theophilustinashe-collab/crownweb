@@ -2601,8 +2601,153 @@ document.addEventListener('DOMContentLoaded', function(){
       VISIT THE LIVE DILS WEBSITE →
     </a>
   </div>
+  <div class="adwork-grid">
+    <div class="adwork-card rev">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="armbands.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Armbands</div>
+    </div>
+    <div class="adwork-card rev rd1">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="cap.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Cap</div>
+    </div>
+    <div class="adwork-card rev rd2">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="crop-top.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Crop Top</div>
+    </div>
+    <div class="adwork-card rev">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="culture-crop-top.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Culture Crop Top</div>
+    </div>
+    <div class="adwork-card rev rd1">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="first-kit.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">First Kit</div>
+    </div>
+    <div class="adwork-card rev rd2">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="worldwide-tee.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Worldwide Tee</div>
+    </div>
+    <div class="adwork-card rev">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="byni-dillion-tee.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Byni Dillion Tee</div>
+    </div>
+    <div class="adwork-card rev rd1">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="limited-edition-garment.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Limited Edition Garment</div>
+    </div>
+    <div class="adwork-card rev rd2">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="topsoup4dils.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Top Soup for DILS</div>
+    </div>
+    <div class="adwork-card rev">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="topsoup4dils-vol2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Top Soup for DILS Vol. 2</div>
+    </div>
+    <div class="adwork-card rev rd1">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="trust-and-believe.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Trust and Believe</div>
+    </div>
+    <div class="adwork-card rev rd1">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="cropped-jersey.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Cropped Jersey</div>
+    </div>
+    <div class="adwork-card rev rd2">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="muscle-top.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Muscle Top</div>
+    </div>
+    <div class="adwork-card rev">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="third-kit.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Third Kit</div>
+    </div>
+    <div class="adwork-card rev rd1">
+      <div class="adwork-video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="garment.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="adwork-caption">Garment</div>
+    </div>
+  </div>
 </section>
 <style>
+.adwork-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem;}
+.adwork-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;}
+.adwork-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.adwork-video-wrap{aspect-ratio:16/9;background:#000;}
+.adwork-video-wrap video{width:100%;height:100%;display:block;object-fit:cover;}
+.adwork-caption{padding:.85rem 1.1rem;font-size:.85rem;font-weight:500;color:var(--dark);text-align:center;letter-spacing:.02em;}
+@media(max-width:900px){.adwork-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.adwork-grid{grid-template-columns:1fr;}}
 @keyframes pulseGlow{
   0%,100%{box-shadow:0 8px 30px rgba(191,160,106,.5);}
   50%{box-shadow:0 8px 44px rgba(191,160,106,.85);}

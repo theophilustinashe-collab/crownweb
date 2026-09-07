@@ -2669,14 +2669,14 @@ document.addEventListener('DOMContentLoaded', function(){
       <div class="reel-progress" id="reelProgress"></div>
     </div>
     <div class="reel-hint" id="reelHint">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
       <span>Scroll or swipe to explore</span>
     </div>
   </div>
 </section>
 <style>
 /* ── Immersive vertical ad reel ── */
-.reel-wrap{position:relative;margin:3rem auto 0;max-width:380px;display:flex;flex-direction:column;align-items:center;outline:none;}
+.reel-wrap{position:relative;margin:3rem auto 0;max-width:380px;width:100%;display:flex;flex-direction:column;align-items:center;outline:none;}
 .reel-wrap:focus-visible{outline:2px solid rgba(230,195,122,.45);outline-offset:8px;border-radius:26px;}
 .reel-card{position:relative;width:100%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#040404;box-shadow:0 24px 64px rgba(20,15,5,.3),0 0 0 1px rgba(230,190,120,.22);touch-action:pan-y;cursor:grab;}
 .reel-slides{position:relative;width:100%;height:100%;}
@@ -2693,8 +2693,18 @@ document.addEventListener('DOMContentLoaded', function(){
 .reel-hint{margin-top:.9rem;display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--mid);letter-spacing:.03em;font-family:'DM Sans',sans-serif;transition:opacity .5s ease;}
 .reel-hint.is-hidden{opacity:0;}
 .reel-hint svg{animation:reelHintBounce 1.6s ease-in-out infinite;color:var(--adark,#bfa06a);}
-@keyframes reelHintBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
+@keyframes reelHintBounce{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
 @media(max-width:480px){.reel-wrap{max-width:280px;}}
+@media(min-width:640px){
+  .reel-wrap{max-width:none;width:auto;}
+  .reel-card{width:auto;height:min(74vh,760px);}
+}
+@media(min-width:1024px){
+  .reel-card{height:min(78vh,860px);}
+}
+@media(min-width:1440px){
+  .reel-card{height:min(82vh,960px);}
+}
 @keyframes pulseGlow{
   0%,100%{box-shadow:0 8px 30px rgba(191,160,106,.5);}
   50%{box-shadow:0 8px 44px rgba(191,160,106,.85);}
@@ -5048,16 +5058,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){ e.preventDefault(); prev(); }
   });
 
-  var touchStartY = null;
+  var touchStartX = null;
   wrap.addEventListener('touchstart', function(e){
-    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
   }, {passive:true});
   wrap.addEventListener('touchend', function(e){
-    if(touchStartY === null) return;
-    var dy = touchStartY - e.changedTouches[0].clientY;
-    touchStartY = null;
-    if(Math.abs(dy) < 40) return;
-    if(dy > 0) next(); else prev();
+    if(touchStartX === null) return;
+    var dx = touchStartX - e.changedTouches[0].clientX;
+    touchStartX = null;
+    if(Math.abs(dx) < 40) return;
+    if(dx > 0) next(); else prev();
   }, {passive:true});
 
   if('IntersectionObserver' in window){

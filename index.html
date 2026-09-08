@@ -448,8 +448,8 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 #pricing > .sey,#pricing > .stitle,#pricing > .ssub,#pricing > .price-grid,#pricing > .custom-card{position:relative;z-index:2;}
 #pricing .stitle{color:#fff;}
 #pricing .ssub{color:rgba(255,255,255,.55);}
-#pricing .price-card{background:rgba(255,255,255,.1) !important;border:1.5px solid rgba(191,160,106,.6) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;}
-#pricing .price-card.feat{background:linear-gradient(160deg,rgba(255,255,255,.16) 70%,rgba(191,160,106,.22)) !important;border-color:var(--accent) !important;}
+#pricing .price-card{background:rgba(255,255,255,.07) !important;border:1px solid rgba(255,255,255,.16) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;box-shadow:0 10px 30px rgba(0,0,0,.25) !important;}
+#pricing .price-card.feat{background:linear-gradient(160deg,rgba(191,160,106,.22) 0%,rgba(191,160,106,.07) 100%) !important;border:1.5px solid var(--accent) !important;box-shadow:0 20px 55px rgba(191,160,106,.28),0 0 0 1px rgba(191,160,106,.2) !important;}
 #pricing .price-plan{color:var(--accent) !important;}
 #pricing .price-amount{color:#fff !important;}
 #pricing .price-amount sup{color:rgba(255,255,255,.6) !important;}
@@ -464,6 +464,7 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .price-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2.1rem 1.7rem;position:relative;transition:transform .3s,box-shadow .3s,border-color .3s;}
 .price-card:hover{transform:translateY(-6px);box-shadow:0 24px 52px rgba(0,0,0,.1);border-color:rgba(191,160,106,.3);}
 .price-card.feat{border:2px solid var(--accent);background:linear-gradient(160deg,var(--glass-bg-strong) 70%,rgba(191,160,106,.1));}
+@media(min-width:900px){#pricing .price-card.feat{transform:translateY(-10px);}#pricing .price-card.feat:hover{transform:translateY(-16px);}}
 .price-card.feat:hover{box-shadow:0 24px 52px rgba(191,160,106,.18);}
 .feat-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--adark),var(--accent));color:#fff;font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28rem 1rem;border-radius:20px;white-space:nowrap;box-shadow:0 4px 12px rgba(191,160,106,.3);}
 .price-plan{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;}
@@ -3595,6 +3596,7 @@ html{scroll-behavior:smooth}
       <li><a href="https://www.linkedin.com/in/theophilus-dzingisai-436394412/" target="_blank" rel="noopener">LinkedIn: Theophilus Dzingisai</a></li>
       <li><a role="button" tabindex="0" onclick="openLegal('terms')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Terms of Service</a></li>
       <li><a role="button" tabindex="0" onclick="openLegal('privacy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Privacy Policy</a></li>
+      <li><a role="button" tabindex="0" onclick="openLegal('cookies')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Cookie Policy</a></li>
     </ul></div>
   </div>
   <div class="foot-bottom">
@@ -3616,6 +3618,7 @@ html{scroll-behavior:smooth}
     <div class="mtabs">
       <button class="mtab act" id="tab-terms" onclick="switchLegal('terms')">Terms of Service</button>
       <button class="mtab" id="tab-privacy" onclick="switchLegal('privacy')">Privacy Policy</button>
+      <button class="mtab" id="tab-cookies" onclick="switchLegal('cookies')">Cookie Policy</button>
     </div>
     <div class="mbody">
       <div class="mpanel act" id="panel-terms">
@@ -3632,6 +3635,13 @@ html{scroll-behavior:smooth}
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>How we use it.</strong> This information is used only to respond to your inquiry, schedule bookings, prepare quotes, and deliver the services you request. We do not sell or rent your information to third parties.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Payments.</strong> Deposit and payment details are processed through the payment channels stated at checkout or in your project agreement. CrownWeb Agency does not store your full card or mobile money PIN details.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;">If you have questions about your data or would like it removed, contact us directly using the details on this site.</p>
+      </div>
+      <div class="mpanel" id="panel-cookies">
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">This site uses a small number of cookies and similar local storage to make the site work properly and to understand how it's used.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Essential cookies.</strong> These are required for core functionality, such as remembering your pricing tab selection or keeping a form submission working correctly. The site won't function properly without them.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Analytics.</strong> We may use basic, privacy-respecting analytics to understand which pages are visited and how the site performs, so we can improve it over time. This data is aggregated and is not used to personally identify you.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>No advertising cookies.</strong> This site does not use third-party advertising or tracking cookies, and we do not sell any data collected here.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;"><strong>Managing cookies.</strong> Most browsers let you block or delete cookies in their settings. Doing so may affect how parts of this site behave. If you have questions about cookies used on this site, contact us using the details provided.</p>
       </div>
     </div>
   </div>
@@ -4170,7 +4180,7 @@ function openLegal(type){
 }
 function closeLegal(){ closeOverlay('legal-overlay'); }
 function switchLegal(type){
-  ['terms','privacy'].forEach(t => {
+  ['terms','privacy','cookies'].forEach(t => {
     const tab   = document.getElementById('tab-'+t);
     const panel = document.getElementById('panel-'+t);
     const active = t === type;

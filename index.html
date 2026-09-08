@@ -362,7 +362,7 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 .svc-title{font-size:1rem;font-weight:500;color:var(--black);margin-bottom:.6rem;}
 .svc-desc{font-size:.83rem;color:var(--mid);line-height:1.75;font-weight:300;}
 /* Portfolio CSS removed */
-/* FIX: the real "Our Work" layout (Milan card + "next slots" stack) was a
+/* FIX: the real "Our Work" layout was a
    raw inline-styled 2-column grid with no responsive rule attached to it —
    the .port-grid/.port-item rules above only ever applied to the old
    placeholder mockups, which are now hidden. On phones the screenshot and
@@ -1464,36 +1464,6 @@ a:focus-visible,button:focus-visible,.copt:focus-visible{outline:2px solid var(-
 .proc-steps{grid-template-columns:1fr;}
 }
 
-/* ── Milan portfolio slideshow (CHANGE 6) ── */
-.milan-stage{position:relative;width:100%;aspect-ratio:1200/500;overflow:hidden;background:#10140f;cursor:zoom-in;}
-.milan-stage img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .6s ease;}
-.milan-stage img.milan-active{opacity:1;}
-.milan-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.6) 100%);pointer-events:none;}
-.milan-zoom-hint{position:absolute;right:12px;top:12px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(14,20,16,.65);border:1px solid rgba(191,160,106,.4);color:#fff;padding:.32rem .6rem;border-radius:20px;backdrop-filter:blur(4px);z-index:3;opacity:0;transition:opacity .25s ease;font-family:'DM Sans',sans-serif;}
-.milan-stage:hover .milan-zoom-hint{opacity:1;}
-.milan-caption-bar{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1.1rem .85rem;z-index:2;}
-.milan-num{font-size:.6rem;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:.2rem;font-family:'DM Sans',sans-serif;}
-.milan-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:#fff;line-height:1.1;}
-.milan-desc{font-size:.7rem;color:#cdd0c6;max-width:48ch;margin-top:.18rem;line-height:1.35;font-family:'DM Sans',sans-serif;}
-.milan-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(14,20,16,.55);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;backdrop-filter:blur(4px);transition:background .2s ease,color .2s ease;}
-.milan-nav-btn:hover{background:var(--accent);color:#1a1a1a;}
-.milan-nav-prev{left:10px;}
-.milan-nav-next{right:10px;}
-.milan-controls{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;flex-wrap:wrap;gap:.6rem;background:#F4EFE2;}
-.milan-dots{display:flex;gap:.4rem;}
-.milan-dot{width:22px;height:3px;border-radius:3px;background:var(--border);cursor:pointer;position:relative;overflow:hidden;}
-.milan-dot .milan-fill{position:absolute;inset:0;background:var(--accent);width:0%;}
-.milan-dot.milan-done .milan-fill{width:100%;transition:none;}
-.milan-right-controls{display:flex;align-items:center;gap:.7rem;}
-.milan-counter{font-size:.68rem;color:var(--mid);font-variant-numeric:tabular-nums;font-family:'DM Sans',sans-serif;}
-.milan-play-toggle{border:1px solid var(--border);background:transparent;color:var(--dark);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .65rem;border-radius:20px;cursor:pointer;transition:all .2s ease;font-family:'DM Sans',sans-serif;}
-.milan-play-toggle:hover{border-color:var(--accent);color:var(--adark);}
-.milan-lightbox{position:fixed;inset:0;background:rgba(5,8,6,.92);display:flex;align-items:center;justify-content:center;z-index:500;opacity:0;visibility:hidden;transition:opacity .25s ease;padding:5vh 4vw;}
-.milan-lightbox.milan-open{opacity:1;visibility:visible;}
-.milan-lightbox img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
-.milan-lightbox-close{position:absolute;top:22px;right:26px;font-size:1.6rem;color:#fff;cursor:pointer;background:none;border:none;line-height:1;}
-.milan-lightbox-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:.78rem;color:#cfd3c9;font-family:'DM Sans',sans-serif;}
-@media (max-width:640px){.milan-nav-btn{width:30px;height:30px;font-size:.85rem;}.milan-title{font-size:1.02rem;}.milan-desc{display:none;}}
 
 /* ── DILS portfolio slideshow ── */
 .dils-stage{position:relative;width:100%;aspect-ratio:1200/500;overflow:hidden;background:#040404;cursor:zoom-in;}
@@ -2458,7 +2428,7 @@ html{scroll-behavior:smooth}
 <style>
 .trust-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.6rem 6vw;position:relative;}
 .trust-bar::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:64px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
-.tb-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:2.2rem;}
+.tb-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2.2rem;}
 .tb-label{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.85rem;display:flex;align-items:center;gap:.55rem;}
 .tb-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
 .tb-divider{width:1px;align-self:stretch;background:linear-gradient(180deg,transparent,var(--border) 20%,var(--border) 80%,transparent);}
@@ -2485,17 +2455,6 @@ html{scroll-behavior:smooth}
 <section class="trust-bar" id="trust-bar" aria-label="Why businesses trust CrownWeb">
   <div class="tb-inner">
 
-    <div class="tb-col rev">
-      <p class="tb-label">Selected Work</p>
-      <div class="tb-marks">
-        <a href="https://theophilustinashe-collab.github.io/Dils/" target="_blank" rel="noopener" class="tb-mark" style="color:var(--adark);font-weight:700;text-decoration:underline;text-underline-offset:3px;">DILS ↗</a>
-        <span class="tb-mark-sep">&middot;</span>
-        <a href="#showcase" class="tb-mark">Milan Restaurant, Spa &amp; The Club</a>
-      </div>
-    </div>
-
-    <div class="tb-divider" aria-hidden="true"></div>
-
     <div class="tb-col rev rd1">
       <p class="tb-label">Verified Credentials</p>
       <div class="tb-badge-row">
@@ -2519,10 +2478,10 @@ html{scroll-behavior:smooth}
   <h2>Website Design for Businesses in <em>Gweru and Across Zimbabwe</em></h2>
   <p>In 2026, the first thing a potential customer does is search online. If they cannot find you, they find someone else. A website does not sleep, does not take weekends off, and does not forget to follow up.</p>
   <div class="persuade-stats">
-    <div><div class="ps-num">80<span style="font-size:1.2rem">%+</span></div><div class="ps-lbl">of Zimbabweans access the internet on a mobile phone</div></div>
-    <div><div class="ps-num">75%</div><div class="ps-lbl">of people judge a business's credibility by its website</div></div>
-    <div><div class="ps-num">3s</div><div class="ps-lbl">if your site doesn't load in 3 seconds, most visitors leave</div></div>
+    <div><div class="ps-num">14<span style="font-size:1.2rem">d</span></div><div class="ps-lbl">average launch time from kickoff to live site</div></div>
+    <div><div class="ps-num">98<span style="font-size:1.2rem">+</span></div><div class="ps-lbl">average Lighthouse performance score on delivered sites</div></div>
     <div><div class="ps-num">24/7</div><div class="ps-lbl">your website is working even when you're not</div></div>
+    <div><div class="ps-num" data-no-count>1<span style="font-size:1.2rem">:1</span></div><div class="ps-lbl">direct access to the founder on every project</div></div>
   </div>
   <a href="#calc" class="btn btn-accent" style="font-size:.88rem;padding:.8rem 1.9rem;">See What Your Website Would Cost →</a>
 </div>
@@ -2628,10 +2587,16 @@ html{scroll-behavior:smooth}
 
 <!-- WORK SHOWCASE -->
 <section id="showcase">
-  <p class="sey rev">Our Work</p>
-  <h2 class="stitle rev">See a <em>project</em> we built</h2>
-  <p class="ssub rev">A look at a media piece we produced for DILS Inc., one example of the kind of work we deliver for our clients.</p>
-  <div class="glow-video-wrap rev" style="max-width:900px;margin:2rem auto 0;">
+  <p class="sey rev">Selected Work</p>
+  <h2 class="stitle rev">Work that speaks <em>for itself</em></h2>
+  <p class="ssub rev">A closer look at projects we've delivered for clients, from first concept to launch.</p>
+
+  <div class="work-item rev">
+    <div class="work-item-head">
+      <h3 class="work-item-title">DILS</h3>
+      <p class="work-item-tags">Fashion &middot; E-commerce &middot; Website &middot; Media</p>
+    </div>
+    <div class="glow-video-wrap rev" style="max-width:900px;margin:2rem auto 0;">
     <div class="glow-video-inner">
       <video controls playsinline preload="metadata" style="display:block;width:100%;height:auto;background:#000;">
         <source src="DILS_Inc.mp4" type="video/mp4">
@@ -2646,12 +2611,16 @@ html{scroll-behavior:smooth}
     </a>
   </div>
   <div class="rev" style="text-align:center;margin-top:2rem;">
+    <p style="font-size:.85rem;color:var(--mid);margin-bottom:.9rem;">We designed and built the DILS website end-to-end, alongside their social media campaign content below.</p>
     <a href="https://theophilustinashe-collab.github.io/Dils/" target="_blank" rel="noopener" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:.7rem;font-size:1rem;padding:.9rem 2.2rem;box-shadow:0 8px 30px rgba(191,160,106,.5);animation:pulseGlow 2s ease-in-out infinite;">
       <img src="cta-glow-icon.png" alt="DILS logo" style="height:22px;width:auto;display:block;filter:brightness(0) invert(1);"/>
       VISIT THE LIVE DILS WEBSITE →
     </a>
   </div>
-  <div class="reel-wrap rev" id="reelWrap" tabindex="0" aria-label="DILS ad campaign video reel, swipe or scroll to browse">
+  <div class="reel-row rev">
+  <div class="reel-col">
+  <p class="reel-col-label">DILS</p>
+  <div class="reel-wrap" id="reelWrap" tabindex="0" aria-label="DILS ad campaign video reel, swipe or scroll to browse">
     <div class="reel-card" id="reelCard">
       <div class="reel-slides" id="reelSlides">
         <div class="reel-slide" data-name="Armbands">
@@ -2752,10 +2721,57 @@ html{scroll-behavior:smooth}
       <span>Scroll or swipe to explore</span>
     </div>
   </div>
+  </div><!-- /reel-col: DILS -->
+
+  <div class="reel-col">
+  <p class="reel-col-label">The Trophy Shop</p>
+  <div class="reel-wrap" id="reelWrapTrophy" tabindex="0" aria-label="The Trophy Shop social media campaign video reel, swipe or scroll to browse">
+    <div class="reel-card" id="reelCardTrophy">
+      <div class="reel-slides" id="reelSlidesTrophy">
+        <div class="reel-slide" data-name="Crystal Trophy">
+          <video muted loop playsinline preload="metadata"><source src="crystal-trophy.mp4" type="video/mp4"></video>
+          <button class="reel-fs-btn" type="button" aria-label="Watch full screen" onclick="reelGoFullscreen(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/></svg></button>
+          <a class="reel-dl-btn" href="crystal-trophy.mp4" download aria-label="Download this video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+          <div class="reel-caption"><span class="reel-eyebrow">The Trophy Shop Social Media Campaign</span><span class="reel-name">Crystal Trophy</span></div>
+        </div>
+        <div class="reel-slide" data-name="Soccer Trophy">
+          <video muted loop playsinline preload="metadata"><source src="soccer-trophy.mp4" type="video/mp4"></video>
+          <button class="reel-fs-btn" type="button" aria-label="Watch full screen" onclick="reelGoFullscreen(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/></svg></button>
+          <a class="reel-dl-btn" href="soccer-trophy.mp4" download aria-label="Download this video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+          <div class="reel-caption"><span class="reel-eyebrow">The Trophy Shop Social Media Campaign</span><span class="reel-name">Soccer Trophy</span></div>
+        </div>
+      </div>
+      <div class="reel-progress" id="reelProgressTrophy"></div>
+    </div>
+    <div class="reel-hint" id="reelHintTrophy">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      <span>Scroll or swipe to explore</span>
+    </div>
+  </div>
+  </div><!-- /reel-col: Trophy Shop -->
+  </div><!-- /reel-row -->
+  </div><!-- /work-item: DILS -->
+
+  <div class="rev" style="text-align:center;margin-top:3rem;">
+    <a href="#inquire" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2.2rem;">
+      View all work &rarr;
+    </a>
+  </div>
 </section>
 <style>
+/* ── Selected Work items ── */
+.work-item{margin-top:4.5rem;padding-top:4rem;border-top:1px solid var(--border);}
+.work-item:first-of-type{margin-top:2.4rem;padding-top:0;border-top:none;}
+.work-item-head{text-align:center;max-width:640px;margin:0 auto;}
+.work-item-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,2.9rem);font-weight:600;color:var(--dark);line-height:1.1;margin:0;}
+.work-item-tags{font-family:'DM Sans',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--adark);margin-top:.55rem;}
+@media(max-width:640px){.work-item{margin-top:3rem;padding-top:2.6rem;}}
+
 /* ── Immersive vertical ad reel ── */
-.reel-wrap{position:relative;margin:3rem auto 0;max-width:380px;width:100%;display:flex;flex-direction:column;align-items:center;outline:none;}
+.reel-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2.6rem;margin-top:1rem;}
+.reel-col{display:flex;flex-direction:column;align-items:center;flex:0 1 380px;max-width:380px;}
+.reel-col-label{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--dark);letter-spacing:.02em;margin:0 0 .3rem;}
+.reel-wrap{position:relative;margin:0 auto 0;max-width:380px;width:100%;display:flex;flex-direction:column;align-items:center;outline:none;}
 .reel-wrap:focus-visible{outline:2px solid rgba(230,195,122,.45);outline-offset:8px;border-radius:26px;}
 .reel-card{position:relative;width:100%;aspect-ratio:9/16;overflow:visible;touch-action:pan-y;cursor:grab;}
 .reel-slides{position:relative;width:100%;height:100%;}
@@ -2811,6 +2827,12 @@ html{scroll-behavior:smooth}
 @media(min-width:1440px){
   .reel-card{height:min(90vh,1160px);}
 }
+/* Side-by-side reel row: keep both cards at a fixed compact size instead
+   of the single-reel full-height desktop treatment above, so two fit
+   comfortably next to each other on any screen width. */
+.reel-row .reel-wrap{max-width:380px;width:100%;margin:0 auto;}
+.reel-row .reel-card{width:100%;height:auto;aspect-ratio:9/16;}
+@media(max-width:480px){.reel-row .reel-wrap{max-width:280px;}}
 @keyframes pulseGlow{
   0%,100%{box-shadow:0 8px 30px rgba(191,160,106,.5);}
   50%{box-shadow:0 8px 44px rgba(191,160,106,.85);}
@@ -2918,7 +2940,7 @@ html{scroll-behavior:smooth}
 
 <!-- FOUNDER -->
 <section id="founder">
-  <video class="founder-hero-video" autoplay muted loop playsinline poster="founder-poster.jpg" aria-label="Theophilus Dzingisai, CEO of CrownWeb Agency" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"><source src="founder-video.mp4" type="video/mp4"></video>
+  <video class="founder-hero-video" autoplay muted loop playsinline aria-label="Theophilus Dzingisai, CEO of CrownWeb Agency" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"><source src="founder-video.mp4" type="video/mp4"></video>
   <div class="founder-hero-overlay"></div>
   <p class="sey rev">Meet the Founder</p>
   <h2 class="stitle rev">The person behind <em>your project</em></h2>
@@ -2962,18 +2984,15 @@ html{scroll-behavior:smooth}
           </div>
 
           <div>
-            <div class="founder-section-label">Tech Stack</div>
+            <div class="founder-section-label">Built with modern technology</div>
+            <p style="font-size:.82rem;color:#d3cebf;margin:-.3rem 0 .8rem;">Fast. Secure. Scalable.</p>
             <div class="founder-stack">
-              <span>HTML5 / CSS3</span>
-              <span>JavaScript (ES2024)</span>
-              <span>React / Next.js</span>
-              <span>WordPress CMS</span>
+              <span>React</span>
+              <span>Next.js</span>
+              <span>WordPress</span>
               <span>Node.js</span>
-              <span>WooCommerce</span>
-              <span>PWA / Service Workers</span>
-              <span>GA4 / GSC</span>
-              <span>Cloudflare CDN</span>
-              <span>AI / OpenAI APIs</span>
+              <span>Cloudflare</span>
+              <span>AI</span>
             </div>
           </div>
         </div>
@@ -3600,14 +3619,19 @@ html{scroll-behavior:smooth}
     </div>
     <div class="mbody">
       <div class="mpanel act" id="panel-terms">
-        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">This is placeholder Terms of Service text. CrownWeb Agency should have these terms reviewed by a qualified Zimbabwean legal professional before accepting live client payments or personal data.</p>
-        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">In summary: clients pay a 50% deposit to begin work, the remaining balance is due on delivery, and full ownership of the completed website transfers to the client once final payment is received.</p>
-        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;">The number of revision rounds included depends on the selected plan. Cancellation, refund, and late-payment terms should be defined explicitly here before this agreement is used with real clients.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">By engaging CrownWeb Agency for a project, you agree to the terms below. These terms apply to all website, app, and media work booked through this site.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Payment.</strong> A 50% deposit is required to begin work, with the remaining balance due on delivery. Work will not commence until the deposit is received, and completed files will not be handed over until the final balance is paid in full.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Ownership.</strong> Full ownership of the completed website, app, or media asset transfers to the client once final payment is received. Until then, all work remains the property of CrownWeb Agency.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Revisions.</strong> The number of revision rounds included is determined by the selected plan. Additional revisions beyond that allowance may be billed separately at an agreed rate.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Cancellation &amp; refunds.</strong> If a client cancels a project before work begins, the deposit is refundable in full. Once work has started, the deposit becomes non-refundable, as it covers time and resources already committed. Any additional payments made for completed milestones are non-refundable.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;"><strong>Late payment.</strong> If the final balance is not paid within 14 days of project completion, CrownWeb Agency reserves the right to withhold delivery of files and access credentials until payment is received.</p>
       </div>
       <div class="mpanel" id="panel-privacy">
-        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">This is placeholder Privacy Policy text. CrownWeb Agency should replace this with a policy that accurately describes what data is collected, how it is stored, and who it may be shared with.</p>
-        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">In summary: information submitted through this site (names, emails, phone numbers, business details, and project messages) is used only to respond to inquiries and deliver services, and is not sold to third parties.</p>
-        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;">Account and comment data is currently stored locally in your browser for demonstration purposes. Before handling real client data, this should move to a secure server-side database with proper authentication.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">CrownWeb Agency respects your privacy. This policy explains what information we collect through this site and how it is used.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>What we collect.</strong> When you submit a form on this site — including project inquiries, bookings, audit requests, or reviews — we collect the information you provide, such as your name, email address, phone number, business details, and project messages.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>How we use it.</strong> This information is used only to respond to your inquiry, schedule bookings, prepare quotes, and deliver the services you request. We do not sell or rent your information to third parties.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Payments.</strong> Deposit and payment details are processed through the payment channels stated at checkout or in your project agreement. CrownWeb Agency does not store your full card or mobile money PIN details.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;">If you have questions about your data or would like it removed, contact us directly using the details on this site.</p>
       </div>
     </div>
   </div>
@@ -4123,129 +4147,6 @@ function toggleFaqMore(){const more=document.getElementById('faq-more');const bt
 </script>
 <script>
 
-// ── Milan portfolio slideshow (CHANGE 6) ──
-(function(){
-  const slides = [{"title": "Homepage", "desc": "Garden-roofed venue, bold type, hero photo doing the selling.", "alt": "Milan Restaurant, Spa & The Club \u2014 homepage built by CrownWeb Agency", "src": "milan-homepage.jpg"}, {"title": "About", "desc": "The Milan story \u2014 who they are and why the regulars keep coming back.", "alt": "Milan \u2014 About section", "src": "milan-about.jpg"}, {"title": "Menu", "desc": "A filterable food & drinks menu, so browsing feels as easy as ordering.", "alt": "Milan \u2014 filterable food and drinks menu", "src": "milan-menu.jpg"}, {"title": "Venue & Events", "desc": "The Club's event space \u2014 built to sell the room, not just describe it.", "alt": "Milan \u2014 venue and event space", "src": "milan-venue.jpg"}, {"title": "Contact", "desc": "Footer details \u2014 hours, location, and the last word before they book.", "alt": "Milan \u2014 footer and contact details", "src": "milan-footer.jpg"}];
-  const frame = document.getElementById('milan-frame');
-  if(!frame) return; // guard in case this card is ever removed
-  const dotsWrap = document.getElementById('milan-dots');
-  const titleEl = document.getElementById('milan-title');
-  const descEl = document.getElementById('milan-desc');
-  const numEl = document.getElementById('milan-num');
-  const counterEl = document.getElementById('milan-counter');
-  const playToggle = document.getElementById('milan-playToggle');
-
-  let current = 0, playing = true, timer = null;
-  const DURATION = 4200;
-
-  slides.forEach((s, i) => {
-    const img = document.createElement('img');
-    img.src = s.src; img.alt = s.alt || s.title;
-    if(i === 0) img.classList.add('milan-active');
-    frame.insertBefore(img, frame.firstChild);
-  });
-  const imgs = frame.querySelectorAll('img');
-
-  slides.forEach((s, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'milan-dot';
-    dot.innerHTML = '<div class="milan-fill"></div>';
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-  const dots = dotsWrap.querySelectorAll('.milan-dot');
-
-  function render(){
-    imgs.forEach((img,i)=>img.classList.toggle('milan-active', i===current));
-    const s = slides[current];
-    titleEl.textContent = s.title;
-    descEl.textContent = s.desc;
-    numEl.textContent = 'Screenshot ' + (current+1);
-    counterEl.textContent = (current+1) + ' / ' + slides.length;
-    dots.forEach((d,i)=>{
-      d.classList.toggle('milan-done', i < current);
-      const fill = d.querySelector('.milan-fill');
-      if(i < current){ fill.style.transition='none'; fill.style.width='100%'; }
-      else if(i > current){ fill.style.transition='none'; fill.style.width='0%'; }
-    });
-    restartDotFill();
-  }
-
-  function restartDotFill(){
-    const fill = dots[current].querySelector('.milan-fill');
-    fill.style.transition = 'none';
-    fill.style.width = '0%';
-    requestAnimationFrame(()=>{
-      requestAnimationFrame(()=>{
-        if(playing){
-          fill.style.transition = 'width ' + DURATION + 'ms linear';
-          fill.style.width = '100%';
-        }
-      });
-    });
-  }
-
-  function goTo(i){ current = (i + slides.length) % slides.length; render(); resetTimer(); }
-  function nextSlide(){ goTo(current + 1); }
-  function prevSlide(){ goTo(current - 1); }
-
-  function resetTimer(){
-    clearInterval(timer);
-    if(playing) timer = setInterval(nextSlide, DURATION);
-  }
-
-  document.getElementById('milan-next').addEventListener('click', nextSlide);
-  document.getElementById('milan-prev').addEventListener('click', prevSlide);
-
-  playToggle.addEventListener('click', () => {
-    playing = !playing;
-    playToggle.textContent = playing ? 'Pause' : 'Play';
-    if(playing){ resetTimer(); restartDotFill(); }
-    else { clearInterval(timer); dots[current].querySelector('.milan-fill').style.transition='none'; }
-  });
-
-  frame.addEventListener('click', (e) => {
-    if(e.target.closest('.milan-nav-btn')) return;
-    openLightbox();
-  });
-
-  let lightbox = null, lightboxImg = null, lightboxCap = null;
-  function buildLightbox(){
-    lightbox = document.createElement('div');
-    lightbox.className = 'milan-lightbox';
-    lightbox.innerHTML = '<button class="milan-lightbox-close" type="button">&times;</button>'
-      + '<img alt=""/>'
-      + '<div class="milan-lightbox-cap"></div>';
-    document.body.appendChild(lightbox);
-    lightboxImg = lightbox.querySelector('img');
-    lightboxCap = lightbox.querySelector('.milan-lightbox-cap');
-    lightbox.querySelector('.milan-lightbox-close').addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
-  }
-
-  function openLightbox(){
-    if(!lightbox) buildLightbox();
-    const s = slides[current];
-    lightboxImg.src = s.src; lightboxImg.alt = s.title;
-    lightboxCap.textContent = s.title + ': ' + s.desc;
-    lightbox.classList.add('milan-open');
-    playing = false; playToggle.textContent = 'Play'; clearInterval(timer);
-  }
-  function closeLightbox(){ if(lightbox) lightbox.classList.remove('milan-open'); }
-
-  document.addEventListener('keydown', (e) => {
-    if(lightbox && lightbox.classList.contains('milan-open')){
-      if(e.key === 'Escape') closeLightbox();
-    } else if(frame.getBoundingClientRect().bottom > 0 && frame.getBoundingClientRect().top < window.innerHeight){
-      if(e.key === 'ArrowRight') nextSlide();
-      if(e.key === 'ArrowLeft') prevSlide();
-    }
-  });
-
-  render();
-  resetTimer();
-  restartDotFill();
-})();
 
 // ── MODAL HELPERS ──────────────────────────────────────────────────────────
 
@@ -5118,278 +5019,323 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 <script>
 (function(){
-  var wrap = document.getElementById('reelWrap');
-  var slidesWrap = document.getElementById('reelSlides');
-  var progressWrap = document.getElementById('reelProgress');
-  var hint = document.getElementById('reelHint');
-  if(!wrap || !slidesWrap || !progressWrap) return;
+  var reelInstances = [];
 
-  var slides = Array.prototype.slice.call(slidesWrap.querySelectorAll('.reel-slide'));
-  var total = slides.length;
-  var current = 0;
-  var animating = false;
-  var hasGSAP = typeof gsap !== 'undefined';
+  function initReel(wrap){
+    var slidesWrap = wrap.querySelector('.reel-slides');
+    var progressWrap = wrap.querySelector('.reel-progress');
+    var hint = wrap.querySelector('.reel-hint');
+    if(!wrap || !slidesWrap || !progressWrap) return null;
 
-  slides.forEach(function(_, i){
-    var tick = document.createElement('div');
-    tick.className = 'reel-tick' + (i === 0 ? ' is-active' : '');
-    progressWrap.appendChild(tick);
-  });
-  var ticks = Array.prototype.slice.call(progressWrap.children);
+    var slides = Array.prototype.slice.call(slidesWrap.querySelectorAll('.reel-slide'));
+    var total = slides.length;
+    var current = 0;
+    var animating = false;
+    var hasGSAP = typeof gsap !== 'undefined';
 
-  function videoOf(slide){ return slide.querySelector('video'); }
-
-  // Small helper so every play() call handles the "autoplay was
-  // blocked" rejection the same way, instead of repeating .catch()
-  // everywhere a video is started.
-  function safePlay(video){
-    if(!video) return;
-    var p = video.play();
-    if(p && typeof p.catch === 'function') p.catch(function(){ /* ignored: browser blocked autoplay */ });
-  }
-
-  function play(i){
-    var v = videoOf(slides[i]);
-    if(!v) return;
-    try{ v.currentTime = 0; }catch(e){}
-    safePlay(v);
-  }
-  function pause(i){
-    var v = videoOf(slides[i]);
-    if(v) v.pause();
-  }
-
-  // Card-stack layout: describes where a slide sits based on its offset
-  // from the current front card. 0 = front, 1/2 = peeking behind it,
-  // 3+ = staged out of sight ready to peek in, <=-1 = staged off-screen
-  // to the left ready to fly in when the user swipes back.
-  function transformForOffset(offset){
-    if(offset <= -1) return {xPercent:-115, yPercent:0,  scale:1,   rotate:-8, opacity:0,   z:1};
-    if(offset === 0) return {xPercent:0,    yPercent:0,  scale:1,   rotate:0,  opacity:1,   z:5};
-    if(offset === 1) return {xPercent:7,    yPercent:3,  scale:.94, rotate:4,  opacity:.9,  z:4};
-    if(offset === 2) return {xPercent:13,   yPercent:6,  scale:.88, rotate:7,  opacity:.6,  z:3};
-    return                  {xPercent:18,   yPercent:8,  scale:.82, rotate:9,  opacity:0,   z:2};
-  }
-
-  function applyLayout(centerIndex, animate){
-    slides.forEach(function(slide, i){
-      var t = transformForOffset(i - centerIndex);
-      slide.style.pointerEvents = (i === centerIndex) ? 'auto' : 'none';
-      if(hasGSAP){
-        if(animate){
-          gsap.to(slide, {xPercent:t.xPercent, yPercent:t.yPercent, scale:t.scale, rotate:t.rotate, opacity:t.opacity, zIndex:t.z, duration:.55, ease:'power2.out'});
-        } else {
-          gsap.set(slide, {xPercent:t.xPercent, yPercent:t.yPercent, scale:t.scale, rotate:t.rotate, opacity:t.opacity, zIndex:t.z});
-        }
-      } else {
-        slide.style.transform = 'translate(' + t.xPercent + '%,' + t.yPercent + '%) scale(' + t.scale + ') rotate(' + t.rotate + 'deg)';
-        slide.style.opacity = t.opacity;
-        slide.style.zIndex = t.z;
-      }
+    slides.forEach(function(_, i){
+      var tick = document.createElement('div');
+      tick.className = 'reel-tick' + (i === 0 ? ' is-active' : '');
+      progressWrap.appendChild(tick);
     });
-  }
-  applyLayout(0, false);
-  play(0);
+    var ticks = Array.prototype.slice.call(progressWrap.children);
 
-  var goToTimer = null;
-  function goTo(index){
-    if(animating || index === current || index < 0 || index >= total) return;
-    animating = true;
-    if(hint) hint.classList.add('is-hidden');
+    function videoOf(slide){ return slide.querySelector('video'); }
 
-    var fromIdx = current;
-    current = index;
-    play(index);
-    applyLayout(current, true);
+    // Small helper so every play() call handles the "autoplay was
+    // blocked" rejection the same way, instead of repeating .catch()
+    // everywhere a video is started.
+    function safePlay(video){
+      if(!video) return;
+      var p = video.play();
+      if(p && typeof p.catch === 'function') p.catch(function(){ /* ignored: browser blocked autoplay */ });
+    }
 
-    ticks.forEach(function(t, i2){ t.classList.toggle('is-active', i2 === index); });
+    function play(i){
+      var v = videoOf(slides[i]);
+      if(!v) return;
+      try{ v.currentTime = 0; }catch(e){}
+      safePlay(v);
+    }
+    function pause(i){
+      var v = videoOf(slides[i]);
+      if(v) v.pause();
+    }
 
-    if(goToTimer) clearTimeout(goToTimer);
-    goToTimer = setTimeout(function(){
-      pause(fromIdx);
-      animating = false;
-      goToTimer = null;
-    }, 560);
-  }
+    // Card-stack layout: describes where a slide sits based on its offset
+    // from the current front card. 0 = front, 1/2 = peeking behind it,
+    // 3+ = staged out of sight ready to peek in, <=-1 = staged off-screen
+    // to the left ready to fly in when the user swipes back.
+    function transformForOffset(offset){
+      if(offset <= -1) return {xPercent:-115, yPercent:0,  scale:1,   rotate:-8, opacity:0,   z:1};
+      if(offset === 0) return {xPercent:0,    yPercent:0,  scale:1,   rotate:0,  opacity:1,   z:5};
+      if(offset === 1) return {xPercent:7,    yPercent:3,  scale:.94, rotate:4,  opacity:.9,  z:4};
+      if(offset === 2) return {xPercent:13,   yPercent:6,  scale:.88, rotate:7,  opacity:.6,  z:3};
+      return                  {xPercent:18,   yPercent:8,  scale:.82, rotate:9,  opacity:0,   z:2};
+    }
 
-  function next(){ goTo(current + 1); }
-  function prev(){ goTo(current - 1); }
+    function applyLayout(centerIndex, animate){
+      slides.forEach(function(slide, i){
+        var t = transformForOffset(i - centerIndex);
+        slide.style.pointerEvents = (i === centerIndex) ? 'auto' : 'none';
+        if(hasGSAP){
+          if(animate){
+            gsap.to(slide, {xPercent:t.xPercent, yPercent:t.yPercent, scale:t.scale, rotate:t.rotate, opacity:t.opacity, zIndex:t.z, duration:.55, ease:'power2.out'});
+          } else {
+            gsap.set(slide, {xPercent:t.xPercent, yPercent:t.yPercent, scale:t.scale, rotate:t.rotate, opacity:t.opacity, zIndex:t.z});
+          }
+        } else {
+          slide.style.transform = 'translate(' + t.xPercent + '%,' + t.yPercent + '%) scale(' + t.scale + ') rotate(' + t.rotate + 'deg)';
+          slide.style.opacity = t.opacity;
+          slide.style.zIndex = t.z;
+        }
+      });
+    }
+    applyLayout(0, false);
+    play(0);
 
-  // ── Generic debounce: runs fn immediately, then ignores further
-  //    calls until `wait` ms have passed. Used to stop rapid wheel
-  //    ticks or key repeats from firing multiple slide changes. ──
-  function debounce(fn, wait){
-    var locked = false;
-    return function(){
-      if(locked) return;
-      locked = true;
-      fn.apply(null, arguments);
-      setTimeout(function(){ locked = false; }, wait);
+    var goToTimer = null;
+    function goTo(index){
+      if(animating || index === current || index < 0 || index >= total) return;
+      animating = true;
+      if(hint) hint.classList.add('is-hidden');
+
+      var fromIdx = current;
+      current = index;
+      play(index);
+      applyLayout(current, true);
+
+      ticks.forEach(function(t, i2){ t.classList.toggle('is-active', i2 === index); });
+
+      if(goToTimer) clearTimeout(goToTimer);
+      goToTimer = setTimeout(function(){
+        pause(fromIdx);
+        animating = false;
+        goToTimer = null;
+      }, 560);
+    }
+
+    function next(){ goTo(current + 1); }
+    function prev(){ goTo(current - 1); }
+
+    // ── Generic debounce: runs fn immediately, then ignores further
+    //    calls until `wait` ms have passed. Used to stop rapid wheel
+    //    ticks or key repeats from firing multiple slide changes. ──
+    function debounce(fn, wait){
+      var locked = false;
+      return function(){
+        if(locked) return;
+        locked = true;
+        fn.apply(null, arguments);
+        setTimeout(function(){ locked = false; }, wait);
+      };
+    }
+
+    var handleWheelNav = debounce(function(deltaY){
+      if(deltaY > 0) next(); else prev();
+    }, 600);
+
+    wrap.addEventListener('wheel', function(e){
+      if(Math.abs(e.deltaY) < 12) return;
+      e.preventDefault();
+      handleWheelNav(e.deltaY);
+    }, {passive:false});
+
+    wrap.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowDown' || e.key === 'ArrowRight'){ e.preventDefault(); next(); }
+      else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){ e.preventDefault(); prev(); }
+    });
+
+    var touchStartX = null;
+    wrap.addEventListener('touchstart', function(e){
+      touchStartX = e.touches[0].clientX;
+    }, {passive:true});
+    wrap.addEventListener('touchend', function(e){
+      if(touchStartX === null) return;
+      var dx = touchStartX - e.changedTouches[0].clientX;
+      touchStartX = null;
+      if(Math.abs(dx) < 40) return;
+      if(dx > 0) next(); else prev();
+    }, {passive:true});
+
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) pause(current);
+          else if(document.visibilityState !== 'hidden') play(current);
+        });
+      }, {threshold:.3});
+      io.observe(wrap);
+    }
+
+    // Pause the muted preview when the tab isn't visible, resume it when
+    // the person comes back — no point decoding video nobody can see.
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'hidden') pause(current);
+      else safePlay(videoOf(slides[current]));
+    });
+
+    // ── Full-screen playback for reel ad videos, auto-advancing to the
+    //    next ad when one finishes so it plays like a continuous reel.
+    //    We try to fullscreen the whole slide (not just the <video>) so
+    //    the download button can stay visible on top of the video. If a
+    //    browser won't fullscreen the container, we fall back to
+    //    fullscreening the video itself so playback still works. ──
+
+    function fsElement(){
+      return document.fullscreenElement || document.webkitFullscreenElement || null;
+    }
+    function isFullscreen(){
+      return !!fsElement();
+    }
+    function tryRequestFs(el){
+      if(!el) return false;
+      try{
+        if(el.requestFullscreen){ var p = el.requestFullscreen(); if(p && p.catch) p.catch(function(){}); return true; }
+        if(el.webkitRequestFullscreen){ el.webkitRequestFullscreen(); return true; }
+        if(el.msRequestFullscreen){ el.msRequestFullscreen(); return true; }
+      }catch(e){ /* some browsers throw synchronously instead of rejecting */ }
+      return false;
+    }
+    function exitFs(){
+      try{
+        if(document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
+        else if(document.webkitExitFullscreen){ document.webkitExitFullscreen(); }
+      }catch(e){}
+    }
+
+    // Only one fullscreen ad "session" (with its own listeners and
+    // pending timers) should ever be active at once. Tracking it here
+    // means a fresh call always tears down the previous one first,
+    // instead of listeners silently piling up.
+    var activeSession = null;
+
+    function playFullscreenFrom(idx){
+      if(idx < 0 || idx >= total){ exitFs(); return; }
+
+      if(activeSession) activeSession.cancel();
+
+      if(idx !== current) goTo(idx);
+
+      var slide = slides[idx];
+      var video = videoOf(slide);
+      if(!video) return;
+
+      var originalLoop = video.loop;
+      var advanceTimer = null;
+      var ended = false;
+
+      video.loop = false;
+      video.muted = false;
+      safePlay(video);
+
+      function cleanupListeners(){
+        video.removeEventListener('ended', onEnded);
+        document.removeEventListener('fullscreenchange', onFsChange);
+        document.removeEventListener('webkitfullscreenchange', onFsChange);
+        video.removeEventListener('webkitendfullscreen', onIosEnd);
+        if(advanceTimer){ clearTimeout(advanceTimer); advanceTimer = null; }
+      }
+      function restoreForBackground(){
+        cleanupListeners();
+        video.loop = originalLoop;
+        video.muted = true;
+        if(activeSession && activeSession.video === video) activeSession = null;
+      }
+      function onEnded(){
+        if(ended) return; // guard against duplicate 'ended' firings
+        ended = true;
+        restoreForBackground();
+        var nextIdx = idx + 1;
+        if(nextIdx < total){
+          advanceTimer = setTimeout(function(){ playFullscreenFrom(nextIdx); }, 30);
+        } else {
+          exitFs();
+        }
+      }
+      function onFsChange(){
+        if(isFullscreen()){
+          // Re-assert playback in case the browser paused the video while
+          // reparenting it into the fullscreen top layer.
+          safePlay(video);
+        } else {
+          restoreForBackground();
+        }
+      }
+      function onIosEnd(){
+        restoreForBackground();
+      }
+
+      video.addEventListener('ended', onEnded);
+      document.addEventListener('fullscreenchange', onFsChange);
+      document.addEventListener('webkitfullscreenchange', onFsChange);
+      video.addEventListener('webkitendfullscreen', onIosEnd); // iOS Safari
+
+      activeSession = { video: video, cancel: restoreForBackground };
+
+      tryRequestFs(slide);
+
+      // Give the container request a moment to take effect. If it didn't
+      // (unsupported browser, or blocked), fall back to fullscreening the
+      // video element directly — that path is supported almost everywhere,
+      // including iOS Safari via webkitEnterFullscreen.
+      setTimeout(function(){
+        if(isFullscreen()) return; // fullscreen already active, nothing to do
+        if(!tryRequestFs(video)){
+          if(video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+        }
+      }, 60);
+    }
+
+    var FS_EXPAND_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/></svg>';
+    var FS_CLOSE_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+    // Swap every reel-fs-btn between the "expand" and "close" icon so
+    // whichever slide is currently fullscreen shows an obvious, tappable
+    // way back out — otherwise the same expand icon just sits there
+    // doing nothing once you're already fullscreen.
+    function updateFsButtons(){
+      var fsEl = fsElement();
+      slides.forEach(function(slide){
+        var btn = slide.querySelector('.reel-fs-btn');
+        if(!btn) return;
+        var isThisFs = !!fsEl && (slide === fsEl || slide.contains(fsEl));
+        btn.innerHTML = isThisFs ? FS_CLOSE_ICON : FS_EXPAND_ICON;
+        btn.setAttribute('aria-label', isThisFs ? 'Exit full screen' : 'Watch full screen');
+      });
+    }
+    document.addEventListener('fullscreenchange', updateFsButtons);
+    document.addEventListener('webkitfullscreenchange', updateFsButtons);
+
+    return {
+      wrap: wrap,
+      slides: slides,
+      isFullscreen: isFullscreen,
+      exitFs: exitFs,
+      playFullscreenFrom: playFullscreenFrom
     };
   }
 
-  var handleWheelNav = debounce(function(deltaY){
-    if(deltaY > 0) next(); else prev();
-  }, 600);
-
-  wrap.addEventListener('wheel', function(e){
-    if(Math.abs(e.deltaY) < 12) return;
-    e.preventDefault();
-    handleWheelNav(e.deltaY);
-  }, {passive:false});
-
-  wrap.addEventListener('keydown', function(e){
-    if(e.key === 'ArrowDown' || e.key === 'ArrowRight'){ e.preventDefault(); next(); }
-    else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){ e.preventDefault(); prev(); }
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.reel-wrap'));
+  wraps.forEach(function(wrap){
+    var inst = initReel(wrap);
+    if(inst) reelInstances.push(inst);
   });
 
-  var touchStartX = null;
-  wrap.addEventListener('touchstart', function(e){
-    touchStartX = e.touches[0].clientX;
-  }, {passive:true});
-  wrap.addEventListener('touchend', function(e){
-    if(touchStartX === null) return;
-    var dx = touchStartX - e.changedTouches[0].clientX;
-    touchStartX = null;
-    if(Math.abs(dx) < 40) return;
-    if(dx > 0) next(); else prev();
-  }, {passive:true});
-
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(!entry.isIntersecting) pause(current);
-        else if(document.visibilityState !== 'hidden') play(current);
-      });
-    }, {threshold:.3});
-    io.observe(wrap);
-  }
-
-  // Pause the muted preview when the tab isn't visible, resume it when
-  // the person comes back — no point decoding video nobody can see.
-  document.addEventListener('visibilitychange', function(){
-    if(document.visibilityState === 'hidden') pause(current);
-    else safePlay(videoOf(slides[current]));
-  });
-
-  // ── Full-screen playback for reel ad videos, auto-advancing to the
-  //    next ad when one finishes so it plays like a continuous reel.
-  //    We try to fullscreen the whole slide (not just the <video>) so
-  //    the download button can stay visible on top of the video. If a
-  //    browser won't fullscreen the container, we fall back to
-  //    fullscreening the video itself so playback still works. ──
-
-  function fsElement(){
-    return document.fullscreenElement || document.webkitFullscreenElement || null;
-  }
-  function isFullscreen(){
-    return !!fsElement();
-  }
-  function tryRequestFs(el){
-    if(!el) return false;
-    try{
-      if(el.requestFullscreen){ var p = el.requestFullscreen(); if(p && p.catch) p.catch(function(){}); return true; }
-      if(el.webkitRequestFullscreen){ el.webkitRequestFullscreen(); return true; }
-      if(el.msRequestFullscreen){ el.msRequestFullscreen(); return true; }
-    }catch(e){ /* some browsers throw synchronously instead of rejecting */ }
-    return false;
-  }
-  function exitFs(){
-    try{
-      if(document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
-      else if(document.webkitExitFullscreen){ document.webkitExitFullscreen(); }
-    }catch(e){}
-  }
-
-  // Only one fullscreen ad "session" (with its own listeners and
-  // pending timers) should ever be active at once. Tracking it here
-  // means a fresh call always tears down the previous one first,
-  // instead of listeners silently piling up.
-  var activeSession = null;
-
-  function playFullscreenFrom(idx){
-    if(idx < 0 || idx >= total){ exitFs(); return; }
-
-    if(activeSession) activeSession.cancel();
-
-    if(idx !== current) goTo(idx);
-
-    var slide = slides[idx];
-    var video = videoOf(slide);
-    if(!video) return;
-
-    var originalLoop = video.loop;
-    var advanceTimer = null;
-    var ended = false;
-
-    video.loop = false;
-    video.muted = false;
-    safePlay(video);
-
-    function cleanupListeners(){
-      video.removeEventListener('ended', onEnded);
-      document.removeEventListener('fullscreenchange', onFsChange);
-      document.removeEventListener('webkitfullscreenchange', onFsChange);
-      video.removeEventListener('webkitendfullscreen', onIosEnd);
-      if(advanceTimer){ clearTimeout(advanceTimer); advanceTimer = null; }
-    }
-    function restoreForBackground(){
-      cleanupListeners();
-      video.loop = originalLoop;
-      video.muted = true;
-      if(activeSession && activeSession.video === video) activeSession = null;
-    }
-    function onEnded(){
-      if(ended) return; // guard against duplicate 'ended' firings
-      ended = true;
-      restoreForBackground();
-      var nextIdx = idx + 1;
-      if(nextIdx < total){
-        advanceTimer = setTimeout(function(){ playFullscreenFrom(nextIdx); }, 30);
-      } else {
-        exitFs();
-      }
-    }
-    function onFsChange(){
-      if(isFullscreen()){
-        // Re-assert playback in case the browser paused the video while
-        // reparenting it into the fullscreen top layer.
-        safePlay(video);
-      } else {
-        restoreForBackground();
-      }
-    }
-    function onIosEnd(){
-      restoreForBackground();
-    }
-
-    video.addEventListener('ended', onEnded);
-    document.addEventListener('fullscreenchange', onFsChange);
-    document.addEventListener('webkitfullscreenchange', onFsChange);
-    video.addEventListener('webkitendfullscreen', onIosEnd); // iOS Safari
-
-    activeSession = { video: video, cancel: restoreForBackground };
-
-    tryRequestFs(slide);
-
-    // Give the container request a moment to take effect. If it didn't
-    // (unsupported browser, or blocked), fall back to fullscreening the
-    // video element directly — that path is supported almost everywhere,
-    // including iOS Safari via webkitEnterFullscreen.
-    setTimeout(function(){
-      if(isFullscreen()) return; // fullscreen already active, nothing to do
-      if(!tryRequestFs(video)){
-        if(video.webkitEnterFullscreen) video.webkitEnterFullscreen();
-      }
-    }, 60);
-  }
-
+  // Single global entry point shared by every reel's fs buttons: find
+  // which reel instance the clicked button belongs to, then delegate.
   window.reelGoFullscreen = function(btn){
+    var wrapEl = btn.closest('.reel-wrap');
+    var inst = null;
+    for(var i = 0; i < reelInstances.length; i++){
+      if(reelInstances[i].wrap === wrapEl){ inst = reelInstances[i]; break; }
+    }
+    if(!inst) return;
     var slide = btn.closest('.reel-slide');
-    var idx = slides.indexOf(slide);
+    var idx = inst.slides.indexOf(slide);
     if(idx === -1) return;
-    if(isFullscreen()) return; // already fullscreen on some slide
-    playFullscreenFrom(idx);
+    if(inst.isFullscreen()){ inst.exitFs(); return; }
+    inst.playFullscreenFrom(idx);
   };
 })();
 </script>

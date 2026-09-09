@@ -188,6 +188,8 @@ body > section{min-height:100vh;display:flex;flex-direction:column;justify-conte
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .55s ease forwards;}
 .hero-visual{position:relative;height:500px;opacity:0;animation:fadeIn 1.2s .6s ease forwards;}
 .hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero-bg-clip{opacity:0;transition:opacity 1.3s ease;}
+.hero-bg-clip.active{opacity:1;}
 .hero-overlay{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 42% 58% at 21% 44%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.88) 35%,rgba(255,255,255,.5) 60%,rgba(255,255,255,0) 82%);}
 .hero-content{background:transparent;text-shadow:0 2px 24px rgba(255,255,255,.4);}
 @media(max-width:760px){.hero-overlay{background:linear-gradient(180deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.55) 30%,rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 65%);}
@@ -462,6 +464,26 @@ section{padding:6rem 6vw;width:100%;box-sizing:border-box;margin:0;display:block
 #pricing .price-card:not(.feat) .btn-price:hover{background:rgba(255,255,255,.15) !important;}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3.2rem;}
 .price-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:2.1rem 1.7rem;position:relative;transition:transform .3s,box-shadow .3s,border-color .3s;}
+/* Media & Content subscription cards: cinematic video background behind
+   the frosted glass, so the plans literally showcase the media service. */
+/* Media & Content subscription section: cinematic video plays behind the
+   whole panel, with the pricing cards sitting on top as frosted glass. */
+#media-pricing{position:relative;overflow:hidden;border-radius:18px;}
+.media-pricing-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.media-pricing-bg-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,8,4,.35),rgba(10,8,4,.5));}
+.media-pricing-inner{position:relative;z-index:2;}
+#media-pricing .ssub{color:#fff;}
+#media-pricing .price-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:0 20px 50px rgba(0,0,0,.25);}
+#media-pricing .price-card.feat{background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(191,160,106,.14));}
+#media-pricing .price-plan{color:var(--accent);}
+#media-pricing .price-amount{color:#fff;}
+#media-pricing .price-desc{color:rgba(255,255,255,.82);}
+#media-pricing .price-feats li{color:rgba(255,255,255,.88);}
+#media-pricing .price-feats li.no{color:rgba(255,255,255,.4);}
+#media-pricing .price-div{background:rgba(255,255,255,.2);}
+#media-pricing .price-feats li{border-bottom-color:rgba(255,255,255,.14);}
+#media-pricing .price-card:not(.feat) .btn-price{border-color:rgba(255,255,255,.5);color:#fff;background:transparent;}
+#media-pricing .price-card:not(.feat) .btn-price:hover{background:#fff;color:#111;}
 .price-card:hover{transform:translateY(-6px);box-shadow:0 24px 52px rgba(0,0,0,.1);border-color:rgba(191,160,106,.3);}
 .price-card.feat{border:2px solid var(--accent);background:linear-gradient(160deg,var(--glass-bg-strong) 70%,rgba(191,160,106,.1));}
 @media(min-width:900px){#pricing .price-card.feat{transform:translateY(-10px);}#pricing .price-card.feat:hover{transform:translateY(-16px);}}
@@ -737,6 +759,9 @@ footer{background:var(--always-dark);padding:3rem 6vw 1.5rem;position:relative;w
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
 .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1.8rem;margin-bottom:2.2rem;}
 .foot-brand p{font-size:.8rem;color:rgba(255,255,255,.3);margin-top:.7rem;font-weight:300;line-height:1.7;max-width:210px;}
+.foot-social{display:flex;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap;}
+.foot-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;}
+.foot-social a:hover{background:var(--accent);border-color:var(--accent);color:#1a1405;transform:translateY(-2px);}
 .foot-col h4{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.9rem;}
 .foot-col ul{list-style:none;}
 .foot-col ul li{margin-bottom:.45rem;}
@@ -2409,8 +2434,11 @@ html{scroll-behavior:smooth}
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 <section class="hero">
-  <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+  <video class="hero-bg-video hero-bg-clip active" id="heroVideoA" autoplay muted playsinline preload="auto">
     <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <video class="hero-bg-video hero-bg-clip" id="heroVideoB" muted playsinline preload="auto">
+    <source src="media-bg-video.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -2770,9 +2798,9 @@ html{scroll-behavior:smooth}
 
 /* ── Immersive vertical ad reel ── */
 .reel-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2.6rem;margin-top:1rem;}
-.reel-col{display:flex;flex-direction:column;align-items:center;flex:0 1 380px;max-width:380px;}
+.reel-col{display:flex;flex-direction:column;align-items:center;flex:0 1 250px;max-width:250px;}
 .reel-col-label{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--dark);letter-spacing:.02em;margin:0 0 .3rem;}
-.reel-wrap{position:relative;margin:0 auto 0;max-width:380px;width:100%;display:flex;flex-direction:column;align-items:center;outline:none;}
+.reel-wrap{position:relative;margin:0 auto 0;max-width:250px;width:100%;display:flex;flex-direction:column;align-items:center;outline:none;}
 .reel-wrap:focus-visible{outline:2px solid rgba(230,195,122,.45);outline-offset:8px;border-radius:26px;}
 .reel-card{position:relative;width:100%;aspect-ratio:9/16;overflow:visible;touch-action:pan-y;cursor:grab;}
 .reel-slides{position:relative;width:100%;height:100%;}
@@ -2817,7 +2845,7 @@ html{scroll-behavior:smooth}
 .reel-hint.is-hidden{opacity:0;}
 .reel-hint svg{animation:reelHintBounce 1.6s ease-in-out infinite;color:var(--adark,#bfa06a);}
 @keyframes reelHintBounce{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
-@media(max-width:480px){.reel-wrap{max-width:280px;}}
+@media(max-width:480px){.reel-wrap{max-width:190px;}}
 @media(min-width:640px){
   .reel-wrap{max-width:none;width:auto;}
   .reel-card{width:auto;height:min(82vh,900px);}
@@ -2831,9 +2859,9 @@ html{scroll-behavior:smooth}
 /* Side-by-side reel row: keep both cards at a fixed compact size instead
    of the single-reel full-height desktop treatment above, so two fit
    comfortably next to each other on any screen width. */
-.reel-row .reel-wrap{max-width:380px;width:100%;margin:0 auto;}
+.reel-row .reel-wrap{max-width:250px;width:100%;margin:0 auto;}
 .reel-row .reel-card{width:100%;height:auto;aspect-ratio:9/16;}
-@media(max-width:480px){.reel-row .reel-wrap{max-width:280px;}}
+@media(max-width:480px){.reel-row .reel-wrap{max-width:190px;}}
 @keyframes pulseGlow{
   0%,100%{box-shadow:0 8px 30px rgba(191,160,106,.5);}
   50%{box-shadow:0 8px 44px rgba(191,160,106,.85);}
@@ -3119,6 +3147,9 @@ html{scroll-behavior:smooth}
 
 <!-- MEDIA & CONTENT PRICING -->
 <section id="media-pricing" class="price-tab-panel" role="tabpanel" aria-labelledby="price-tab-media">
+  <video class="media-pricing-bg-video" autoplay muted loop playsinline preload="metadata"><source src="media-bg-video.mp4" type="video/mp4"></video>
+  <div class="media-pricing-bg-overlay"></div>
+  <div class="media-pricing-inner">
   <p class="ssub rev" style="margin-top:0;">Photography, videography, social media management, and graphic design &amp; branding: monthly retainers to keep your business visible and consistent.</p>
   <div class="price-grid">
     <div class="price-card rev">
@@ -3163,6 +3194,7 @@ html{scroll-behavior:smooth}
     <div><h3>Just need a one-off shoot?</h3><p>Commercial photography from $100/hr, standard marketing videos from $300, and pro TV-quality video adverts from $900, no monthly commitment.</p></div>
     <a href="#inquire" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3);" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='transparent'">Request a Quote →</a>
   </div>
+  </div><!-- /.media-pricing-inner -->
 </section>
 
 </div><!-- /.pricing-hub -->
@@ -3576,10 +3608,17 @@ html{scroll-behavior:smooth}
     <div class="foot-brand">
       <a class="logo" href="#" style="color:var(--white);">Crown<span>Web</span> Agency</a>
       <p>Building Zimbabwe's digital future, one website at a time. Based in Gweru, serving all of Zimbabwe.</p>
+      <div class="foot-social">
+        <a href="mailto:theophilus.webdev@gmail.com" aria-label="Email us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></a>
+        <a href="https://wa.me/263778230962" target="_blank" rel="noopener" aria-label="WhatsApp us"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+        <a href="https://www.instagram.com/crownweb.agency/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://github.com/theophilustinashe-collab" target="_blank" rel="noopener" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+        <a href="https://www.linkedin.com/in/theophilus-dzingisai-436394412/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v2a6 6 0 0 1 2-2z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://theophilustinashe-collab.github.io/portfolio-dev/" target="_blank" rel="noopener" aria-label="Personal portfolio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+      </div>
     </div>
     <div class="foot-col"><h4>Company</h4><ul>
       <li><a href="#serve">Who We Serve</a></li><li><a href="#services">Services</a></li>
-      <li><a href="#serve">Who We Serve</a></li>
       <li><a href="#founder">Meet the Founder</a></li>
     </ul></div>
     <div class="foot-col"><h4>Quick Links</h4><ul>
@@ -3587,16 +3626,12 @@ html{scroll-behavior:smooth}
       <li><a href="#audit">Free Website Audit</a></li>
       <li><a href="#appt">Book Appointment</a></li><li><a href="#faq">FAQ</a></li>
     </ul></div>
-    <div class="foot-col"><h4>Contact &amp; Legal</h4><ul>
-      <li><a href="mailto:theophilus.webdev@gmail.com">theophilus.webdev@gmail.com</a></li>
-      <li><a href="https://wa.me/263778230962" target="_blank" rel="noopener">077 823 0962 (WhatsApp)</a></li>
-      <li><a href="https://www.instagram.com/crownweb.agency/" target="_blank" rel="noopener">Instagram: @crownweb.agency</a></li>
-      <li><a href="https://theophilustinashe-collab.github.io/portfolio-dev/" target="_blank" rel="noopener">Personal Portfolio</a></li>
-      <li><a href="https://github.com/theophilustinashe-collab" target="_blank" rel="noopener">GitHub: theophilustinashe-collab</a></li>
-      <li><a href="https://www.linkedin.com/in/theophilus-dzingisai-436394412/" target="_blank" rel="noopener">LinkedIn: Theophilus Dzingisai</a></li>
+    <div class="foot-col"><h4>Legal</h4><ul>
       <li><a role="button" tabindex="0" onclick="openLegal('terms')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Terms of Service</a></li>
       <li><a role="button" tabindex="0" onclick="openLegal('privacy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Privacy Policy</a></li>
       <li><a role="button" tabindex="0" onclick="openLegal('cookies')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Cookie Policy</a></li>
+      <li><a role="button" tabindex="0" onclick="openLegal('accessibility')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Accessibility</a></li>
+      <li><a role="button" tabindex="0" onclick="openLegal('ai')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">AI Disclosure</a></li>
     </ul></div>
   </div>
   <div class="foot-bottom">
@@ -3619,6 +3654,8 @@ html{scroll-behavior:smooth}
       <button class="mtab act" id="tab-terms" onclick="switchLegal('terms')">Terms of Service</button>
       <button class="mtab" id="tab-privacy" onclick="switchLegal('privacy')">Privacy Policy</button>
       <button class="mtab" id="tab-cookies" onclick="switchLegal('cookies')">Cookie Policy</button>
+      <button class="mtab" id="tab-accessibility" onclick="switchLegal('accessibility')">Accessibility</button>
+      <button class="mtab" id="tab-ai" onclick="switchLegal('ai')">AI Disclosure</button>
     </div>
     <div class="mbody">
       <div class="mpanel act" id="panel-terms">
@@ -3629,6 +3666,9 @@ html{scroll-behavior:smooth}
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Cancellation &amp; refunds.</strong> If a client cancels a project before work begins, the deposit is refundable in full. Once work has started, the deposit becomes non-refundable, as it covers time and resources already committed. Any additional payments made for completed milestones are non-refundable.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Late payment.</strong> If the final balance is not paid within 14 days of project completion, CrownWeb Agency reserves the right to withhold delivery of files and access credentials until payment is received.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Client-supplied content.</strong> If you provide us with images, text, logos, or other material to use in your project, you confirm that you own it or have the right to use it. You agree to hold CrownWeb Agency harmless from any claim that such material infringes a third party's copyright or other rights.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Client indemnification.</strong> You agree to indemnify and hold CrownWeb Agency harmless against claims, damages, or costs arising from: copyright, trademark, or licensing infringement in content you supply; illegal products, services, or content promoted through your website or app; materially false or misleading information you provide during the project; or your breach of your own agreements with third parties.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Third-party services.</strong> We are not liable for downtime or failures of hosting providers, domain registrars, payment gateways, or third-party APIs we integrate but do not own or operate, nor for bugs originating in third-party plugins or libraries not built by us. These services are governed by their own terms.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Suspension.</strong> We may suspend or terminate services, with notice where practicable, if payment is overdue, our systems are abused or misused, a client's site hosts illegal content or poses a security risk, or these terms are materially breached.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>No guaranteed results.</strong> We build and deliver work to a high professional standard, but we do not guarantee specific business outcomes — such as sales volume, search ranking, or app downloads — since these depend on many factors outside our control.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Limitation of liability.</strong> To the fullest extent permitted by law, CrownWeb Agency's total liability for any claim arising from a project is limited to the amount paid by the client for that project. We are not liable for indirect, incidental, or consequential losses, including lost profits or lost data.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Delays beyond our control.</strong> CrownWeb Agency is not responsible for delays caused by events outside our reasonable control, including power outages, internet or network failures, or other circumstances beyond our control. Affected timelines will be extended by a reasonable period once normal operations resume.</p>
@@ -3654,6 +3694,17 @@ html{scroll-behavior:smooth}
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>No advertising cookies.</strong> This site does not use third-party advertising or tracking cookies, and we do not sell any data collected here.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Third-party resources.</strong> This site loads fonts from Google Fonts and scripts from jsDelivr and Cloudflare's CDN. These aren't cookies, but requesting them can expose basic technical data — such as your IP address — to those providers as part of normal web delivery.</p>
         <p style="font-size:.83rem;color:var(--mid);line-height:1.8;"><strong>Managing cookies.</strong> Most browsers let you block or delete cookies in their settings. Doing so may affect how parts of this site behave. If you have questions about cookies used on this site, contact us using the details provided.</p>
+      </div>
+      <div class="mpanel" id="panel-accessibility">
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">CrownWeb Agency is committed to making this website, and the sites and apps we build for clients, usable by as many people as possible. We target <strong>WCAG 2.2 AA</strong> conformance where feasible.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>What we do.</strong> This includes semantic heading structure and landmark regions, keyboard-navigable menus and forms, descriptive alt text for meaningful images, sufficient colour contrast, responsive layouts that adapt across screen sizes and zoom levels, and accessible form labels and error messages.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>Ongoing work.</strong> Accessibility is a continuous process, not a one-time fix. We review and improve this site as issues are identified.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;"><strong>Feedback.</strong> If you encounter a barrier using this site, please contact us at <a href="mailto:theophilus.webdev@gmail.com" style="color:var(--adark);">theophilus.webdev@gmail.com</a> and we'll treat it as a priority.</p>
+      </div>
+      <div class="mpanel" id="panel-ai">
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;">CrownWeb Agency uses AI tools — including AI coding assistants and design tools — as part of our workflow, to speed up development and content drafting.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;margin-bottom:.8rem;"><strong>What that means.</strong> AI may assist with code generation, design suggestions, or content drafts during a project. AI does not make final decisions on your project — our team does, and every AI-assisted output is reviewed and tested by a human before it is delivered or deployed.</p>
+        <p style="font-size:.83rem;color:var(--mid);line-height:1.8;"><strong>Your role.</strong> You remain responsible for reviewing and approving the final content, copy, and business information published on your site or app before it goes live.</p>
       </div>
     </div>
   </div>
@@ -3935,14 +3986,48 @@ if (window.gsap && window.ScrollTrigger) {
 
   // Gentle parallax on the hero background video so scrolling past the hero
   // has some depth to it.
-  const heroVideo = document.querySelector('.hero-bg-video');
-  if (heroVideo) {
-    gsap.to(heroVideo, {
+  const heroVideos = document.querySelectorAll('.hero-bg-video');
+  if (heroVideos.length) {
+    gsap.to(heroVideos, {
       yPercent: 18,
       ease: 'none',
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   }
+
+  // Hero background crossfades smoothly between two clips: shortly before
+  // the playing clip ends, the next one starts playing underneath and
+  // fades in while the first fades out, then the cycle repeats forever.
+  (function heroVideoCrossfade(){
+    const videos = [document.getElementById('heroVideoA'), document.getElementById('heroVideoB')];
+    if (!videos[0] || !videos[1]) return;
+    const FADE = 1.3; // seconds — matches the CSS transition duration above
+    let current = 0;
+
+    function crossTo(nextIndex){
+      const nextV = videos[nextIndex];
+      nextV.currentTime = 0;
+      nextV.play().catch(function(){});
+      nextV.classList.add('active');
+      videos[current].classList.remove('active');
+      current = nextIndex;
+    }
+
+    videos.forEach((v, idx) => {
+      v.addEventListener('timeupdate', function(){
+        if (idx !== current || !isFinite(v.duration)) return;
+        if (v.duration - v.currentTime <= FADE && !v.dataset.fading) {
+          v.dataset.fading = '1';
+          crossTo((idx + 1) % videos.length);
+        }
+      });
+      v.addEventListener('ended', function(){
+        v.pause();
+        v.currentTime = 0;
+        delete v.dataset.fading;
+      });
+    });
+  })();
 
   // ── SECTION TITLES ──
   // ".stitle" headings get a slightly different, letter-tight reveal than the
@@ -4192,7 +4277,7 @@ function openLegal(type){
 }
 function closeLegal(){ closeOverlay('legal-overlay'); }
 function switchLegal(type){
-  ['terms','privacy','cookies'].forEach(t => {
+  ['terms','privacy','cookies','accessibility','ai'].forEach(t => {
     const tab   = document.getElementById('tab-'+t);
     const panel = document.getElementById('panel-'+t);
     const active = t === type;
